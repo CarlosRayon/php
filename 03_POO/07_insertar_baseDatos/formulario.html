@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+Web con un formulario que nos servira para insertar datos en una base de datos
+-->
+<html>
+    <head>
+        <title>Formulario</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            div{
+                background-color: #9999ff;
+                margin: 10px 100px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+        <h2>Formulario de nuevo usuario</h2>
+        
+        <form action="insertarusuario.php" method="post">
+            
+            <label for="idusuario">introducir idusuario:</label>
+            <input type="text" id="idusuario" name="idusuario" placeholder="insertar id" required="true">
+            <br>  
+            <label for="nombreusuario">introducir nombre:</label>
+            <input type="text" id="nombreusuario" name="nombreusuario" placeholder="insertar nombre" required="true">
+            <br>
+            <label for="emailusuario">introducir email:</label>
+            <input type="text" id="emailusuario" name="emailusaurio"placeholder="insertar email" required="true">
+            <br>
+            <label for="passusuario">introducir pass:</label>
+            <input type="password" id="passusuario" name="passusuario" placeholder="insertar password" required="true">
+            <br>
+            <input type="submit" value="Nuevo Usuario">
+            
+        </form>
+            
+        </div>
+            
+            
+        
+    </body>
+</html>

@@ -1,0 +1,161 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Chapter 1. Que es Smarty?</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="getting.started.html" title="Part I. Iniciando">
+<link rel="prev" href="getting.started.html" title="Part I. Iniciando">
+<link rel="next" href="installation.html" title="Chapter 2. Instalación">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Chapter 1. Que es Smarty?</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="getting.started.html">Prev</a> </td>
+<th width="60%" align="center">Part I. Iniciando</th>
+<td width="20%" align="right"> <a accesskey="n" href="installation.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="chapter" title="Chapter 1. Que es Smarty?">
+<div class="titlepage"><div><div><h2 class="title">
+<a name="what.is.smarty"></a>Chapter 1. Que es Smarty?</h2></div></div></div>
+<p>
+   Smarty es un motor de plantillas para PHP. Mas especificamente, esta
+   herramienta facilita la manera de separar la aplicación lógica y el
+   contenido en la presentación.  
+   La mejor descripción esta en una situación donde la aplicación 
+   del programador y la plantilla del diseñador juegan diferentes roles,
+   o en la mayoria de los casos no la misma persona. 
+  </p>
+<p>
+   Por ejemplo: 
+   Digamos que usted crea una pagina web, es decir, despliega el articulo 
+   de un diario. El encabezado del articulo, el rotulo, el autor y el 
+   cuerpo son elementos del contenido, estos no contiene información de 
+   como quieren ser presentados. Estos son pasados por la aplicación 
+   Smarty, donde el diseñador edita la plantilla, y usa una combinación de 
+   etiquetas HTML y etiquetas de plantilla para formatear la presentación 
+   de estos elementos (HTML, tablas, color de fondo, tamaño de letras, 
+   hojas de estilo, etc...).
+   Un día el programador necesita cambiar la manera de recuperar el 
+   contenido del articulo(un cambio en la aplicación lógica.).  Este 
+   cambio no afectara al diseñador de la plantilla, el contenido llegara a 
+   la plantilla exactamente igual. De la misma manera, si el diseñador de 
+   la plantilla quiere rediseñarla en su totalidad, estos cambios no 
+   afectaran la aplicación lógica.  
+   Por lo tanto, el programador puede hacer cambios en la aplicación lógica
+   sin que sea necesario restructurar la plantilla.  Y el diseñador de la 
+   plantilla puede hacer cambios sin que haya rompimiento con la aplicación 
+   lógica.
+  </p>
+<p>
+   One design goal of Smarty is the separation of business logic and
+   presentation logic. This means templates can certainly contain logic under
+   the condition that it is for presentation only. Things such as including
+   other templates, altering table row colors, upper-casing a variable,
+   looping over an array of data and displaying it, etc. are all examples of
+   presentation logic. This does not mean that Smarty forces a separation of
+   business and presentation logic. Smarty has no knowledge of which is which,
+   so placing business logic in the template is your own doing. Also, if you
+   desire <span class="emphasis"><em>no</em></span> logic in your templates you certainly can
+   do so by boiling the content down to text and variables only.
+  </p>
+<p>
+   Ahora un pequeño resumen sobre que no hace Smarty. Smarty no intenta
+   separar completamente la lógica de la plantilla. No hay problema entre la
+   lógica y su plantilla bajo la condición que esta lógica sea
+   estrictamente para presentación.  
+   Un consejo: mantener la aplicación lógica fuera de la plantilla, y la
+   presentación fuera de la aplicación lógica.
+   Esto tiene como finalidad tener un objeto mas manipulable y escalable para 
+   un futuro proximo.
+  </p>
+<p>
+   Un único aspecto acerca de Smarty es la compilación de la plantilla.
+   De esta manera Smarty lee la plantilla y crea los scripts de PHP. Una vez
+   creados, son executados sobre él.  
+   Por consiguiente no existe ningún costo por analizar gramaticalmente 
+   cada archivo de template por cada requisición, y cada template puede llevar 
+   toda la ventaja del compilador de cache de  PHP tal como Zend Accelerator 
+   (<a class="ulink" href="http://www.zend.com/" target="_top">http://www.zend.com/</a>) o PHP Accelerator 
+   (<a class="ulink" href="http://www.php-accelerator.co.uk" target="_top">http://www.php-accelerator.co.uk</a>).
+  </p>
+<p>
+   Algunas de las características de Smarty:
+  </p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem"><p>
+     Es extremamente rápido.
+    </p></li>
+<li class="listitem"><p>
+     Es eficiente ya que puede interpretar el trabajo mas sucio.
+    </p></li>
+<li class="listitem"><p>
+     No analiza gramaticalmente desde arriba el template, solo compila una vez.
+    </p></li>
+<li class="listitem"><p>
+     El esta atento para solo recompilar los archivos de plantilla que fueron
+     cambiados.
+    </p></li>
+<li class="listitem"><p>
+     Usted puede crear <a class="link" href="language.custom.functions.html" title="Chapter 8. Custom Functions">
+     funciones habituales </a>
+     y <a class="link" href="language.modifiers.html" title="Chapter 5. Modificadores de variables">modificadores de variables </a> 
+     customizados, de modo que el lenguaje de la platilla es altamente extensible.
+    </p></li>
+<li class="listitem"><p>
+     Sintaxis de etiquetas delimitadoras para configuración de la plantilla,
+     así lo puede usar {}, {{}}, &lt;!--{}--&gt;, etc.
+    </p></li>
+<li class="listitem"><p>
+     Los construtoress if/elseif/else/endif son pasados por el interpretador 
+     de PHP, así la sintaxis de la expresión {if ...} puede ser compleja o 
+     simple de la forma que usted quiera.
+    </p></li>
+<li class="listitem"><p>
+     Permite un anidamiento ilimitado de sections, ifs, etc.
+    </p></li>
+<li class="listitem"><p>
+     Es posible incrustar directamente codigo PHP en los archivos de plantilla,
+     aunque esto puede no ser necesario(no recomendado) dado que la herramienta 
+     se puede ajustar.
+    </p></li>
+<li class="listitem"><p>
+     Soporte de caching incrustado
+    </p></li>
+<li class="listitem"><p>
+     Fuentes de Plantilla absoluto
+    </p></li>
+<li class="listitem"><p>
+     Funciones habituales de manipulación de cache
+    </p></li>
+<li class="listitem"><p>
+     Arquitectura de Plugin
+    </p></li>
+</ul></div>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="getting.started.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="getting.started.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="installation.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">Part I. Iniciando </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> Chapter 2. Instalación</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

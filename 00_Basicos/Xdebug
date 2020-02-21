@@ -1,0 +1,31 @@
+Para instalar xdebug en Xampp:
+Hacer un phpinfo
+Copiar el codigo fuente
+Pegar el codigo fuente en la pagina https://xdebug.org/wizard.php
+
+Alli nos informaran de la version de xdebbug a bajar y como instalarla
+
+Ver video ()
+
+1.Download Xdebug for PHP 7: http://xdebug.org/files/php_xdebug-2....
+2.Copy file 'php_xdebug-2.4.0rc3-7.0-vc14.dll' to: C:\xampp\php\ext
+3.Open file with notepad++: C:\xampp\php\php.ini
+4.Disbale output buffering: output_buffering = Off
+5.Scroll down to [XDebug] section and copy this lines:
+
+[XDebug]
+zend_extension = "c:\xampp\php\ext\php_xdebug-2.4.0rc3-7.0-vc14.dll"   ----RECUERDA!!!! CAMBIAR POR NUESTRA VERSION XDEBUGG
+xdebug.profiler_append = 0
+xdebug.profiler_enable = 0
+xdebug.profiler_enable_trigger = 0
+xdebug.profiler_output_dir = "c:\xampp\tmp"
+;xdebug.profiler_output_name = "cachegrind.out.%t-%s"
+xdebug.remote_enable = 1                                               ----Debe estar en 1 o on
+xdebug.remote_handler = "dbgp"
+xdebug.remote_host = "127.0.0.1"                                       -----"localhost"
+xdebug.remote_log="c:\xampp\tmp\xdebug.txt"
+xdebug.remote_port = 9000
+xdebug.trace_output_dir = "c:\xampp\tmp"
+; 3600 (1 hour), 36000 = 10h
+xdebug.remote_cookie_expire_time = 36000
+

@@ -1,0 +1,14 @@
+Estructura de una aplicaciona xajax
+
+   1º Creamos en un archivo php las funciones xajax que vamos a usar
+
+   2º  En un archivo js asociamos la funciones xajax a funciones js
+
+   3º  En el arhivo php principal incluimos la libreria de xajax
+
+   4º incluimos el script de funciones php
+      incluimos el script de funciones js
+      Y usamos las funciones js
+    
+Al registra una funcion en php esta pasara a llamarse xajax_nombreFuncion
+Si en el html o en js podemos llamar a esta funcion para que procese codigo php

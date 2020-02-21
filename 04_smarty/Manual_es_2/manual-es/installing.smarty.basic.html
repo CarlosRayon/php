@@ -1,0 +1,337 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Instalación Básica</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="installation.html" title="Chapter 2. Instalación">
+<link rel="prev" href="installation.html" title="Chapter 2. Instalación">
+<link rel="next" href="installing.smarty.extended.html" title="Expandiendo la configuración">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Instalación Básica</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="installation.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 2. Instalación</th>
+<td width="20%" align="right"> <a accesskey="n" href="installing.smarty.extended.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="Instalación Básica">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="installing.smarty.basic"></a>Instalación Básica</h2></div></div></div>
+<p>
+    Instale los archivos de la libreria de Smarty que estan en el directorio 
+    de distribución /libs/.
+    Estos son los archivos PHP que usted NO EDITARA. Estos archivos son toda
+    las aplicaciones comunes y ellos son actualizados cuando usted actualiza 
+    a una nueva versión de Smarty.
+   </p>
+<div class="example">
+<a name="id2686434"></a><p class="title"><b>Example 2.1. Archivos de la libreria Smarty</b></p>
+<div class="example-contents"><pre class="screen">
+
+Smarty.class.php
+Smarty_Compiler.class.php
+Config_File.class.php
+debug.tpl
+/internals/*.php (all of them)
+/plugins/*.php (all of them)
+
+    </pre></div>
+</div>
+<br class="example-break"><p>
+    Smarty utiliza una constante de PHP llamada <a class="link" href="smarty.constants.html#constant.smarty.dir" title="SMARTY_DIR">SMARTY_DIR</a> que es la ruta para 
+    el directorio de la biblioteca de Smarty 'libs/'. Basicamente, si su 
+    aplicación puede encontrar el archivo <code class="filename">Smarty.class.php
+    </code>, usted no necesita definir <a class="link" href="smarty.constants.html#constant.smarty.dir" title="SMARTY_DIR">SMARTY_DIR</a>, 
+    Smarty lo encontrará. Por consiguiente si, <code class="filename">Smarty.class.php
+    </code> no esta incluido en el path, y no es abastecido por 
+    una ruta absoluta para encontrar su aplicación, entonces usted 
+    debe definir SMARTY_DIR manualmente.  SMARTY_DIR <span class="emphasis"><em>debe
+    </em></span> incluir una barra de seguimento.
+   </p>
+<p>
+    Aquí esta un ejemplo de como se crea una instancia de Smarty en sus
+    scripts PHP:
+   </p>
+<div class="example">
+<a name="id2686498"></a><p class="title"><b>Example 2.2. Creando una instancia Smarty de Smarty</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+&lt;?php
+require('Smarty.class.php');
+$smarty = new Smarty;
+?&gt;
+
+    </pre></div>
+</div>
+<br class="example-break"><p>
+    Intente correr el script de arriba. Si usted obtiene un error diciendo que
+    el archivo <code class="filename">Smarty.class.php</code>
+    no fue encontrado, puedes usar una de las siguientes opciones:
+   </p>
+<div class="example">
+<a name="id2686526"></a><p class="title"><b>Example 2.3. Reemplazar por la ruta absulta de la libreria del archivo</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+&lt;?php
+require('/usr/local/lib/php/Smarty/Smarty.class.php');
+$smarty = new Smarty;
+?&gt;
+
+    </pre></div>
+</div>
+<br class="example-break"><div class="example">
+<a name="id2686544"></a><p class="title"><b>Example 2.4. Adicionar el directorio de la libreria para incluirlo en el 
+      include_path de PHP</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+&lt;?php
+// Edite su archivo php.ini, y adicione el directorio de la libreria de Smarty
+// include_path  y  reinicie su servidor web.
+// Entonces lo siguiente debe funcionar:
+require('Smarty.class.php');
+$smarty = new Smarty;
+?&gt;
+
+    </pre></div>
+</div>
+<br class="example-break"><div class="example">
+<a name="id2686560"></a><p class="title"><b>Example 2.5. Defina la constante SMARTY_DIR manualmente</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+&lt;?php
+define('SMARTY_DIR', '/usr/local/lib/php/Smarty/');
+require(SMARTY_DIR . 'Smarty.class.php');
+$smarty = new Smarty;
+?&gt;
+
+    </pre></div>
+</div>
+<br class="example-break"><p>
+    Ahora que la libreria de archivos esta en su sitio, es tiempo 
+    de configurar los directorios de Smarty para su aplicación.
+   </p>
+<p>
+    Smarty require cuatro directorios (por defaul) llamados
+    <code class="filename">'templates/'</code>, 
+    <code class="filename">'templates_c/'</code>, 
+    <code class="filename">'configs/'</code> y 
+    <code class="filename">'cache/'</code>. 
+   </p>
+<p>
+    Cada uno de estos son para definir las propiedades de las clases de Smarty.
+    <a class="link" href="api.variables.html#variable.template.dir" title="$template_dir">
+    <code class="varname">$template_dir</code></a>,
+    <a class="link" href="variable.compile.dir.html" title="$compile_dir">
+    <code class="varname">$compile_dir</code></a>,
+    <a class="link" href="variable.config.dir.html" title="$config_dir">
+    <code class="varname">$config_dir</code></a>, y
+    <a class="link" href="variable.cache.dir.html" title="$cache_dir">
+    <code class="varname">$cache_dir</code></a> respectivamente.
+    Es altamente recomendado que usted configure un grupo 
+    separado de estos directorios para cada aplicación que utilice de Smarty.
+   </p>
+<p>
+     Asegurece que usted sabe la ubicación del document root de su servidor
+     web. En nuestro ejemplo, el document root esta en
+     <code class="filename">/web/www.example.com/docs/</code>. 
+    Los directorios de Smarty solo son 
+    accesados por la libreria de Smarty y nunca son accesados directamente 
+    por el navegador. Por consiguiente para evitar cualquier preocupación 
+    con la seguridad, es recomendado colocar estos directorios
+    <span class="emphasis"><em> fuera </em></span> del document root.
+   </p>
+<p>
+    Para nuestro ejemplo de instalación, configuraremos el ambiente de Smarty 
+    para una aplicación de libro de visitas. Escojemos una aplicación solo 
+    con el proposito de crear un directorio de nombre convencional.
+    Usted puede usar el mismo ambiente para cualquier aplicación, solamente 
+    sustituya "guestbook" con el nombre de su aplicación. 
+    Nosotros colocaremos nuestros directorios de Smarty dentro de
+    <code class="filename">/web/www.example.com/smarty/guestbook/</code>.
+   </p>
+<p>
+    Usted necesita tener por lo menos un archivo dentro de su document root, 
+    y que sea accesado por el navegador. Nosotros llamamos el script de 
+    <span class="emphasis"><em>'index.php'</em></span>, y lo colocamos en un subdirectorio dentro del 
+    document root llamado <code class="filename">/guestbook/</code>.
+   </p>
+<div class="note" title="Nota Técnica:" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Nota Técnica: </h3>
+<p>
+     Es conveniente configurar el servidor de forma que "index.php" pueda
+     ser identificado como el índice del directório padre, de esta manera 
+     si usted accesa http://www.example.com/guestbook/, el script 
+     index.php será ejecutado sin "index.php" ni la URL.
+     En Apache usted puede definir el sitio adicionando "index.php" en el 
+     final de su configuración del directorio <span class="emphasis"><em>DirectoryIndex</em></span>
+     (separando cada uno con espacios.) como en el ejemplo de httpd.conf.
+    </p>
+<p>
+    <span class="emphasis"><em>DirectoryIndex
+    index.htm index.html index.php index.php3 default.html index.cgi
+    </em></span>
+    </p>
+</div>
+<p>
+    Veamos nuestra estructura de archivos hasta hora: 
+   </p>
+<div class="example">
+<a name="id2686775"></a><p class="title"><b>Example 2.6. Ejemplo de estrutura de archivo</b></p>
+<div class="example-contents"><pre class="screen">
+
+/usr/local/lib/php/Smarty/Smarty.class.php
+/usr/local/lib/php/Smarty/Smarty_Compiler.class.php
+/usr/local/lib/php/Smarty/Config_File.class.php
+/usr/local/lib/php/Smarty/debug.tpl
+/usr/local/lib/php/Smarty/internals/*.php
+/usr/local/lib/php/Smarty/plugins/*.php
+
+/web/www.example.com/smarty/guestbook/templates/
+/web/www.example.com/smarty/guestbook/templates_c/
+/web/www.example.com/smarty/guestbook/configs/
+/web/www.example.com/smarty/guestbook/cache/
+
+/web/www.example.com/docs/guestbook/index.php
+
+    </pre></div>
+</div>
+<br class="example-break"><p>
+    Smarty necesitara  <span class="bold"><strong>permisos de escritura</strong></span>
+    (usuarios de windows ingnorar) para
+    <a class="link" href="variable.compile.dir.html" title="$compile_dir"><span class="emphasis"><em>$compile_dir</em></span></a> y
+    <a class="link" href="variable.cache.dir.html" title="$cache_dir"><span class="emphasis"><em>$cache_dir</em></span></a>,
+    esto garantiza que el usuario del servidor pueda escribir en ellos.
+    Este es generalmente el usuarios "nobody" y el grupo "nobody".
+    Para usuarios con X sistema operativo, el default es  "www" y el grupo "www".
+    Si usted esta usando Apache, puede ver en su archivo httpd.conf 
+    (normalmente en "/usr/local/apache/conf/") cual es el usuario y
+    grupo que estan siendo usados.
+   </p>
+<div class="example">
+<a name="id2686832"></a><p class="title"><b>Example 2.7. Configurando permisos de archivos</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+chown nobody:nobody /web/www.example.com/smarty/guestbook/templates_c/
+chmod 770 /web/www.example.com/smarty/guestbook/templates_c/
+
+chown nobody:nobody /web/www.example.com/smarty/guestbook/cache/
+chmod 770 /web/www.example.com/smarty/guestbook/cache/
+
+    </pre></div>
+</div>
+<br class="example-break"><div class="note" title="Nota Técnica:" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Nota Técnica: </h3>
+<p>
+     chmod 770 puede ser una seguridad bastante fuerte, solo le permite al
+     usuario "nobody" y al grupo "nobody" acesso de lectura/escritura a los 
+     directorios. Si usted quiere abrir permiso de lectura a cualquiera 
+     (en la mayoria de las veces para su propia conveniencia de querer ver 
+     estos archivos), usted puede usar el 775 en lugar del 770.
+    </p>
+</div>
+<p>
+     Nosotros necesitamos crear el archivo index.tpl, para que Smarty lo 
+     pueda cargar. Este estara localizado en su 
+     <a class="link" href="api.variables.html#variable.template.dir" title="$template_dir">$template_dir</a>.
+   </p>
+<div class="example">
+<a name="id2686883"></a><p class="title"><b>Example 2.8. Editando /web/www.example.com/smarty/guestbook/templates/index.tpl</b></p>
+<div class="example-contents"><pre class="screen">
+
+
+{* Smarty *}
+
+Hello, {$name}!
+
+    </pre></div>
+</div>
+<br class="example-break"><div class="note" title="Nota Técnica:" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Nota Técnica:</h3>
+<p>
+     {* Smarty *} Esto es un <a class="link" href="language.basic.syntax.html#language.syntax.comments" title="Comentarios">comentario
+     </a> en el template. Este no es obligatorio, pero si una buena practica 
+     iniciar todos sus archivos de plantilla con estos comentarios.
+     Esto hace facilmente reconocibles a los archivos a pesar la extención 
+     del archivo. Por ejemplo, editores de texto pueden reconocer el archivo 
+     y habilitar un realce de sintaxis especial.
+    </p>
+</div>
+<p>
+     Ahora vamos a editar el index.php. crearemos una instancia de Smarty, 
+     daremos valor a las variables del template y mostraremos el archivo 
+     index.tpl. 
+     En el ambiente de nuestro ejemplo, "/usr/local/lib/php/Smarty" esta
+     dentro de include_path. Asegurese que exista el mismo, o utilice la 
+     ruta absoluta.
+   </p>
+<div class="example">
+<a name="id2686934"></a><p class="title"><b>Example 2.9. Editando  /web/www.example.com/docs/guestbook/index.php</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+&lt;?php
+
+// load Smarty library
+require('Smarty.class.php');
+
+$smarty = new Smarty;
+
+$smarty-&gt;template_dir = '/web/www.example.com/smarty/guestbook/templates/';
+$smarty-&gt;compile_dir = '/web/www.example.com/smarty/guestbook/templates_c/';
+$smarty-&gt;config_dir = '/web/www.example.com/smarty/guestbook/configs/';
+$smarty-&gt;cache_dir = '/web/www.example.com/smarty/guestbook/cache/';
+
+$smarty-&gt;assign('name','Ned');
+
+$smarty-&gt;display('index.tpl');
+?&gt;
+
+    </pre></div>
+</div>
+<br class="example-break"><div class="note" title="Nota Técnica:" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Nota Técnica: </h3>
+<p>
+     En nuestro ejemplo, estamos configurando rutas absolutas para todos
+     los directorios de Smarty. 
+     Si <code class="filename">/web/www.example.com/smarty/guestbook/
+     </code> está dentro de su include_path de PHP, entonces estas 
+     declaraciones no son necesarias. Sin embargo, esto es mas eficiente y 
+     (por experiencia) tiene menos tendencia a errores en relación a 
+     determinar las rutas absolutas. Esto garantiza que Smarty esta recibiendo 
+     los archivos del directorio que usted desea.
+    </p>
+</div>
+<p>
+    Ahora carge el archivo <code class="filename">index.php</code> desde su navegador web. 
+    Usted debera ver "Hello, Ned!"
+   </p>
+<p>
+    Usted a completado la configuracion basica para el Smarty! 
+   </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="installation.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="installation.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="installing.smarty.extended.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">Chapter 2. Instalación </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> Expandiendo la configuración</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

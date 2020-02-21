@@ -1,0 +1,103 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Escaping Smarty Parsing</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="language.basic.syntax.html" title="Chapter 3. Basic Syntax">
+<link rel="prev" href="language.math.html" title="Matemáticas">
+<link rel="next" href="language.variables.html" title="Chapter 4. Variables">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Escaping Smarty Parsing</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="language.math.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 3. Basic Syntax</th>
+<td width="20%" align="right"> <a accesskey="n" href="language.variables.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="Escaping Smarty Parsing">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="language.escaping"></a>Escaping Smarty Parsing</h2></div></div></div>
+<p>
+  En algunas ocaciones es deseable o hasta necesario que Smarty tenga que
+  ingonar sections o algun otro tipo analisis de sintaxis. Un ejemplo clasico 
+  es con el codigo JavaScript o CSS incrustado en el template. El problema se
+  origina cuando aquellos lenguajes que utilizan los caracteres { y } los
+  cuales son también los <a class="link" href="language.function.ldelim.html" title="{ldelim},{rdelim}">delimitadores</a> por default para Smarty.
+ </p>
+<p>
+  Esta puede ser una simple situación separando enteramente su codigo JavaScript 
+  y CSS dentro de un archivo personal y utilizar el metodo standar del HTML para 
+  el acceso.
+ </p>
+<p>
+  Es posible usar literal incluyendo el contenido del bloque <a class="link" href="language.function.literal.html" title="literal">{literal} .. {/literal}</a>.
+  Similar a usar entidades HTML, usted puede usar <a class="link" href="language.function.ldelim.html" title="{ldelim},{rdelim}">{ldelim}</a>,<a class="link" href="language.function.ldelim.html" title="{ldelim},{rdelim}">{rdelim}</a> o <a class="link" href="language.variables.smarty.html#language.variables.smarty.ldelim" title="{$smarty.ldelim}, {$smarty.rdelim}">{$smarty.ldelim}</a>
+  para mostrar los delimitadores actuales.
+ </p>
+<p>
+  Esto a menudo es conveniente para cambios simples a Smarty's <a class="link" href="variable.left.delimiter.html" title="$left_delimiter">$left_delimiter</a> y 
+  <a class="link" href="variable.right.delimiter.html" title="$right_delimiter">$right_delimiter</a>.
+ </p>
+<div class="example">
+<a name="id2689896"></a><p class="title"><b>Example 3.7. Ejemplo cambiando delimitadores</b></p>
+<div class="example-contents">
+<pre class="programlisting">
+
+&lt;?php
+
+$smarty = new Smarty;
+$smarty-&gt;left_delimiter = '&lt;!--{';
+$smarty-&gt;right_delimiter = '}--&gt;';
+$smarty-&gt;assign('foo', 'bar');
+$smarty-&gt;display('example.tpl');
+
+?&gt;
+
+  </pre>
+<p>
+   Donde example.tpl es:
+  </p>
+<pre class="programlisting">
+
+&lt;script language="javascript"&gt;
+var foo = &lt;!--{$foo}--&gt;;
+function dosomething() {
+    alert("foo is " + foo);
+}
+dosomething();
+&lt;/script&gt;
+
+  </pre>
+</div>
+</div>
+<br class="example-break"><p>
+     Ver También <a class="link" href="language.modifier.escape.html" title="escape">escape modifier</a>
+  </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="language.math.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="language.basic.syntax.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="language.variables.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">Matemáticas </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> Chapter 4. Variables</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

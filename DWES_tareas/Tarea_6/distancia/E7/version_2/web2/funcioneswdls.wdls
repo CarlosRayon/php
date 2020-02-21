@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap-env="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://localhost/dwes18/distancia/E7/version_2/web2/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://localhost/dwes18/distancia/E7/version_2/web2/">
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://localhost/dwes18/distancia/E7/version_2/web2/">
+            <xsd:complexType name="stringArray">
+                <xsd:complexContent>
+                    <xsd:restriction base="soap-enc:Array">
+                        <xsd:attribute ref="soap-enc:arrayType" wsdl:arrayType="xsd:string[]"/>
+                    </xsd:restriction>
+                </xsd:complexContent>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="saberNombreRequest">
+        <wsdl:part name="cod" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="saberNombreResponse">
+        <wsdl:part name="saberNombreReturn" type="tns:stringArray"/>
+    </wsdl:message>
+    <wsdl:message name="matriculadosCicloRequest">
+        <wsdl:part name="codCiclo" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="matriculadosCicloResponse">
+        <wsdl:part name="matriculadosCicloReturn" type="tns:stringArray"/>
+    </wsdl:message>
+    <wsdl:message name="modulosCompletosRequest"/>
+    <wsdl:message name="modulosCompletosResponse">
+        <wsdl:part name="modulosCompletosReturn" type="tns:stringArray"/>
+    </wsdl:message>
+    <wsdl:portType name="MisFuncionesPortType">
+        <wsdl:operation name="saberNombre">
+            <wsdl:documentation>Devuelve el nombre del modulo</wsdl:documentation>
+            <wsdl:input message="tns:saberNombreRequest"/>
+            <wsdl:output message="tns:saberNombreResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="matriculadosCiclo">
+            <wsdl:documentation>Devuelve alumnos matriculados en un ciclo concreto</wsdl:documentation>
+            <wsdl:input message="tns:matriculadosCicloRequest"/>
+            <wsdl:output message="tns:matriculadosCicloResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="modulosCompletos">
+            <wsdl:documentation>Devuelve el nombre y en cuantos modulos esta matriculado el  alumno</wsdl:documentation>
+            <wsdl:input message="tns:modulosCompletosRequest"/>
+            <wsdl:output message="tns:modulosCompletosResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="MisFuncionesBinding" type="tns:MisFuncionesPortType">
+        <soap-env:binding xmlns="http://schemas.xmlsoap.org/wsdl/soap/" style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="saberNombre">
+            <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/dwes18/distancia/E7/version_2/web2/server2.php?method=saberNombre" style="rpc"/>
+            <wsdl:input>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="matriculadosCiclo">
+            <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/dwes18/distancia/E7/version_2/web2/server2.php?method=matriculadosCiclo" style="rpc"/>
+            <wsdl:input>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="modulosCompletos">
+            <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/dwes18/distancia/E7/version_2/web2/server2.php?method=modulosCompletos" style="rpc"/>
+            <wsdl:input>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="MisFunciones">
+        <wsdl:documentation>Clase MisFunciones  Desarrollo Web en Entorno Servidor Tema 6: Servicios web Ejemplo: Documentación para generación automática del documento WSDL</wsdl:documentation>
+        <wsdl:port name="MisFuncionesPort" binding="tns:MisFuncionesBinding">
+            <soap-env:address location="http://localhost/dwes18/distancia/E7/version_2/web2/server2.php"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

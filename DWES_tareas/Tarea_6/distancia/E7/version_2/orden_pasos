@@ -1,0 +1,14 @@
+
+Primero hacemos la parte servidor:
+
+1º   Incluimos el archivo WSDLDocumente en la estructura de carpetas del servidor
+2º   Creamos archivo php (Funciones.php) con la clase que tendra las funciones RECUERDA!!! Todo comentado correctamente RECUERDA!!! No poner el mismo nombre al archivo que a la clase
+3º   Creamos un archivo php (publicar.php) que nos usaremos para crear funcioneswdsl.wdsl
+4º   Creamos un archivo servidor(server2.php) que sera el que pondra a disposicion del cliente las funciones creadas
+
+Con el servidor creado hacemos la parte cliente:
+
+1º Incluimos en la estructura de archivos el archivo wsdl2php.php
+2º Creamos el archivo en la consola (ver fotos)
+3º El archivo creado tendra un clase 
+4º Creamos un archivo cliente, en este archivo incluimos el archivo creado he intanciamos un objeto de esta clase. Usamos el objeto de forma normal para llamar a los metodos creados

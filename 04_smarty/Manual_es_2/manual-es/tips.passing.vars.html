@@ -1,0 +1,115 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Pasando la variable titulo a la cabecera del template</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="tips.html" title="Chapter 18. Consejos y Trucos">
+<link rel="prev" href="tips.default.var.handling.html" title="Manipulación del valor default de una variable">
+<link rel="next" href="tips.dates.html" title="Fechas">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Pasando la variable titulo a la cabecera del template</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="tips.default.var.handling.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 18. Consejos y Trucos</th>
+<td width="20%" align="right"> <a accesskey="n" href="tips.dates.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="Pasando la variable titulo a la cabecera del template">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="tips.passing.vars"></a>Pasando la variable titulo a la cabecera del template</h2></div></div></div>
+<p>
+    Cuando la mayoria de sus templates usan los mismo encabezados y 
+    los mismos pies de pagina, es común dividirlos uno en cada template 
+    y entonces incluirlos <a class="link" href="language.function.include.html" title="include">{include}</a>. 
+    Que pasara si el encabezado necesita tener un titulo diferente, 
+    dependiendo de que pagina estas viniendo? usted puede pasar el 
+    titulo en el encabezado cuando este es incluido.
+   </p>
+<div class="example">
+<a name="id2780450"></a><p class="title"><b>Example 18.3. Pasando la variable titulo al encabezado del template</b></p>
+<div class="example-contents">
+<p>
+    <code class="filename">mainpage.tpl</code>
+    </p>
+<pre class="programlisting">
+
+
+{include file="header.tpl" title="Main Page"}
+{* template body goes here *}
+{include file="footer.tpl"}
+
+    </pre>
+<p>
+    <code class="filename">archives.tpl</code>
+    </p>
+<pre class="programlisting">
+
+
+{config_load file="archive_page.conf"}
+{include file="header.tpl" title=#archivePageTitle#}
+{* template body goes here *}
+{include file="footer.tpl"}
+
+    </pre>
+<p>
+    <code class="filename">header.tpl</code>
+    </p>
+<pre class="programlisting">
+
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;{$title|default:"BC News"}&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    </pre>
+<p>
+    <code class="filename">footer.tpl</code>
+    </p>
+<pre class="programlisting">
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+    </pre>
+</div>
+</div>
+<br class="example-break"><p>
+   Cuando la pagina principal es mostrada, el titulo de la "Página 
+   Principal" es pasado al template <code class="filename">header.tpl</code>, 
+   y será posteriormente usado como el titulo. Cuando la pagina de archivo 
+   es mostrada, el titulo sera "Archivos". Observelo en el ejemplo de archivo, 
+   nosotros estamos usando una variable del archivo 
+   <code class="filename">archives_page.conf</code> en vez de una variable codificada 
+   rigida. Tambien note que "BC news" es mostrada si la variable $titulo no 
+   esta definida, usando el modificador de la variable 
+   <a class="link" href="language.modifier.default.html" title="default">default</a>.
+   </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="tips.default.var.handling.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="tips.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="tips.dates.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">Manipulación del valor default de una variable </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> Fechas</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,781 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Smarty Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="next" href="preface.html" title="Prólogo">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Smarty Manual</th></tr>
+<tr>
+<td width="20%" align="left"> </td>
+<th width="60%" align="center"> </th>
+<td width="20%" align="right"> <a accesskey="n" href="preface.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="book" title="Smarty Manual">
+<div class="titlepage">
+<div>
+<div><h1 class="title">
+<a name="manual"></a>Smarty - El motor compilador de Plantillas para PHP</h1></div>
+<div><div class="authorgroup">
+<a name="authors"></a><div class="author"><h3 class="author">
+<span class="firstname">Monte</span> <span class="surname">Ohrt &lt;monte at ohrt dot com&gt;</span>
+</h3></div>
+<div class="author"><h3 class="author">
+<span class="firstname">Andrei</span> <span class="surname">Zmievski &lt;andrei@php.net&gt;</span>
+</h3></div>
+</div></div>
+<div><div class="authorgroup">
+<a name="translators"></a><div class="author"><h3 class="author">
+<span class="firstname">Mario</span> <span class="surname">Ramírez
+    &lt;mario_ramirez@fjcorona.com.mx&gt;</span>
+</h3></div>
+</div></div>
+<div><p class="copyright">Copyright © 2001-2005 New Digital Group, Inc.</p></div>
+<div><p class="pubdate">2010-09-20</p></div>
+</div>
+<hr>
+</div>
+<div class="toc">
+<p><b>Table of Contents</b></p>
+<dl>
+<dt><span class="preface"><a href="preface.html">Prólogo</a></span></dt>
+<dt><span class="part"><a href="getting.started.html">I. Iniciando</a></span></dt>
+<dd><dl>
+<dt><span class="chapter"><a href="what.is.smarty.html">1. Que es Smarty?</a></span></dt>
+<dt><span class="chapter"><a href="installation.html">2. Instalación</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="installation.html#installation.requirements">Requerimentos</a></span></dt>
+<dt><span class="sect1"><a href="installing.smarty.basic.html">Instalación Básica</a></span></dt>
+<dt><span class="sect1"><a href="installing.smarty.extended.html">Expandiendo la configuración</a></span></dt>
+</dl></dd>
+</dl></dd>
+<dt><span class="part"><a href="smarty.for.designers.html">II. Smarty For Template Designers</a></span></dt>
+<dd><dl>
+<dt><span class="chapter"><a href="language.basic.syntax.html">3. Basic Syntax</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="language.basic.syntax.html#language.syntax.comments">Comentarios</a></span></dt>
+<dt><span class="sect1"><a href="language.syntax.variables.html">Variables</a></span></dt>
+<dt><span class="sect1"><a href="language.syntax.functions.html">Funciones</a></span></dt>
+<dt><span class="sect1"><a href="language.syntax.attributes.html">Atributos</a></span></dt>
+<dt><span class="sect1"><a href="language.syntax.quotes.html">Colocando variables entre comillas dobles</a></span></dt>
+<dt><span class="sect1"><a href="language.math.html">Matemáticas</a></span></dt>
+<dt><span class="sect1"><a href="language.escaping.html">Escaping Smarty Parsing</a></span></dt>
+</dl></dd>
+<dt><span class="chapter"><a href="language.variables.html">4. Variables</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="language.variables.html#language.assigned.variables">Variables definidas desde PHP</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="language.variables.html#language.variables.assoc.arrays">Arreglos asociativos</a></span></dt>
+<dt><span class="sect2"><a href="language.variables.html#language.variables.array.indexes">Índices de Matrices</a></span></dt>
+<dt><span class="sect2"><a href="language.variables.html#language.variables.objects">Objects</a></span></dt>
+</dl></dd>
+<dt><span class="sect1"><a href="language.config.variables.html">Variables cargadas desde archivos de configuración</a></span></dt>
+<dt><span class="sect1"><a href="language.variables.smarty.html">La variable reservada {$smarty}</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="language.variables.smarty.html#language.variables.smarty.request">Solicitud de Variables</a></span></dt>
+<dt><span class="sect2"><a href="language.variables.smarty.html#language.variables.smarty.now">{$smarty.now}</a></span></dt>
+<dt><span class="sect2"><a href="language.variables.smarty.html#language.variables.smarty.const">{$smarty.const}</a></span></dt>
+<dt><span class="sect2"><a href="language.variables.smarty.html#language.variables.smarty.capture">{$smarty.capture}</a></span></dt>
+<dt><span class="sect2"><a href="language.variables.smarty.html#language.variables.smarty.config">{$smarty.config}</a></span></dt>
+<dt><span class="sect2"><a href="language.variables.smarty.html#language.variables.smarty.loops">{$smarty.section}, {$smarty.foreach}</a></span></dt>
+<dt><span class="sect2"><a href="language.variables.smarty.html#language.variables.smarty.template">{$smarty.template}</a></span></dt>
+<dt><span class="sect2"><a href="language.variables.smarty.html#language.variables.smarty.version">{$smarty.version}</a></span></dt>
+<dt><span class="sect2"><a href="language.variables.smarty.html#language.variables.smarty.ldelim">{$smarty.ldelim}, {$smarty.rdelim}</a></span></dt>
+</dl></dd>
+</dl></dd>
+<dt><span class="chapter"><a href="language.modifiers.html">5. Modificadores de variables</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="language.modifiers.html#language.modifier.capitalize">capitalize</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.cat.html">cat</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.count.characters.html">count_characters</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.count.paragraphs.html">count_paragraphs</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.count.sentences.html">count_sentences</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.count.words.html">count_words</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.date.format.html">date_format</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.default.html">default</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.escape.html">escape</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.indent.html">indent</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.lower.html">lower</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.nl2br.html">nl2br</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.regex.replace.html">regex_replace</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.replace.html">replace</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.spacify.html">spacify</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.string.format.html">string_format</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.strip.html">strip</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.strip.tags.html">strip_tags</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.truncate.html">truncate</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.upper.html">upper</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.wordwrap.html">wordwrap</a></span></dt>
+</dl></dd>
+<dt><span class="chapter"><a href="language.combining.modifiers.html">6. Combinando Modificadores</a></span></dt>
+<dt><span class="chapter"><a href="language.builtin.functions.html">7. Funciones Integradas</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="language.builtin.functions.html#language.function.capture">capture</a></span></dt>
+<dt><span class="sect1"><a href="language.function.config.load.html">config_load</a></span></dt>
+<dt><span class="sect1"><a href="language.function.foreach.html">{foreach},{foreachelse}</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="language.function.foreach.html#foreach.property.iteration">iteration</a></span></dt>
+<dt><span class="sect2"><a href="language.function.foreach.html#foreach.property.first">first</a></span></dt>
+<dt><span class="sect2"><a href="language.function.foreach.html#foreach.property.last">last</a></span></dt>
+<dt><span class="sect2"><a href="language.function.foreach.html#foreach.property.show">show</a></span></dt>
+<dt><span class="sect2"><a href="language.function.foreach.html#foreach.property.total">total</a></span></dt>
+</dl></dd>
+<dt><span class="sect1"><a href="language.function.include.html">include</a></span></dt>
+<dt><span class="sect1"><a href="language.function.include.php.html">{include_php}</a></span></dt>
+<dt><span class="sect1"><a href="language.function.insert.html">insert</a></span></dt>
+<dt><span class="sect1"><a href="language.function.if.html">if,elseif,else</a></span></dt>
+<dt><span class="sect1"><a href="language.function.ldelim.html">{ldelim},{rdelim}</a></span></dt>
+<dt><span class="sect1"><a href="language.function.literal.html">literal</a></span></dt>
+<dt><span class="sect1"><a href="language.function.php.html">{php}</a></span></dt>
+<dt><span class="sect1"><a href="language.function.section.html">section,sectionelse</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="language.function.section.html#section.property.index">index</a></span></dt>
+<dt><span class="sect2"><a href="language.function.section.html#section.property.index.prev">index_prev</a></span></dt>
+<dt><span class="sect2"><a href="language.function.section.html#section.property.index.next">index_next</a></span></dt>
+<dt><span class="sect2"><a href="language.function.section.html#section.property.iteration">iteration</a></span></dt>
+<dt><span class="sect2"><a href="language.function.section.html#section.property.first">first</a></span></dt>
+<dt><span class="sect2"><a href="language.function.section.html#section.property.last">last</a></span></dt>
+<dt><span class="sect2"><a href="language.function.section.html#section.property.rownum">rownum</a></span></dt>
+<dt><span class="sect2"><a href="language.function.section.html#section.property.loop">loop</a></span></dt>
+<dt><span class="sect2"><a href="language.function.section.html#section.property.show">show</a></span></dt>
+<dt><span class="sect2"><a href="language.function.section.html#section.property.total">total</a></span></dt>
+</dl></dd>
+<dt><span class="sect1"><a href="language.function.strip.html">{strip}</a></span></dt>
+</dl></dd>
+<dt><span class="chapter"><a href="language.custom.functions.html">8. Custom Functions</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="language.custom.functions.html#language.function.assign">{assign}</a></span></dt>
+<dt><span class="sect1"><a href="language.function.counter.html">{counter}</a></span></dt>
+<dt><span class="sect1"><a href="language.function.cycle.html">cycle</a></span></dt>
+<dt><span class="sect1"><a href="language.function.debug.html">{debug}</a></span></dt>
+<dt><span class="sect1"><a href="language.function.eval.html">{eval}</a></span></dt>
+<dt><span class="sect1"><a href="language.function.fetch.html">{fetch}</a></span></dt>
+<dt><span class="sect1"><a href="language.function.html.checkboxes.html">{html_checkboxes}</a></span></dt>
+<dt><span class="sect1"><a href="language.function.html.image.html">{html_image}</a></span></dt>
+<dt><span class="sect1"><a href="language.function.html.options.html">{html_options}</a></span></dt>
+<dt><span class="sect1"><a href="language.function.html.radios.html">{html_radios}</a></span></dt>
+<dt><span class="sect1"><a href="language.function.html.select.date.html">{html_select_date}</a></span></dt>
+<dt><span class="sect1"><a href="language.function.html.select.time.html">{html_select_time}</a></span></dt>
+<dt><span class="sect1"><a href="language.function.html.table.html">{html_table}</a></span></dt>
+<dt><span class="sect1"><a href="language.function.math.html">math</a></span></dt>
+<dt><span class="sect1"><a href="language.function.mailto.html">{mailto}</a></span></dt>
+<dt><span class="sect1"><a href="language.function.popup.init.html">{popup_init}</a></span></dt>
+<dt><span class="sect1"><a href="language.function.popup.html">popup</a></span></dt>
+<dt><span class="sect1"><a href="language.function.textformat.html">{textformat}</a></span></dt>
+</dl></dd>
+<dt><span class="chapter"><a href="config.files.html">9. Config Files</a></span></dt>
+<dt><span class="chapter"><a href="chapter.debugging.console.html">10. Debugging Console</a></span></dt>
+</dl></dd>
+<dt><span class="part"><a href="smarty.for.programmers.html">III. Smarty For Programmers</a></span></dt>
+<dd><dl>
+<dt><span class="chapter"><a href="smarty.constants.html">11. Constantes</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="smarty.constants.html#constant.smarty.dir">SMARTY_DIR</a></span></dt>
+<dt><span class="sect1"><a href="constant.smarty.core.dir.html">SMARTY_CORE_DIR</a></span></dt>
+</dl></dd>
+<dt><span class="chapter"><a href="api.variables.html">12. Clase Variables de Smarty</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="api.variables.html#variable.template.dir">$template_dir</a></span></dt>
+<dt><span class="sect1"><a href="variable.compile.dir.html">$compile_dir</a></span></dt>
+<dt><span class="sect1"><a href="variable.config.dir.html">$config_dir</a></span></dt>
+<dt><span class="sect1"><a href="variable.plugins.dir.html">$plugins_dir</a></span></dt>
+<dt><span class="sect1"><a href="variable.debugging.html">$debugging</a></span></dt>
+<dt><span class="sect1"><a href="variable.debug.tpl.html">$debug_tpl</a></span></dt>
+<dt><span class="sect1"><a href="variable.debugging.ctrl.html">$debugging_ctrl</a></span></dt>
+<dt><span class="sect1"><a href="variable.autoload.filters.html">$autoload_filters</a></span></dt>
+<dt><span class="sect1"><a href="variable.compile.check.html">$compile_check</a></span></dt>
+<dt><span class="sect1"><a href="variable.force.compile.html">$force_compile</a></span></dt>
+<dt><span class="sect1"><a href="variable.caching.html">$caching</a></span></dt>
+<dt><span class="sect1"><a href="variable.cache.dir.html">$cache_dir</a></span></dt>
+<dt><span class="sect1"><a href="variable.cache.lifetime.html">$cache_lifetime</a></span></dt>
+<dt><span class="sect1"><a href="variable.cache.handler.func.html">$cache_handler_func</a></span></dt>
+<dt><span class="sect1"><a href="variable.cache.modified.check.html">$cache_modified_check</a></span></dt>
+<dt><span class="sect1"><a href="variable.config.overwrite.html">$config_overwrite</a></span></dt>
+<dt><span class="sect1"><a href="variable.config.booleanize.html">$config_booleanize</a></span></dt>
+<dt><span class="sect1"><a href="variable.config.read.hidden.html">$config_read_hidden</a></span></dt>
+<dt><span class="sect1"><a href="variable.config.fix.newlines.html">$config_fix_newlines</a></span></dt>
+<dt><span class="sect1"><a href="variable.default.template.handler.func.html">$default_template_handler_func</a></span></dt>
+<dt><span class="sect1"><a href="variable.php.handling.html">$php_handling</a></span></dt>
+<dt><span class="sect1"><a href="variable.security.html">$security</a></span></dt>
+<dt><span class="sect1"><a href="variable.secure.dir.html">$secure_dir</a></span></dt>
+<dt><span class="sect1"><a href="variable.security.settings.html">$security_settings</a></span></dt>
+<dt><span class="sect1"><a href="variable.trusted.dir.html">$trusted_dir</a></span></dt>
+<dt><span class="sect1"><a href="variable.left.delimiter.html">$left_delimiter</a></span></dt>
+<dt><span class="sect1"><a href="variable.right.delimiter.html">$right_delimiter</a></span></dt>
+<dt><span class="sect1"><a href="variable.compiler.class.html">$compiler_class</a></span></dt>
+<dt><span class="sect1"><a href="variable.request.vars.order.html">$request_vars_order</a></span></dt>
+<dt><span class="sect1"><a href="variable.request.use.auto.globals.html">$request_use_auto_globals</a></span></dt>
+<dt><span class="sect1"><a href="variable.error.reporting.html">$error_reporting</a></span></dt>
+<dt><span class="sect1"><a href="variable.compile.id.html">$compile_id</a></span></dt>
+<dt><span class="sect1"><a href="variable.use.sub.dirs.html">$use_sub_dirs</a></span></dt>
+<dt><span class="sect1"><a href="variable.default.modifiers.html">$default_modifiers</a></span></dt>
+<dt><span class="sect1"><a href="variable.default.resource.type.html">$default_resource_type</a></span></dt>
+</dl></dd>
+<dt><span class="chapter"><a href="api.functions.html">13. La clase Methods() de Smarty</a></span></dt>
+<dd><dl>
+<dt>
+<span class="refentrytitle"><a href="api.append.html">append()</a></span><span class="refpurpose"> — agregando elementos a una matriz asignada</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.append.by.ref.html">append_by_ref</a></span><span class="refpurpose"> — pasando valores por referencia</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.assign.html">assign()</a></span><span class="refpurpose"> — pasando valores para el template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.assign.by.ref.html">assign_by_ref</a></span><span class="refpurpose"> — pasando valores por referencia</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.clear.all.assign.html">clear_all_assign()</a></span><span class="refpurpose"> — &gt;limpia el valor de todas las variables asignadas</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.clear.all.cache.html">clear_all_cache</a></span><span class="refpurpose"> — limpia completamente el cache del template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.clear.assign.html">clear_assign()</a></span><span class="refpurpose"> — limpia el valor de una variable asignada</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.clear.cache.html">clear_cache()</a></span><span class="refpurpose"> — Esto limpia el cache de un template especifico</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.clear.compiled.tpl.html">clear_compiled_tpl()</a></span><span class="refpurpose"> — Esto limpia la vesion compilada del recurso de un template especifico</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.clear.config.html">clear_config()</a></span><span class="refpurpose"> — Esto limpia todas las variables de configuración</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.config.load.html">config_load()</a></span><span class="refpurpose"> — Carga el archivo de configuración y lo asigna al template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.display.html">display()</a></span><span class="refpurpose"> — Despliega el Template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.fetch.html">fetch()</a></span><span class="refpurpose"> — Retorna la salida del template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.get.config.vars.html">get_config_vars()</a></span><span class="refpurpose"> — retorna el valor asignado a la variable de configuración</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.get.registered.object.html">get_registered_object()</a></span><span class="refpurpose"> — Este retorna una referencia para un objeto registrado.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.get.template.vars.html">get_template_vars()</a></span><span class="refpurpose"> — Retorna el valor asignado a una variable</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.is.cached.html">is_cached()</a></span><span class="refpurpose"> — Retorna true si hay cache valido para ese template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.load.filter.html">load_filter()</a></span><span class="refpurpose"> — Carga un filtro de plugin</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.block.html">register_block()</a></span><span class="refpurpose"> — Registra dinamicamente bloques de funciones de plugins </span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.compiler.function.html">register_compiler_function</a></span><span class="refpurpose"> — Registra dinamicamente un plugin de una funcion compiladora</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.function.html">register_function()</a></span><span class="refpurpose"> — Registra dinamicamente un plugin de función para un template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.modifier.html">register_modifier()</a></span><span class="refpurpose"> — mofidica dinámicamente plugins registrados</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.object.html">register_object()</a></span><span class="refpurpose"> — Registr un objeto para usar en el template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.outputfilter.html">register_outputfilter()</a></span><span class="refpurpose"> — Registra dinamicamente filtros de salida</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.postfilter.html">register_postfilter()</a></span><span class="refpurpose"> — Resgistr dinamicamente postfiltros</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.prefilter.html">register_prefilter()</a></span><span class="refpurpose"> — Registra dinamicamente prefiltros</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.resource.html">register_resource</a></span><span class="refpurpose"> — Registra dinamicamente un plugin de recurso</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.trigger.error.html">trigger_error</a></span><span class="refpurpose"> — Despliega un mensaje de error</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.template.exists.html">template_exists()</a></span><span class="refpurpose"> — Verifica si el template especificado existe</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.block.html">unregister_block</a></span><span class="refpurpose"> — Des-registra dinamicamente un plugin de bloque de funciones</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.compiler.function.html">unregister_compiler_function()</a></span><span class="refpurpose"> — des-registrar dinámicamente una función de compilación</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.function.html">unregister_function()</a></span><span class="refpurpose"> — des-registrar dinámicamente una función de plugin del template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.modifier.html">unregister_modifier()</a></span><span class="refpurpose"> — des-registrar dinámicamente un modificador de plugin</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.object.html">unregister_object()</a></span><span class="refpurpose"> — Des-registra dinamicamente un objeto</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.outputfilter.html">unregister_outputfilter()</a></span><span class="refpurpose"> — des-registra dinámicamente un filtro de salida</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.postfilter.html">unregister_postfilter()</a></span><span class="refpurpose"> — Des-registra dinamicamente un postfiltro</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.prefilter.html">unregister_prefilter()</a></span><span class="refpurpose"> — Des-registra dinamicamente un prefiltro</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.resource.html">unregister_resource()</a></span><span class="refpurpose"> — Des-registra dinamicamente un plugin de recurso</span>
+</dt>
+</dl></dd>
+<dt><span class="chapter"><a href="caching.html">14. Cache</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="caching.html#caching.setting.up">Configurando el Cache</a></span></dt>
+<dt><span class="sect1"><a href="caching.multiple.caches.html">Multiples caches por pagina</a></span></dt>
+<dt><span class="sect1"><a href="caching.groups.html">Cache Groups</a></span></dt>
+<dt><span class="sect1"><a href="caching.cacheable.html">Controlando salida de Cacheabilidad de plugins</a></span></dt>
+</dl></dd>
+<dt><span class="chapter"><a href="advanced.features.html">15. Caracteristicas Avanzadas</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="advanced.features.html#advanced.features.objects">Objetos</a></span></dt>
+<dt><span class="sect1"><a href="advanced.features.prefilters.html">Prefilters</a></span></dt>
+<dt><span class="sect1"><a href="advanced.features.postfilters.html">Postfilters</a></span></dt>
+<dt><span class="sect1"><a href="advanced.features.outputfilters.html">Filtros de salida</a></span></dt>
+<dt><span class="sect1"><a href="section.template.cache.handler.func.html">Función manipuladora de cache</a></span></dt>
+<dt><span class="sect1"><a href="template.resources.html">Recursos</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="template.resources.html#templates.from.template.dir">Templates desde $template_dir</a></span></dt>
+<dt><span class="sect2"><a href="template.resources.html#templates.from.any.dir">Templates partiendo de cualquier directorio</a></span></dt>
+<dt><span class="sect2"><a href="template.resources.html#templates.from.elsewhere">Templates partiendo de otras fuentes</a></span></dt>
+<dt><span class="sect2"><a href="template.resources.html#default.template.handler.function">Función manipuladora de Template por default</a></span></dt>
+</dl></dd>
+</dl></dd>
+<dt><span class="chapter"><a href="plugins.html">16. Extendiendo Smarty con plugins</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="plugins.html#plugins.howto">Como funcionan los Plugins</a></span></dt>
+<dt><span class="sect1"><a href="plugins.naming.conventions.html">Nombres convencionales</a></span></dt>
+<dt><span class="sect1"><a href="plugins.writing.html">Escribiendo Plugins</a></span></dt>
+<dt><span class="sect1"><a href="plugins.functions.html">Funciones de Template</a></span></dt>
+<dt><span class="sect1"><a href="plugins.modifiers.html">Modificadores</a></span></dt>
+<dt><span class="sect1"><a href="plugins.block.functions.html">Block Functions</a></span></dt>
+<dt><span class="sect1"><a href="plugins.compiler.functions.html">Funciones Compiladoras</a></span></dt>
+<dt><span class="sect1"><a href="plugins.prefilters.postfilters.html">Prefiltros/Postfiltros</a></span></dt>
+<dt><span class="sect1"><a href="plugins.outputfilters.html">Filtros de Salida</a></span></dt>
+<dt><span class="sect1"><a href="plugins.resources.html">Fuentes</a></span></dt>
+<dt><span class="sect1"><a href="plugins.inserts.html">Inserts</a></span></dt>
+</dl></dd>
+</dl></dd>
+<dt><span class="part"><a href="appendixes.html">IV. Appendixes</a></span></dt>
+<dd><dl>
+<dt><span class="chapter"><a href="troubleshooting.html">17. Localización de Errores</a></span></dt>
+<dd><dl><dt><span class="sect1"><a href="troubleshooting.html#smarty.php.errors">Errores Smarty/PHP</a></span></dt></dl></dd>
+<dt><span class="chapter"><a href="tips.html">18. Consejos y Trucos</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="tips.html#tips.blank.var.handling">Manipulación de Variables Vacias</a></span></dt>
+<dt><span class="sect1"><a href="tips.default.var.handling.html">Manipulación del valor default de una variable</a></span></dt>
+<dt><span class="sect1"><a href="tips.passing.vars.html">Pasando la variable titulo a la cabecera del template</a></span></dt>
+<dt><span class="sect1"><a href="tips.dates.html">Fechas</a></span></dt>
+<dt><span class="sect1"><a href="tips.wap.html">WAP/WML</a></span></dt>
+<dt><span class="sect1"><a href="tips.componentized.templates.html">Templates con Componetes</a></span></dt>
+<dt><span class="sect1"><a href="tips.obfuscating.email.html">Ofuscando direcciones de E-mail</a></span></dt>
+</dl></dd>
+<dt><span class="chapter"><a href="resources.html">19. Fuentes</a></span></dt>
+<dt><span class="chapter"><a href="bugs.html">20. ERRORES</a></span></dt>
+</dl></dd>
+</dl>
+</div>
+<div class="list-of-examples">
+<p><b>List of Examples</b></p>
+<dl>
+<dt>2.1. <a href="installing.smarty.basic.html#id2686434">Archivos de la libreria Smarty</a>
+</dt>
+<dt>2.2. <a href="installing.smarty.basic.html#id2686498">Creando una instancia Smarty de Smarty</a>
+</dt>
+<dt>2.3. <a href="installing.smarty.basic.html#id2686526">Reemplazar por la ruta absulta de la libreria del archivo</a>
+</dt>
+<dt>2.4. <a href="installing.smarty.basic.html#id2686544">Adicionar el directorio de la libreria para incluirlo en el 
+      include_path de PHP</a>
+</dt>
+<dt>2.5. <a href="installing.smarty.basic.html#id2686560">Defina la constante SMARTY_DIR manualmente</a>
+</dt>
+<dt>2.6. <a href="installing.smarty.basic.html#id2686775">Ejemplo de estrutura de archivo</a>
+</dt>
+<dt>2.7. <a href="installing.smarty.basic.html#id2686832">Configurando permisos de archivos</a>
+</dt>
+<dt>2.8. <a href="installing.smarty.basic.html#id2686883">Editando /web/www.example.com/smarty/guestbook/templates/index.tpl</a>
+</dt>
+<dt>2.9. <a href="installing.smarty.basic.html#id2686934">Editando  /web/www.example.com/docs/guestbook/index.php</a>
+</dt>
+<dt>2.10. <a href="installing.smarty.extended.html#id2687050">Editando /php/includes/guestbook/setup.php</a>
+</dt>
+<dt>2.11. <a href="installing.smarty.extended.html#id2687069">Editando /web/www.example.com/docs/guestbook/index.php</a>
+</dt>
+<dt>3.1. <a href="language.basic.syntax.html#id2687644">Comentarios</a>
+</dt>
+<dt>3.2. <a href="language.syntax.variables.html#id2688746">Variables</a>
+</dt>
+<dt>3.3. <a href="language.syntax.functions.html#id2688938">Sintaxis de Funciones</a>
+</dt>
+<dt>3.4. <a href="language.syntax.attributes.html#id2689372">Sintaxis de atributos de Funciones</a>
+</dt>
+<dt>3.5. <a href="language.syntax.quotes.html#id2689309">Sintaxis entre comillas</a>
+</dt>
+<dt>3.6. <a href="language.math.html#id2689463">Ejemplos de matemáticas</a>
+</dt>
+<dt>3.7. <a href="language.escaping.html#id2689896">Ejemplo cambiando delimitadores</a>
+</dt>
+<dt>4.1. <a href="language.variables.html#id2690280">variables definidas</a>
+</dt>
+<dt>4.2. <a href="language.variables.html#id2690952">Accesando variables de matriz asociativa</a>
+</dt>
+<dt>4.3. <a href="language.variables.html#id2691020">Accesando matrices por sus índices</a>
+</dt>
+<dt>4.4. <a href="language.variables.html#id2691092">Accesando propiedades de los Objetos</a>
+</dt>
+<dt>4.5. <a href="language.config.variables.html#id2690574">Variables de configuración</a>
+</dt>
+<dt>4.6. <a href="language.variables.smarty.html#id2690763">Mostrando solicitud de variables</a>
+</dt>
+<dt>4.7. <a href="language.variables.smarty.html#id2690840">Usando {$smarty.now}</a>
+</dt>
+<dt>4.8. <a href="language.variables.smarty.html#id2691870">Usando {$smarty.const}</a>
+</dt>
+<dt>5.1. <a href="language.modifiers.html#id2690208">Ejemplo de modificador</a>
+</dt>
+<dt>5.2. <a href="language.modifiers.html#id2693470">capitalize</a>
+</dt>
+<dt>5.3. <a href="language.modifier.cat.html#id2693378">cat</a>
+</dt>
+<dt>5.4. <a href="language.modifier.count.characters.html#id2693271">count_characters</a>
+</dt>
+<dt>5.5. <a href="language.modifier.count.paragraphs.html#id2693719">count_paragraphs</a>
+</dt>
+<dt>5.6. <a href="language.modifier.count.sentences.html#id2693938">count_sentences</a>
+</dt>
+<dt>5.7. <a href="language.modifier.count.words.html#id2694609">count_words</a>
+</dt>
+<dt>5.8. <a href="language.modifier.date.format.html#id2695142">date_format</a>
+</dt>
+<dt>5.9. <a href="language.modifier.default.html#id2696172">default</a>
+</dt>
+<dt>5.10. <a href="language.modifier.escape.html#id2696110">escape</a>
+</dt>
+<dt>5.11. <a href="language.modifier.indent.html#id2696976">indent</a>
+</dt>
+<dt>5.12. <a href="language.modifier.lower.html#id2696500">lower</a>
+</dt>
+<dt>5.13. <a href="language.modifier.nl2br.html#id2696692">nl2br</a>
+</dt>
+<dt>5.14. <a href="language.modifier.regex.replace.html#id2697788">regex_replace</a>
+</dt>
+<dt>5.15. <a href="language.modifier.replace.html#id2698205">replace</a>
+</dt>
+<dt>5.16. <a href="language.modifier.spacify.html#id2698598">spacify</a>
+</dt>
+<dt>5.17. <a href="language.modifier.string.format.html#id2698974">string_format</a>
+</dt>
+<dt>5.18. <a href="language.modifier.strip.html#id2698465">strip</a>
+</dt>
+<dt>5.19. <a href="language.modifier.strip.tags.html#id2699503">strip_tags</a>
+</dt>
+<dt>5.20. <a href="language.modifier.truncate.html#id2699922">truncate</a>
+</dt>
+<dt>5.21. <a href="language.modifier.upper.html#id2699301">upper</a>
+</dt>
+<dt>5.22. <a href="language.modifier.wordwrap.html#id2700573">wordwrap</a>
+</dt>
+<dt>6.1. <a href="language.combining.modifiers.html#id2703351">Combinando Modificadores</a>
+</dt>
+<dt>7.1. <a href="language.builtin.functions.html#id2704923">capturando contenido de template</a>
+</dt>
+<dt>7.2. <a href="language.function.config.load.html#id2705445">Función {config_load}</a>
+</dt>
+<dt>7.3. <a href="language.function.config.load.html#id2705529">Función config_load con section</a>
+</dt>
+<dt>7.4. <a href="language.function.foreach.html#id2706179">foreach</a>
+</dt>
+<dt>7.5. <a href="language.function.foreach.html#id2706219">foreach key</a>
+</dt>
+<dt>7.6. <a href="language.function.foreach.html#id2706270">Ejemplo de {foreach} - con base de datos (eg PEAR o ADODB)</a>
+</dt>
+<dt>7.7. <a href="language.function.include.html#id2707187">funcion {include}</a>
+</dt>
+<dt>7.8. <a href="language.function.include.html#id2707202">Función {include} pasando variables</a>
+</dt>
+<dt>7.9. <a href="language.function.include.html#id2707250">{include} y asignacion de variables</a>
+</dt>
+<dt>7.10. <a href="language.function.include.html#id2707303">Ejemplos de recursos para la función include</a>
+</dt>
+<dt>7.11. <a href="language.function.include.php.html#id2707981">funcion {include_php}</a>
+</dt>
+<dt>7.12. <a href="language.function.insert.html#id2708651">función {insert}</a>
+</dt>
+<dt>7.13. <a href="language.function.if.html#id2709573">sentencia if</a>
+</dt>
+<dt>7.14. <a href="language.function.ldelim.html#id2709162">{ldelim}, {rdelim}</a>
+</dt>
+<dt>7.15. <a href="language.function.literal.html#id2709749">Etiqueta literal</a>
+</dt>
+<dt>7.16. <a href="language.function.php.html#id2710343">Etiqueta {php}</a>
+</dt>
+<dt>7.17. <a href="language.function.section.html#id2711058">section</a>
+</dt>
+<dt>7.18. <a href="language.function.section.html#id2711132">loop(ciclo) de la variable section</a>
+</dt>
+<dt>7.19. <a href="language.function.section.html#id2711171">Nombres de section</a>
+</dt>
+<dt>7.20. <a href="language.function.section.html#id2711206">sections anidadas</a>
+</dt>
+<dt>7.21. <a href="language.function.section.html#id2711270">sections y matrices asociativas</a>
+</dt>
+<dt>7.22. <a href="language.function.section.html#id2711397">{sectionelse}</a>
+</dt>
+<dt>7.23. <a href="language.function.section.html#id2711498">{section} propiedades del index</a>
+</dt>
+<dt>7.24. <a href="language.function.section.html#id2711569">{section} propiedades del index_next y index_prev</a>
+</dt>
+<dt>7.25. <a href="language.function.section.html#id2711674">{section} propiedades de iteration</a>
+</dt>
+<dt>7.26. <a href="language.function.section.html#id2711799">{section} propiedades first y last</a>
+</dt>
+<dt>7.27. <a href="language.function.section.html#id2711884">{section} propiedades de index</a>
+</dt>
+<dt>7.28. <a href="language.function.section.html#id2711944">section atributos de show</a>
+</dt>
+<dt>7.29. <a href="language.function.section.html#id2712000">{section} propiedades de total</a>
+</dt>
+<dt>7.30. <a href="language.function.strip.html#id2713266">{strip} tags</a>
+</dt>
+<dt>8.1. <a href="language.custom.functions.html#id2717908">{assign}</a>
+</dt>
+<dt>8.2. <a href="language.custom.functions.html#id2717934">Accesando variables desde un script de PHP. {assign}</a>
+</dt>
+<dt>8.3. <a href="language.function.counter.html#id2718669">counter</a>
+</dt>
+<dt>8.4. <a href="language.function.cycle.html#id2719268">cycle</a>
+</dt>
+<dt>8.5. <a href="language.function.eval.html#id2720109">{eval}</a>
+</dt>
+<dt>8.6. <a href="language.function.fetch.html#id2720605">fetch</a>
+</dt>
+<dt>8.7. <a href="language.function.html.checkboxes.html#id2721176">{html_checkboxes}</a>
+</dt>
+<dt>8.8. <a href="language.function.html.checkboxes.html#id2721263">
+      ejemplo de base de datos (eg PEAR o ADODB):
+  </a>
+</dt>
+<dt>8.9. <a href="language.function.html.image.html#id2722055">html_image example</a>
+</dt>
+<dt>8.10. <a href="language.function.html.options.html#id2722718">{html_options}</a>
+</dt>
+<dt>8.11. <a href="language.function.html.options.html#id2722816">{html_options} - Ejemplo con base de datos (eg PEAR o ADODB):</a>
+</dt>
+<dt>8.12. <a href="language.function.html.radios.html#id2723557">{html_radios} : Ejemplo 1</a>
+</dt>
+<dt>8.13. <a href="language.function.html.radios.html#id2723593">{html_radios} : Ejemplo 2</a>
+</dt>
+<dt>8.14. <a href="language.function.html.radios.html#id2723643">{html_radios}- Ejemplo con base de Datos (eg PEAR o ADODB):</a>
+</dt>
+<dt>8.15. <a href="language.function.html.select.date.html#id2724837">{html_select_date}</a>
+</dt>
+<dt>8.16. <a href="language.function.html.select.date.html#id2724863">{html_select_date}</a>
+</dt>
+<dt>8.17. <a href="language.function.html.select.time.html#id2726324">{html_select_time}</a>
+</dt>
+<dt>8.18. <a href="language.function.html.table.html#id2727542">html_table</a>
+</dt>
+<dt>8.19. <a href="language.function.math.html#id2728363">{math}</a>
+</dt>
+<dt>8.20. <a href="language.function.mailto.html#id2729245">{mailto}</a>
+</dt>
+<dt>8.21. <a href="language.function.popup.init.html#id2728913">popup_init</a>
+</dt>
+<dt>8.22. <a href="language.function.popup.html#id2731209">popup</a>
+</dt>
+<dt>8.23. <a href="language.function.textformat.html#id2732993">{textformat}</a>
+</dt>
+<dt>9.1. <a href="config.files.html#id2740491">Ejemplo de sintaxis de un archivo de configuración</a>
+</dt>
+<dt>11.1. <a href="smarty.constants.html#id2740752">SMARTY_DIR</a>
+</dt>
+<dt>11.2. <a href="constant.smarty.core.dir.html#id2740841">SMARTY_CORE_DIR</a>
+</dt>
+<dt>12.1. <a href="variable.plugins.dir.html#id2743067">multiple $plugins_dir</a>
+</dt>
+<dt>12.2. <a href="variable.config.overwrite.html#id2744638">Arreglo de variables de configuración</a>
+</dt>
+<dt>12.3. <a href="variable.compile.id.html#id2747080">$compile_id</a>
+</dt>
+<dt>13.1. <a href="api.append.html#id2750525">append</a>
+</dt>
+<dt>13.2. <a href="api.append.by.ref.html#id2750921">append_by_ref</a>
+</dt>
+<dt>13.3. <a href="api.assign.html#id2750374">assign()</a>
+</dt>
+<dt>13.4. <a href="api.assign.by.ref.html#id2751645">assign_by_ref()</a>
+</dt>
+<dt>13.5. <a href="api.clear.all.assign.html#id2751144">clear_all_assign()</a>
+</dt>
+<dt>13.6. <a href="api.clear.all.cache.html#id2752133">clear_all_cache</a>
+</dt>
+<dt>13.7. <a href="api.clear.assign.html#id2751566">clear_assign()</a>
+</dt>
+<dt>13.8. <a href="api.clear.cache.html#id2752684">clear_cache()</a>
+</dt>
+<dt>13.9. <a href="api.clear.compiled.tpl.html#id2752123">clear_compiled_tpl()</a>
+</dt>
+<dt>13.10. <a href="api.clear.config.html#id2751938">clear_config()</a>
+</dt>
+<dt>13.11. <a href="api.config.load.html#id2752991">config_load()</a>
+</dt>
+<dt>13.12. <a href="api.display.html#id2753980">display()</a>
+</dt>
+<dt>13.13. <a href="api.display.html#id2754034">Ejemplos de recursos de la función display</a>
+</dt>
+<dt>13.14. <a href="api.fetch.html#id2754478">fetch()</a>
+</dt>
+<dt>13.15. <a href="api.fetch.html#id2754496">Usando fetch() y enviando a un e-mail</a>
+</dt>
+<dt>13.16. <a href="api.get.config.vars.html#id2754385">get_config_vars()</a>
+</dt>
+<dt>13.17. <a href="api.get.registered.object.html#id2755256">get_registered_object()</a>
+</dt>
+<dt>13.18. <a href="api.get.template.vars.html#id2755507">get_template_vars</a>
+</dt>
+<dt>13.19. <a href="api.is.cached.html#id2754997">is_cached()</a>
+</dt>
+<dt>13.20. <a href="api.is.cached.html#id2755898">is_cached() con templates con multiple-cache</a>
+</dt>
+<dt>13.21. <a href="api.load.filter.html#id2756342">loading filter plugins</a>
+</dt>
+<dt>13.22. <a href="api.register.block.html#id2756745">register_block()</a>
+</dt>
+<dt>13.23. <a href="api.register.function.html#id2757700">register_function()</a>
+</dt>
+<dt>13.24. <a href="api.register.modifier.html#id2758184">register_modifier()</a>
+</dt>
+<dt>13.25. <a href="api.register.resource.html#id2760222">register_resource</a>
+</dt>
+<dt>13.26. <a href="api.template.exists.html#id2760021">template_exists()</a>
+</dt>
+<dt>13.27. <a href="api.unregister.function.html#id2760603">unregister_function()</a>
+</dt>
+<dt>13.28. <a href="api.unregister.modifier.html#id2761391">unregister_modifier()</a>
+</dt>
+<dt>13.29. <a href="api.unregister.resource.html#id2760939">unregister_resource()</a>
+</dt>
+<dt>14.1. <a href="caching.html#id2768105">Habilitando Cache</a>
+</dt>
+<dt>14.2. <a href="caching.html#id2768816">Configurando cache_lifetime por cache</a>
+</dt>
+<dt>14.3. <a href="caching.html#id2768883">Habilitando $compile_check</a>
+</dt>
+<dt>14.4. <a href="caching.html#id2768950">Usando is_cached()</a>
+</dt>
+<dt>14.5. <a href="caching.html#id2769028">Limpiando el cache</a>
+</dt>
+<dt>14.6. <a href="caching.multiple.caches.html#id2768316">Pasando un cache_id para display()</a>
+</dt>
+<dt>14.7. <a href="caching.multiple.caches.html#id2769515">Pasando un cache_id para is_cached()</a>
+</dt>
+<dt>14.8. <a href="caching.multiple.caches.html#id2769555"> Limpando todos los caches para un cache_id en particular</a>
+</dt>
+<dt>14.9. <a href="caching.groups.html#id2769106">Grupos de cache_id</a>
+</dt>
+<dt>14.10. <a href="caching.cacheable.html#id2770081">Previniendo que una saída de plugin de ser cacheada</a>
+</dt>
+<dt>14.11. <a href="caching.cacheable.html#id2770141">Previniendo una pasada entera del template para el cache</a>
+</dt>
+<dt>15.1. <a href="advanced.features.html#id2771430">usando un objeto registrado o atribuido</a>
+</dt>
+<dt>15.2. <a href="advanced.features.prefilters.html#id2771299">usando un prefiltro prefilter de template</a>
+</dt>
+<dt>15.3. <a href="advanced.features.postfilters.html#id2771084">Usando un postfilter de template</a>
+</dt>
+<dt>15.4. <a href="advanced.features.outputfilters.html#id2771185">Usando un filtro de salida de template</a>
+</dt>
+<dt>15.5. <a href="section.template.cache.handler.func.html#id2772081"> ejemplo usando MySQL como una fuente de cache</a>
+</dt>
+<dt>15.6. <a href="template.resources.html#id2772658">Usando templates desde $template_dir</a>
+</dt>
+<dt>15.7. <a href="template.resources.html#id2772705">usando templates desde cualquier directorio</a>
+</dt>
+<dt>15.8. <a href="template.resources.html#id2772756">usando templates con rutas de archivos de windows</a>
+</dt>
+<dt>15.9. <a href="template.resources.html#id2772838">Usando recursos habituales</a>
+</dt>
+<dt>15.10. <a href="template.resources.html#id2772942"> usando la función manipuladora de template por default</a>
+</dt>
+<dt>16.1. <a href="plugins.functions.html#id2775193">Función de plugin con salida</a>
+</dt>
+<dt>16.2. <a href="plugins.functions.html#id2775244">Función de plugin sin salida</a>
+</dt>
+<dt>16.3. <a href="plugins.modifiers.html#id2775113"> Plugin modificador simple</a>
+</dt>
+<dt>16.4. <a href="plugins.modifiers.html#id2775600">Plugin modificador mas complejo</a>
+</dt>
+<dt>16.5. <a href="plugins.block.functions.html#id2776061">Función de bloque</a>
+</dt>
+<dt>16.6. <a href="plugins.compiler.functions.html#id2776443">Función compiladora simple</a>
+</dt>
+<dt>16.7. <a href="plugins.prefilters.postfilters.html#id2775923">prefilter plugin</a>
+</dt>
+<dt>16.8. <a href="plugins.prefilters.postfilters.html#id2775940">postfilter plugin</a>
+</dt>
+<dt>16.9. <a href="plugins.outputfilters.html#id2776323">plugin de filtro de salida</a>
+</dt>
+<dt>16.10. <a href="plugins.resources.html#id2777549">Plugin resource (recurso)</a>
+</dt>
+<dt>16.11. <a href="plugins.inserts.html#id2778043">insert plugin</a>
+</dt>
+<dt>17.1. <a href="troubleshooting.html#id2778924">Errores de Smarty</a>
+</dt>
+<dt>17.2. <a href="troubleshooting.html#id2779000">Errores de analisis gramatical de PHP</a>
+</dt>
+<dt>17.3. <a href="troubleshooting.html#id2779053">Otros errores comunes</a>
+</dt>
+<dt>18.1. <a href="tips.html#id2779443">Imprimiendo &amp;nbsp; cuando una variable esta vacia</a>
+</dt>
+<dt>18.2. <a href="tips.default.var.handling.html#id2780379">Atribuyendo el valor por default a una variable en el template</a>
+</dt>
+<dt>18.3. <a href="tips.passing.vars.html#id2780450">Pasando la variable titulo al encabezado del template</a>
+</dt>
+<dt>18.4. <a href="tips.dates.html#id2780609">Usando date_format</a>
+</dt>
+<dt>18.5. <a href="tips.dates.html#id2780676">Convirtiendo elementos en forma de fecha de vuelta a un timestamp</a>
+</dt>
+<dt>18.6. <a href="tips.wap.html#id2780789">Usando insert para escribir un encabezado WML Content-Type</a>
+</dt>
+<dt>18.7. <a href="tips.componentized.templates.html#id2780905">Templates con Componetes</a>
+</dt>
+<dt>18.8. <a href="tips.obfuscating.email.html#id2780186">Ejemplo de ofuscamiento de una direccion de E-mail</a>
+</dt>
+</dl>
+</div>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left"> </td>
+<td width="20%" align="center"> </td>
+<td width="40%" align="right"> <a accesskey="n" href="preface.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top"> </td>
+<td width="20%" align="center"> </td>
+<td width="40%" align="right" valign="top"> Prólogo</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

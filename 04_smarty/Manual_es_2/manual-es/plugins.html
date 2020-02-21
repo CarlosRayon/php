@@ -1,0 +1,111 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Chapter 16. Extendiendo Smarty con plugins</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="smarty.for.programmers.html" title="Part III. Smarty For Programmers">
+<link rel="prev" href="template.resources.html" title="Recursos">
+<link rel="next" href="plugins.naming.conventions.html" title="Nombres convencionales">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Chapter 16. Extendiendo Smarty con plugins</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="template.resources.html">Prev</a> </td>
+<th width="60%" align="center">Part III. Smarty For Programmers</th>
+<td width="20%" align="right"> <a accesskey="n" href="plugins.naming.conventions.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="chapter" title="Chapter 16. Extendiendo Smarty con plugins">
+<div class="titlepage"><div><div><h2 class="title">
+<a name="plugins"></a>Chapter 16. Extendiendo Smarty con plugins</h2></div></div></div>
+<div class="toc">
+<p><b>Table of Contents</b></p>
+<dl>
+<dt><span class="sect1"><a href="plugins.html#plugins.howto">Como funcionan los Plugins</a></span></dt>
+<dt><span class="sect1"><a href="plugins.naming.conventions.html">Nombres convencionales</a></span></dt>
+<dt><span class="sect1"><a href="plugins.writing.html">Escribiendo Plugins</a></span></dt>
+<dt><span class="sect1"><a href="plugins.functions.html">Funciones de Template</a></span></dt>
+<dt><span class="sect1"><a href="plugins.modifiers.html">Modificadores</a></span></dt>
+<dt><span class="sect1"><a href="plugins.block.functions.html">Block Functions</a></span></dt>
+<dt><span class="sect1"><a href="plugins.compiler.functions.html">Funciones Compiladoras</a></span></dt>
+<dt><span class="sect1"><a href="plugins.prefilters.postfilters.html">Prefiltros/Postfiltros</a></span></dt>
+<dt><span class="sect1"><a href="plugins.outputfilters.html">Filtros de Salida</a></span></dt>
+<dt><span class="sect1"><a href="plugins.resources.html">Fuentes</a></span></dt>
+<dt><span class="sect1"><a href="plugins.inserts.html">Inserts</a></span></dt>
+</dl>
+</div>
+<p>
+   La version 2.0 introduce la arquitectura de plugin que es usada para 
+   casi todas las funcionalidades adaptables del Smarty. Esto incluye:
+   </p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc" compact>
+<li class="listitem">funciones</li>
+<li class="listitem">modificadores</li>
+<li class="listitem">funciones de bloque</li>
+<li class="listitem">funciones de compilación</li>
+<li class="listitem">prefiltros</li>
+<li class="listitem">postfiltros</li>
+<li class="listitem">filtros de salida</li>
+<li class="listitem">recursos(fuentes)</li>
+<li class="listitem">inserts</li>
+</ul></div>
+<p>
+   Con la excepción de recursos, la compatibildad con la forma antigua 
+   de funciones de manipulación de registro via register_* API es conservada. 
+   Si usted no uso el API en lugar de eso modifico las variables de clase 
+   <code class="literal">$custom_funcs</code>, <code class="literal">$custom_mods</code>, y otras 
+   directamente, entonces usted va a necesitar ajustar sus scripts para 
+   cualquiera que use el API o convertir sus funciones habituales en plugins.
+  </p>
+<div class="sect1" title="Como funcionan los Plugins">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="plugins.howto"></a>Como funcionan los Plugins</h2></div></div></div>
+<p>
+    Los plugins son siempre cargados cuando son requeridos. solo los 
+    calificativos especificos, funciones, recursos, etc convocados en 
+    scripts del template seran leidos. Además, cada plugin es cargado 
+    una sola vez, aun si usted tiene corriendo varias instancias 
+    diferentes de Smarty dentro de la misma petición.
+   </p>
+<p>
+    Pre/posfiltros y salidas de filtros son una parte de un caso especial.
+    Dado que ellos no son mensionados en los templates, ellos deben ser
+    registrados o leidos explicitamente mediante funciones de API antes de 
+    que el template sea procesado. El orden en el cual son ejecutados 
+    multiples filtros del mismo tipo depende del orden en el que estos son 
+    registrados o leidos.
+   </p>
+<p>
+    El <a class="link" href="variable.plugins.dir.html" title="$plugins_dir">directorio de directory</a> 
+    puede ser una cadena que contenga una ruta o un arreglo que contenga 
+    multiples rutas. Para instalar un plugin, simplemente coloquelo en el 
+    directorio y el Smarty lo usara automáticamente.
+   </p>
+</div>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="template.resources.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="smarty.for.programmers.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="plugins.naming.conventions.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">Recursos </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> Nombres convencionales</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

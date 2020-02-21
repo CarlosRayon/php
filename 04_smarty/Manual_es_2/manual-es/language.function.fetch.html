@@ -1,0 +1,134 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{fetch}</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="language.custom.functions.html" title="Chapter 8. Custom Functions">
+<link rel="prev" href="language.function.eval.html" title="{eval}">
+<link rel="next" href="language.function.html.checkboxes.html" title="{html_checkboxes}">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">{fetch}</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="language.function.eval.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 8. Custom Functions</th>
+<td width="20%" align="right"> <a accesskey="n" href="language.function.html.checkboxes.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="{fetch}">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="language.function.fetch"></a>{fetch}</h2></div></div></div>
+<div class="informaltable"><table border="1">
+<colgroup>
+<col align="center">
+<col align="center">
+<col align="center">
+<col align="center">
+<col>
+</colgroup>
+<thead><tr>
+<th align="center">Nombre del Atributo</th>
+<th align="center">Tipo</th>
+<th align="center">Requerido</th>
+<th align="center">Default</th>
+<th>Descripción</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="center">file</td>
+<td align="center">string</td>
+<td align="center">Si</td>
+<td align="center"><span class="emphasis"><em>n/a</em></span></td>
+<td>El archivo, sitio http o ftp para mandar llamar</td>
+</tr>
+<tr>
+<td align="center">assign</td>
+<td align="center">string</td>
+<td align="center">No</td>
+<td align="center"><span class="emphasis"><em>n/a</em></span></td>
+<td>La variable del template que va a recibir la salida</td>
+</tr>
+</tbody>
+</table></div>
+<p>
+  {fetch} es usado para obtener archivos de sistema local, http o ftp, y 
+  mostrar el contenido. Si el nombre del archivo comienza con "http://", 
+  la página del web site sera traida y mostrada. Si el nombre del archivo 
+  comienza con "ftp://", el archivo será obtenido del servidor ftp y 
+  mostrado. Para archivos locales, debe ser dada la ruta completa del 
+  sistema de archivos, o una ruta relativa de el script php a ejecutar.
+ </p>
+<p>
+  Si usted indica el atributo especial "assign", la salida de la función
+  {fetch} se ira a una variable de template en vez de ser mostrada en el
+ template.  (nuevo en Smarty 1.5.0)
+ </p>
+<div class="note" title="Nota Técnica" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Nota Técnica</h3>
+<p>
+   Esto no soporta redirecionamento http, tenga la certeza de incluirlo 
+   en la barra el seguimiento para ir a buscar donde sea necesario.
+  </p>
+</div>
+<div class="note" title="Nota Técnica" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Nota Técnica</h3>
+<p>
+   Si tiene activada la seguridad en su template y usted estuviera
+   recibiendo un archivo del sistema de archivos local, esto permitira 
+   que solo archivos de uno de los directorios estuviera definido como 
+   seguro. (<a class="link" href="variable.secure.dir.html" title="$secure_dir">$secure_dir</a>)
+  </p>
+</div>
+<div class="example">
+<a name="id2720605"></a><p class="title"><b>Example 8.6. fetch</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+{* include some javascript in your template *}
+{fetch file="/export/httpd/www.example.com/docs/navbar.js"}
+
+{* embed some weather text in your template from another web site *}
+{fetch file="http://www.myweather.com/68502/"}
+
+{* fetch a news headline file via ftp *}
+{fetch file="ftp://user:password@ftp.example.com/path/to/currentheadlines.txt"}
+
+{* assign the fetched contents to a template variable *}
+{fetch file="http://www.myweather.com/68502/" assign="weather"}
+{if $weather ne ""}
+  &lt;b&gt;{$weather}&lt;/b&gt;
+{/if}
+
+  </pre></div>
+</div>
+<br class="example-break"><p>
+ Ver también <a class="link" href="language.builtin.functions.html#language.function.capture" title="capture">{capture}</a>,
+ <a class="link" href="language.function.eval.html" title="{eval}">{eval}</a>
+ y <a class="link" href="api.fetch.html" title="fetch()">fetch()</a>.
+ </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="language.function.eval.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="language.custom.functions.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="language.function.html.checkboxes.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">{eval} </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> {html_checkboxes}</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

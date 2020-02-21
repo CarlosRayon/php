@@ -1,0 +1,156 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>wordwrap</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="language.modifiers.html" title="Chapter 5. Modificadores de variables">
+<link rel="prev" href="language.modifier.upper.html" title="upper">
+<link rel="next" href="language.combining.modifiers.html" title="Chapter 6. Combinando Modificadores">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">wordwrap</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="language.modifier.upper.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 5. Modificadores de variables</th>
+<td width="20%" align="right"> <a accesskey="n" href="language.combining.modifiers.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="wordwrap">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="language.modifier.wordwrap"></a>wordwrap</h2></div></div></div>
+<div class="informaltable"><table border="1">
+<colgroup>
+<col align="center">
+<col align="center">
+<col align="center">
+<col align="center">
+<col>
+</colgroup>
+<thead><tr>
+<th align="center">Posición del Parametro</th>
+<th align="center">Tipo</th>
+<th align="center">Requerido</th>
+<th align="center">Default</th>
+<th>Descripción</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td align="center">integer</td>
+<td align="center">No</td>
+<td align="center">80</td>
+<td>Este determina en cuantas columnas cortar.</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">string</td>
+<td align="center">No</td>
+<td align="center">\n</td>
+<td>Esta es la cadena usada para cortar.</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">boolean</td>
+<td align="center">No</td>
+<td align="center">false</td>
+<td>Este determina cuando cortar o no, o al final de una
+       palabra(false), o en un carácter exacto(true).
+      </td>
+</tr>
+</tbody>
+</table></div>
+<p>
+   Este <span class="command"><strong>wordwrap</strong></span> corta una cadena para un ancho de columna, 
+   el default es 80. Como segundo parámetro opcional, usted puede especificar 
+   la cadena que será usada para cortar el texto para la próxima linea (el default 
+   es un retorno de carro \n). Por default, (wordwrap) intentara cortar al final 
+   de una palabra. Si usted quisiera cortar un tamaño exacto de cacarteres, 
+   pase al tercer parámetro, que es opcional, como true.
+   Este es equivalente a la función <a class="ulink" href="http://php.net/wordwrap" target="_top">wordwrap()</a> de PHP.
+  </p>
+<div class="example">
+<a name="id2700573"></a><p class="title"><b>Example 5.22. wordwrap</b></p>
+<div class="example-contents">
+<pre class="programlisting">
+
+&lt;?php
+    
+$smarty-&gt;assign('articleTitle', "Blind woman gets new kidney from dad she hasn't seen in years.");
+
+?&gt;
+
+   </pre>
+<p>
+    Donde index.tpl es:
+   </p>
+<pre class="programlisting">
+ 
+{$articleTitle}
+
+{$articleTitle|wordwrap:30}
+    
+{$articleTitle|wordwrap:20}
+    
+{$articleTitle|wordwrap:30:"&lt;br /&gt;\n"}
+    
+{$articleTitle|wordwrap:30:"\n":true}
+
+   </pre>
+<p>
+    Esta es la Salida:
+   </p>
+<pre class="screen">
+
+Blind woman gets new kidney from dad she hasn't seen in years.
+
+Blind woman gets new kidney
+from dad she hasn't seen in
+years.
+
+Blind woman gets new
+kidney from dad she
+hasn't seen in
+years.
+
+Blind woman gets new kidney&lt;br /&gt;
+from dad she hasn't seen in&lt;br /&gt;
+years.
+
+Blind woman gets new kidney
+from dad she hasn't seen in
+years.
+
+   </pre>
+</div>
+</div>
+<br class="example-break"><p>
+     Ver También <a class="link" href="language.modifier.nl2br.html" title="nl2br">nl2br</a>
+     y <a class="link" href="language.function.textformat.html" title="{textformat}">{textformat}</a>.
+    </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="language.modifier.upper.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="language.modifiers.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="language.combining.modifiers.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">upper </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> Chapter 6. Combinando Modificadores</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

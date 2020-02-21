@@ -1,0 +1,71 @@
+header{
+    width: 100%;
+    margin: 10px auto;
+    border-radius: 20px;
+    background-color: #aaa3d4;
+    text-align: center;
+        
+}
+body{
+    background-color: #d3c9da;
+}
+
+section{
+    border:  #aaa3d4 solid;
+    border-radius: 20px;
+    width: 100%;
+    margin: 10px auto;
+    
+}
+
+form{
+    margin: 20px 100px;
+    
+}
+
+.botones{
+    text-align: center;
+    clear: both;
+ 
+}
+
+.boton{
+    border-color:#aaa3d4 ;
+    width:100px; height:50px;
+    margin: 10px;
+}
+
+/*Estilos para POO_paso2*/
+
+#moduloscandidatos{
+   
+    width: 45%;
+    float: left;
+    margin: 2px 2px;
+  
+}
+
+#modulosseleccionados{
+ 
+     width: 45%;
+    float: left;
+    margin: 2px auto;
+}
+
+ul{
+  
+    list-style:none;
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+#error{
+    font-size: 30px;
+    color: red;
+}
+
+#matriculado{
+      font-size: 30px;
+      color: green;
+}

@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Ofuscando direcciones de E-mail</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="tips.html" title="Chapter 18. Consejos y Trucos">
+<link rel="prev" href="tips.componentized.templates.html" title="Templates con Componetes">
+<link rel="next" href="resources.html" title="Chapter 19. Fuentes">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Ofuscando direcciones de E-mail</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="tips.componentized.templates.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 18. Consejos y Trucos</th>
+<td width="20%" align="right"> <a accesskey="n" href="resources.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="Ofuscando direcciones de E-mail">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="tips.obfuscating.email"></a>Ofuscando direcciones de E-mail</h2></div></div></div>
+<p>
+    Usted desea saber como su direccion de E-mail consigue entrar en 
+    tantas listas de e-mail de spam? Una direccion unica spammers 
+    recolecta direcciones de E-mail y de paginas web. Para ayudar a 
+    combatir este problema, usted puede hacer que su direccion de 
+    E-mail aparesca en javascript mostrado en el codigo HTML, este 
+    mismo aparecera y funcionara correctamente en el navegador. 
+    Esto se puede hacer con el plugin  
+    <a class="link" href="language.function.mailto.html" title="{mailto}">{mailto}</a>.
+   </p>
+<div class="example">
+<a name="id2780186"></a><p class="title"><b>Example 18.8. Ejemplo de ofuscamiento de una direccion de E-mail</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+{* in index.tpl *}
+
+Send inquiries to
+{mailto address=$EmailAddress encode="javascript" subject="Hello"}
+
+    </pre></div>
+</div>
+<br class="example-break"><div class="note" title="Nota Técnica" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Nota Técnica</h3>
+<p>
+     Este metodo no es 100% a pueba de fallas. Un spammer podría crear
+     un programa para recolectar el e-mail y para decodificar estos 
+     valores, mas no es muy común.
+    </p>
+</div>
+<p>
+    Vea también <a class="link" href="language.modifier.escape.html" title="escape">escape</a>
+    y <a class="link" href="language.function.mailto.html" title="{mailto}">{mailto}</a>.
+   </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="tips.componentized.templates.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="tips.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="resources.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">Templates con Componetes </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> Chapter 19. Fuentes</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

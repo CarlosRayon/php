@@ -1,0 +1,84 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>clear_cache()</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="api.functions.html" title="Chapter 13. La clase Methods() de Smarty">
+<link rel="prev" href="api.clear.assign.html" title="clear_assign()">
+<link rel="next" href="api.clear.compiled.tpl.html" title="clear_compiled_tpl()">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">clear_cache()</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="api.clear.assign.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 13. La clase Methods() de Smarty</th>
+<td width="20%" align="right"> <a accesskey="n" href="api.clear.compiled.tpl.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="refentry" title="clear_cache()">
+<a name="api.clear.cache"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p>clear_cache() — Esto limpia el cache de un template especifico</p>
+</div>
+<div class="refsect1" title="Descripción">
+<a name="id2752299"></a><h2>Descripción</h2>
+<code class="methodsynopsis"><span class="type">void </span><span class="methodname">clear_cache</span>(<span class="methodparam"><span class="type">string </span><span class="parameter">template</span></span>,<br>                 <span class="methodparam"><span class="type">string </span><span class="parameter">cache_id</span></span>,<br>                 <span class="methodparam"><span class="type">string </span><span class="parameter">compile_id</span></span>,<br>                 <span class="methodparam"><span class="type">int </span><span class="parameter">expire_time</span></span>);</code><p>
+   Si usted tiene <a class="link" href="caching.multiple.caches.html" title="Multiples caches por pagina">multiples</a> caches 
+   en este archivo, usted puede limpiar un cache especifico proporcionando el 
+   <em class="parameter"><code>cache_id</code></em> como segundo parámetro Usted también puede pasar 
+   el  <a class="link" href="variable.compile.id.html" title="$compile_id"><em class="parameter"><code>$compile_id</code></em></a> 
+   como un tercer parámetro. Usted puede <a class="link" href="caching.groups.html" title="Cache Groups">"agrupar"</a> 
+   templates conjuntamente de esta manera estos pueden ser removidos como un grupo. 
+   Vea el <a class="link" href="caching.html" title="Chapter 14. Cache">caching section</a> para mayor información.
+   Como un cuarto parámetro opcional, usted puede proporcionar un periodo 
+   minimo en segundos que el archivo de cache debe tener antes de ser anulado.
+  </p>
+<div class="example">
+<a name="id2752684"></a><p class="title"><b>Example 13.8. clear_cache()</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+&lt;?php
+// clear the cache for a template
+$smarty-&gt;clear_cache('index.tpl');
+
+// clear the cache for a particular cache id in an multiple-cache template
+$smarty-&gt;clear_cache('index.tpl', 'CACHEID');
+?&gt;
+
+   </pre></div>
+</div>
+<br class="example-break"><p>
+  Ver también
+  <a class="link" href="api.clear.all.cache.html" title="clear_all_cache">clear_all_cache()</a>
+  y
+  <a class="link" href="caching.html" title="Chapter 14. Cache">caching</a>.
+  </p>
+</div>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="api.clear.assign.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="api.functions.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="api.clear.compiled.tpl.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">clear_assign() </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> clear_compiled_tpl()</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

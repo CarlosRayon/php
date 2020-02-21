@@ -1,0 +1,213 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Chapter 5. Modificadores de variables</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="smarty.for.designers.html" title="Part II. Smarty For Template Designers">
+<link rel="prev" href="language.variables.smarty.html" title="La variable reservada {$smarty}">
+<link rel="next" href="language.modifier.cat.html" title="cat">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Chapter 5. Modificadores de variables</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="language.variables.smarty.html">Prev</a> </td>
+<th width="60%" align="center">Part II. Smarty For Template Designers</th>
+<td width="20%" align="right"> <a accesskey="n" href="language.modifier.cat.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="chapter" title="Chapter 5. Modificadores de variables">
+<div class="titlepage"><div><div><h2 class="title">
+<a name="language.modifiers"></a>Chapter 5. Modificadores de variables</h2></div></div></div>
+<div class="toc">
+<p><b>Table of Contents</b></p>
+<dl>
+<dt><span class="sect1"><a href="language.modifiers.html#language.modifier.capitalize">capitalize</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.cat.html">cat</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.count.characters.html">count_characters</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.count.paragraphs.html">count_paragraphs</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.count.sentences.html">count_sentences</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.count.words.html">count_words</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.date.format.html">date_format</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.default.html">default</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.escape.html">escape</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.indent.html">indent</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.lower.html">lower</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.nl2br.html">nl2br</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.regex.replace.html">regex_replace</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.replace.html">replace</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.spacify.html">spacify</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.string.format.html">string_format</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.strip.html">strip</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.strip.tags.html">strip_tags</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.truncate.html">truncate</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.upper.html">upper</a></span></dt>
+<dt><span class="sect1"><a href="language.modifier.wordwrap.html">wordwrap</a></span></dt>
+</dl>
+</div>
+<p>
+  Los modificadores de variables pueden ser aplicados a variables, 
+  funciones habituales o cadenas. Para aplicar un modificador, especifique 
+  el valor seguido por <code class="literal">|</code>(pipe) y el nombre del modificador.
+  Un modificador necesita parámetros adicionales que afetan en su funcionamento.
+  Estos parámetros siguen al nombre del modificador y son separados por
+  <code class="literal">:</code> (dos puntos).
+ </p>
+<div class="example">
+<a name="id2690208"></a><p class="title"><b>Example 5.1. Ejemplo de modificador</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+{* apply modifier to a variable *}
+{$title|upper}
+{* modifier with parameters *}
+{$title|truncate:40:"..."}
+
+{* apply modifier to a function parameter *}
+{html_table loop=$myvar|upper}
+{* with parameters *}
+{html_table loop=$myvar|truncate:40:"..."}
+
+{* apply modifier to literal string *}
+{"foobar"|upper}
+
+{* using date_format to format the current date *}
+{$smarty.now|date_format:"%Y/%m/%d"}
+
+{* apply modifier to a custom function *}
+{mailto|upper address="me@domain.dom"}
+
+  </pre></div>
+</div>
+<br class="example-break"><p>
+  Si usted aplica un modificador a una matriz en lugar del valor de 
+  una variable, el modificador va a ser aplicado en cada uno de los 
+  valores de la matriz.  Si usted realmente quisiera que el modificador 
+  funcionara en una matriz entera, debe colocar el simbolo
+  <code class="literal">@</code> antes del nombre del modificador, así como:
+  <code class="literal">{$articleTitle|@count}</code> (esto mostrara el número de 
+  elementos de la matriz $articleTitle.)
+ </p>
+<p>
+  Los modificadores pueden ser cargados automáticamente a partir de su
+  <a class="link" href="variable.plugins.dir.html" title="$plugins_dir">$plugins_dir</a> (vea también:
+  <a class="link" href="plugins.naming.conventions.html" title="Nombres convencionales">Naming Conventions</a>) 
+  o pueden ser registrados explicitamente (vea: 
+  <a class="link" href="api.register.modifier.html" title="register_modifier()">register_modifier</a>). 
+  Adicionalmente, todas las funciones de php pueden ser
+  utilizadas como modificadores implicitamente. 
+  (El ejemplo <code class="literal">@count</code> de arriba usa actualmente la
+  función count de php y no un modificador de Smarty).
+  Usar funciones de php como modificadores tiene dos pequeños problemas:
+  Primero, algunas veces al ordenar los parámetros de una función
+  esto no es aconsejable (<code class="literal">{"%2.f"|sprintf:$float}</code>
+  actualmente funciona, pero existe algo mas intuitivo 
+  Por ejemplo: <code class="literal">{$float|string_format:"%2.f"}</code>
+  que es proporcionado con la distribución de Smarty).
+  Segundo: con <a class="link" href="variable.security.html" title="$security">$security</a> activado, 
+  todas las funciones de php que sean utilizadas como modificadores deben 
+  ser declaradas como variables de una matriz 
+  <a class="link" href="variable.security.settings.html" title="$security_settings">$security_settings['MODIFIER_FUNCS']
+  </a>.
+ </p>
+<p>
+  Ver también
+  <a class="link" href="api.register.modifier.html" title="register_modifier()">register_modifier()</a>,
+  <a class="link" href="api.register.function.html" title="register_function()">register_function()</a>,
+  <a class="link" href="plugins.html" title="Chapter 16. Extendiendo Smarty con plugins">Extending Smarty with plugins</a>
+  y <a class="link" href="plugins.modifiers.html" title="Modificadores">modifiers</a>,
+ </p>
+<div class="sect1" title="capitalize">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="language.modifier.capitalize"></a>capitalize</h2></div></div></div>
+<div class="informaltable"><table border="1">
+<colgroup>
+<col align="center">
+<col align="center">
+<col align="center">
+<col align="center">
+<col>
+</colgroup>
+<thead><tr>
+<th align="center">Posicion del Parametro</th>
+<th align="center">Tipo</th>
+<th align="center">Requerido</th>
+<th align="center">Default</th>
+<th>Descripción</th>
+</tr></thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">boolean</td>
+<td align="center">No</td>
+<td align="center">false</td>
+<td>Este determina que palabra con digitos no debe ser convertida</td>
+</tr></tbody>
+</table></div>
+<p>
+   Este es usado para convertir a mayuscula la primera letra de todas la
+   palabras de una variable.
+
+  </p>
+<div class="example">
+<a name="id2693470"></a><p class="title"><b>Example 5.2. capitalize</b></p>
+<div class="example-contents">
+<pre class="programlisting">
+
+&lt;?php
+
+$smarty-&gt;assign('articleTitle', 'next x-men film, x3, delayed.');
+
+?&gt;
+
+   </pre>
+<p>
+    Donde el template es:
+   </p>
+<pre class="programlisting">
+
+{$articleTitle}
+{$articleTitle|capitalize}
+{$articleTitle|capitalize:true}
+
+   </pre>
+<p>
+    Esta es la salida:
+   </p>
+<pre class="screen">
+
+next x-men film, x3, delayed.
+Next X-Men Film, x3, Delayed.
+Next X-Men Film, X3, Delayed.
+
+   </pre>
+</div>
+</div>
+<br class="example-break"><p>Ver también <a class="link" href="language.modifier.lower.html" title="lower">lower</a> 
+                     <a class="link" href="language.modifier.upper.html" title="upper">upper</a> 
+   </p>
+</div>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="language.variables.smarty.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="smarty.for.designers.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="language.modifier.cat.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">La variable reservada {$smarty} </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> cat</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

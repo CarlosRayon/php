@@ -1,0 +1,153 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Multiples caches por pagina</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="caching.html" title="Chapter 14. Cache">
+<link rel="prev" href="caching.html" title="Chapter 14. Cache">
+<link rel="next" href="caching.groups.html" title="Cache Groups">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Multiples caches por pagina</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="caching.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 14. Cache</th>
+<td width="20%" align="right"> <a accesskey="n" href="caching.groups.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="Multiples caches por pagina">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="caching.multiple.caches"></a>Multiples caches por pagina</h2></div></div></div>
+<p>
+     Usted puede tener multiples archivos de cache para una simples llamada 
+     de <a class="link" href="api.display.html" title="display()">display()</a>
+     o <a class="link" href="api.fetch.html" title="fetch()">fetch()</a>.
+     Vamos a decir que una llamada a 
+     display('index.tpl') debe tener varios contenidos de salida diferentes 
+     dependiendo de alguna condición, y usted quiere separar los caches para 
+     cada una. Usted puede hacer esto pasando un cache_id como un segundo 
+     parámetro en la llamada de la función.
+    </p>
+<div class="example">
+<a name="id2768316"></a><p class="title"><b>Example 14.6. Pasando un cache_id para display()</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+&lt;?php
+require('Smarty.class.php');
+$smarty = new Smarty;
+
+$smarty-&gt;caching = true;
+
+$my_cache_id = $_GET['article_id'];
+
+$smarty-&gt;display('index.tpl',$my_cache_id);
+?&gt;
+
+     </pre></div>
+</div>
+<br class="example-break"><p>
+     Arriba, nosotros pasamos la variable $my_cache_id a 
+     <a class="link" href="api.display.html" title="display()">display()</a> con 
+     el cache_id. Para cada valor unico de $my_cache_id, un cache por 
+     separado sera generado para cada index.tpl. En este ejemplo, 
+     "article_id" fue pasado en URL y es usado como el cache_id.
+    </p>
+<div class="note" title="Nota Técnica" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Nota Técnica</h3>
+<p>
+     Tenga mucho cuidado cuando pase valores del cliente (web browser) 
+     dentro de Smarty (o alguna aplicación PHP). Aunque el ejemplo de 
+     arriba usar el article_id desde una URL parece facil, esto podría 
+     tener fatales consecuencias. El cache_id es usado para crear un 
+     directorio en el sistema de archivos, entonces si el usuario decide 
+     pasar un valor extremadamente largo para article_id, o escribir un 
+     script que envia article_ids aleatorios en un paso rápido, esto 
+     posiblemente podría causar problemas a nivel del servidor. Tenga la 
+     certeza de limpiar algún dato pasado antes de usarlo. En este ejemplo, 
+     tal vez usted sabia que el article_id tiene un largo de 10 caracteres
+     este es constituido solamente de alfanuméricos, y debe ser un article_id 
+     valido en la base de datos. Verifique esto!
+     </p>
+</div>
+<p>
+    Asegurarse de pasar el mismo cache_id como el segundo parámetro
+    para <a class="link" href="api.is.cached.html" title="is_cached()">is_cached()</a> y 
+    <a class="link" href="api.clear.cache.html" title="clear_cache()">clear_cache()</a>.
+    </p>
+<div class="example">
+<a name="id2769515"></a><p class="title"><b>Example 14.7. Pasando un cache_id para is_cached()</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+&lt;?php
+require('Smarty.class.php');
+$smarty = new Smarty;
+
+$smarty-&gt;caching = true;
+
+$my_cache_id = $_GET['article_id'];
+
+if(!$smarty-&gt;is_cached('index.tpl',$my_cache_id)) {
+    // No cache available, do variable assignments here.
+    $contents = get_database_contents();
+    $smarty-&gt;assign($contents);
+}
+
+$smarty-&gt;display('index.tpl',$my_cache_id);
+?&gt;
+
+     </pre></div>
+</div>
+<br class="example-break"><p>
+     Usted puede limpar todos los caches para un cache_id en particular 
+     pasando el primer parámetro null a 
+     <a class="link" href="api.clear.cache.html" title="clear_cache()">clear_cache()</a>..
+    </p>
+<div class="example">
+<a name="id2769555"></a><p class="title"><b>Example 14.8.  Limpando todos los caches para un cache_id en particular</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+&lt;?php
+require('Smarty.class.php');
+$smarty = new Smarty;
+
+$smarty-&gt;caching = true;
+
+// clear all caches with "sports" as the cache_id
+$smarty-&gt;clear_cache(null,"sports");
+
+$smarty-&gt;display('index.tpl',"sports");
+?&gt;
+
+     </pre></div>
+</div>
+<br class="example-break"><p>
+     De esta manera, usted puede "agrupar" sus caches conjuntamente dando les 
+     el mismo cache_id.
+    </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="caching.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="caching.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="caching.groups.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">Chapter 14. Cache </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> Cache Groups</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

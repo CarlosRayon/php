@@ -1,0 +1,248 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Part III. Smarty For Programmers</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="index.html" title="Smarty Manual">
+<link rel="prev" href="chapter.debugging.console.html" title="Chapter 10. Debugging Console">
+<link rel="next" href="smarty.constants.html" title="Chapter 11. Constantes">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Part III. Smarty For Programmers</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="chapter.debugging.console.html">Prev</a> </td>
+<th width="60%" align="center"> </th>
+<td width="20%" align="right"> <a accesskey="n" href="smarty.constants.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="part" title="Part III. Smarty For Programmers">
+<div class="titlepage"><div><div><h1 class="title">
+<a name="smarty.for.programmers"></a>Part III. Smarty For Programmers</h1></div></div></div>
+<div class="toc">
+<p><b>Table of Contents</b></p>
+<dl>
+<dt><span class="chapter"><a href="smarty.constants.html">11. Constantes</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="smarty.constants.html#constant.smarty.dir">SMARTY_DIR</a></span></dt>
+<dt><span class="sect1"><a href="constant.smarty.core.dir.html">SMARTY_CORE_DIR</a></span></dt>
+</dl></dd>
+<dt><span class="chapter"><a href="api.variables.html">12. Clase Variables de Smarty</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="api.variables.html#variable.template.dir">$template_dir</a></span></dt>
+<dt><span class="sect1"><a href="variable.compile.dir.html">$compile_dir</a></span></dt>
+<dt><span class="sect1"><a href="variable.config.dir.html">$config_dir</a></span></dt>
+<dt><span class="sect1"><a href="variable.plugins.dir.html">$plugins_dir</a></span></dt>
+<dt><span class="sect1"><a href="variable.debugging.html">$debugging</a></span></dt>
+<dt><span class="sect1"><a href="variable.debug.tpl.html">$debug_tpl</a></span></dt>
+<dt><span class="sect1"><a href="variable.debugging.ctrl.html">$debugging_ctrl</a></span></dt>
+<dt><span class="sect1"><a href="variable.autoload.filters.html">$autoload_filters</a></span></dt>
+<dt><span class="sect1"><a href="variable.compile.check.html">$compile_check</a></span></dt>
+<dt><span class="sect1"><a href="variable.force.compile.html">$force_compile</a></span></dt>
+<dt><span class="sect1"><a href="variable.caching.html">$caching</a></span></dt>
+<dt><span class="sect1"><a href="variable.cache.dir.html">$cache_dir</a></span></dt>
+<dt><span class="sect1"><a href="variable.cache.lifetime.html">$cache_lifetime</a></span></dt>
+<dt><span class="sect1"><a href="variable.cache.handler.func.html">$cache_handler_func</a></span></dt>
+<dt><span class="sect1"><a href="variable.cache.modified.check.html">$cache_modified_check</a></span></dt>
+<dt><span class="sect1"><a href="variable.config.overwrite.html">$config_overwrite</a></span></dt>
+<dt><span class="sect1"><a href="variable.config.booleanize.html">$config_booleanize</a></span></dt>
+<dt><span class="sect1"><a href="variable.config.read.hidden.html">$config_read_hidden</a></span></dt>
+<dt><span class="sect1"><a href="variable.config.fix.newlines.html">$config_fix_newlines</a></span></dt>
+<dt><span class="sect1"><a href="variable.default.template.handler.func.html">$default_template_handler_func</a></span></dt>
+<dt><span class="sect1"><a href="variable.php.handling.html">$php_handling</a></span></dt>
+<dt><span class="sect1"><a href="variable.security.html">$security</a></span></dt>
+<dt><span class="sect1"><a href="variable.secure.dir.html">$secure_dir</a></span></dt>
+<dt><span class="sect1"><a href="variable.security.settings.html">$security_settings</a></span></dt>
+<dt><span class="sect1"><a href="variable.trusted.dir.html">$trusted_dir</a></span></dt>
+<dt><span class="sect1"><a href="variable.left.delimiter.html">$left_delimiter</a></span></dt>
+<dt><span class="sect1"><a href="variable.right.delimiter.html">$right_delimiter</a></span></dt>
+<dt><span class="sect1"><a href="variable.compiler.class.html">$compiler_class</a></span></dt>
+<dt><span class="sect1"><a href="variable.request.vars.order.html">$request_vars_order</a></span></dt>
+<dt><span class="sect1"><a href="variable.request.use.auto.globals.html">$request_use_auto_globals</a></span></dt>
+<dt><span class="sect1"><a href="variable.error.reporting.html">$error_reporting</a></span></dt>
+<dt><span class="sect1"><a href="variable.compile.id.html">$compile_id</a></span></dt>
+<dt><span class="sect1"><a href="variable.use.sub.dirs.html">$use_sub_dirs</a></span></dt>
+<dt><span class="sect1"><a href="variable.default.modifiers.html">$default_modifiers</a></span></dt>
+<dt><span class="sect1"><a href="variable.default.resource.type.html">$default_resource_type</a></span></dt>
+</dl></dd>
+<dt><span class="chapter"><a href="api.functions.html">13. La clase Methods() de Smarty</a></span></dt>
+<dd><dl>
+<dt>
+<span class="refentrytitle"><a href="api.append.html">append()</a></span><span class="refpurpose"> — agregando elementos a una matriz asignada</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.append.by.ref.html">append_by_ref</a></span><span class="refpurpose"> — pasando valores por referencia</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.assign.html">assign()</a></span><span class="refpurpose"> — pasando valores para el template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.assign.by.ref.html">assign_by_ref</a></span><span class="refpurpose"> — pasando valores por referencia</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.clear.all.assign.html">clear_all_assign()</a></span><span class="refpurpose"> — &gt;limpia el valor de todas las variables asignadas</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.clear.all.cache.html">clear_all_cache</a></span><span class="refpurpose"> — limpia completamente el cache del template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.clear.assign.html">clear_assign()</a></span><span class="refpurpose"> — limpia el valor de una variable asignada</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.clear.cache.html">clear_cache()</a></span><span class="refpurpose"> — Esto limpia el cache de un template especifico</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.clear.compiled.tpl.html">clear_compiled_tpl()</a></span><span class="refpurpose"> — Esto limpia la vesion compilada del recurso de un template especifico</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.clear.config.html">clear_config()</a></span><span class="refpurpose"> — Esto limpia todas las variables de configuración</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.config.load.html">config_load()</a></span><span class="refpurpose"> — Carga el archivo de configuración y lo asigna al template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.display.html">display()</a></span><span class="refpurpose"> — Despliega el Template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.fetch.html">fetch()</a></span><span class="refpurpose"> — Retorna la salida del template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.get.config.vars.html">get_config_vars()</a></span><span class="refpurpose"> — retorna el valor asignado a la variable de configuración</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.get.registered.object.html">get_registered_object()</a></span><span class="refpurpose"> — Este retorna una referencia para un objeto registrado.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.get.template.vars.html">get_template_vars()</a></span><span class="refpurpose"> — Retorna el valor asignado a una variable</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.is.cached.html">is_cached()</a></span><span class="refpurpose"> — Retorna true si hay cache valido para ese template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.load.filter.html">load_filter()</a></span><span class="refpurpose"> — Carga un filtro de plugin</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.block.html">register_block()</a></span><span class="refpurpose"> — Registra dinamicamente bloques de funciones de plugins </span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.compiler.function.html">register_compiler_function</a></span><span class="refpurpose"> — Registra dinamicamente un plugin de una funcion compiladora</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.function.html">register_function()</a></span><span class="refpurpose"> — Registra dinamicamente un plugin de función para un template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.modifier.html">register_modifier()</a></span><span class="refpurpose"> — mofidica dinámicamente plugins registrados</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.object.html">register_object()</a></span><span class="refpurpose"> — Registr un objeto para usar en el template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.outputfilter.html">register_outputfilter()</a></span><span class="refpurpose"> — Registra dinamicamente filtros de salida</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.postfilter.html">register_postfilter()</a></span><span class="refpurpose"> — Resgistr dinamicamente postfiltros</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.prefilter.html">register_prefilter()</a></span><span class="refpurpose"> — Registra dinamicamente prefiltros</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.resource.html">register_resource</a></span><span class="refpurpose"> — Registra dinamicamente un plugin de recurso</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.trigger.error.html">trigger_error</a></span><span class="refpurpose"> — Despliega un mensaje de error</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.template.exists.html">template_exists()</a></span><span class="refpurpose"> — Verifica si el template especificado existe</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.block.html">unregister_block</a></span><span class="refpurpose"> — Des-registra dinamicamente un plugin de bloque de funciones</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.compiler.function.html">unregister_compiler_function()</a></span><span class="refpurpose"> — des-registrar dinámicamente una función de compilación</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.function.html">unregister_function()</a></span><span class="refpurpose"> — des-registrar dinámicamente una función de plugin del template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.modifier.html">unregister_modifier()</a></span><span class="refpurpose"> — des-registrar dinámicamente un modificador de plugin</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.object.html">unregister_object()</a></span><span class="refpurpose"> — Des-registra dinamicamente un objeto</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.outputfilter.html">unregister_outputfilter()</a></span><span class="refpurpose"> — des-registra dinámicamente un filtro de salida</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.postfilter.html">unregister_postfilter()</a></span><span class="refpurpose"> — Des-registra dinamicamente un postfiltro</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.prefilter.html">unregister_prefilter()</a></span><span class="refpurpose"> — Des-registra dinamicamente un prefiltro</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.resource.html">unregister_resource()</a></span><span class="refpurpose"> — Des-registra dinamicamente un plugin de recurso</span>
+</dt>
+</dl></dd>
+<dt><span class="chapter"><a href="caching.html">14. Cache</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="caching.html#caching.setting.up">Configurando el Cache</a></span></dt>
+<dt><span class="sect1"><a href="caching.multiple.caches.html">Multiples caches por pagina</a></span></dt>
+<dt><span class="sect1"><a href="caching.groups.html">Cache Groups</a></span></dt>
+<dt><span class="sect1"><a href="caching.cacheable.html">Controlando salida de Cacheabilidad de plugins</a></span></dt>
+</dl></dd>
+<dt><span class="chapter"><a href="advanced.features.html">15. Caracteristicas Avanzadas</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="advanced.features.html#advanced.features.objects">Objetos</a></span></dt>
+<dt><span class="sect1"><a href="advanced.features.prefilters.html">Prefilters</a></span></dt>
+<dt><span class="sect1"><a href="advanced.features.postfilters.html">Postfilters</a></span></dt>
+<dt><span class="sect1"><a href="advanced.features.outputfilters.html">Filtros de salida</a></span></dt>
+<dt><span class="sect1"><a href="section.template.cache.handler.func.html">Función manipuladora de cache</a></span></dt>
+<dt><span class="sect1"><a href="template.resources.html">Recursos</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="template.resources.html#templates.from.template.dir">Templates desde $template_dir</a></span></dt>
+<dt><span class="sect2"><a href="template.resources.html#templates.from.any.dir">Templates partiendo de cualquier directorio</a></span></dt>
+<dt><span class="sect2"><a href="template.resources.html#templates.from.elsewhere">Templates partiendo de otras fuentes</a></span></dt>
+<dt><span class="sect2"><a href="template.resources.html#default.template.handler.function">Función manipuladora de Template por default</a></span></dt>
+</dl></dd>
+</dl></dd>
+<dt><span class="chapter"><a href="plugins.html">16. Extendiendo Smarty con plugins</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="plugins.html#plugins.howto">Como funcionan los Plugins</a></span></dt>
+<dt><span class="sect1"><a href="plugins.naming.conventions.html">Nombres convencionales</a></span></dt>
+<dt><span class="sect1"><a href="plugins.writing.html">Escribiendo Plugins</a></span></dt>
+<dt><span class="sect1"><a href="plugins.functions.html">Funciones de Template</a></span></dt>
+<dt><span class="sect1"><a href="plugins.modifiers.html">Modificadores</a></span></dt>
+<dt><span class="sect1"><a href="plugins.block.functions.html">Block Functions</a></span></dt>
+<dt><span class="sect1"><a href="plugins.compiler.functions.html">Funciones Compiladoras</a></span></dt>
+<dt><span class="sect1"><a href="plugins.prefilters.postfilters.html">Prefiltros/Postfiltros</a></span></dt>
+<dt><span class="sect1"><a href="plugins.outputfilters.html">Filtros de Salida</a></span></dt>
+<dt><span class="sect1"><a href="plugins.resources.html">Fuentes</a></span></dt>
+<dt><span class="sect1"><a href="plugins.inserts.html">Inserts</a></span></dt>
+</dl></dd>
+</dl>
+</div>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="chapter.debugging.console.html">Prev</a> </td>
+<td width="20%" align="center"> </td>
+<td width="40%" align="right"> <a accesskey="n" href="smarty.constants.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">Chapter 10. Debugging Console </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> Chapter 11. Constantes</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

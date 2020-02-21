@@ -1,0 +1,3 @@
+Previamente he creado un ciclo con codigo ADM (administrativ) para vincular los modulos a este ciclo
+La sentecia sql usada ha sido:
+INSERT INTO `ciclo` (`cod`, `descripcion`) VALUES ('ADM', 'Administrativo');

@@ -1,0 +1,85 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>$cache_dir</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="api.variables.html" title="Chapter 12. Clase Variables de Smarty">
+<link rel="prev" href="variable.caching.html" title="$caching">
+<link rel="next" href="variable.cache.lifetime.html" title="$cache_lifetime">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">$cache_dir</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="variable.caching.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 12. Clase Variables de Smarty</th>
+<td width="20%" align="right"> <a accesskey="n" href="variable.cache.lifetime.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="$cache_dir">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="variable.cache.dir"></a>$cache_dir</h2></div></div></div>
+<p>
+       Este es el nombre del directorio donde los caches del template 
+       son almacenados. Por default es 
+       <code class="filename">"./cache"</code>, esto significa que 
+       buscara el directorio de cache en el mismo directorio que ejecuta 
+       el scripts PHP. 
+       <span class="bold"><strong>Este directorio debe ser regrabable por el
+        servidor web</strong></span>
+       (<a class="link" href="installing.smarty.basic.html" title="Instalación Básica">ver intalación</a>).
+       Usted puede usar también su propia  
+       <a class="link" href="section.template.cache.handler.func.html" title="Función manipuladora de cache">función habitual 
+        de mantenimiento</a> de cache para manipular los archivos de cache, que 
+       ignorará está configuración.
+       Ver tambien <a class="link" href="variable.use.sub.dirs.html" title="$use_sub_dirs">$use_sub_dirs</a>.
+      </p>
+<div class="note" title="Nota Técnica" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Nota Técnica</h3>
+<p>
+       Esta configuración debe ser cualquiera de estas dos, un path
+       relativo o absoluto. include_path no es usado para escribir archivos.
+       </p>
+</div>
+<div class="note" title="Nota Técnica" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Nota Técnica</h3>
+<p>
+        No es recomendado colocar este directorio bajo el directorio 
+        document root del servidor web.
+       </p>
+</div>
+<p>
+  Ver también 
+  <a class="link" href="variable.caching.html" title="$caching">$caching</a>,
+  <a class="link" href="variable.use.sub.dirs.html" title="$use_sub_dirs">$use_sub_dirs</a>,
+  <a class="link" href="variable.cache.lifetime.html" title="$cache_lifetime">$cache_lifetime</a>,
+  <a class="link" href="variable.cache.handler.func.html" title="$cache_handler_func">$cache_handler_func</a>,
+  <a class="link" href="variable.cache.modified.check.html" title="$cache_modified_check">$cache_modified_check</a>
+  y <a class="link" href="caching.html" title="Chapter 14. Cache">Caching section</a>.
+  </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="variable.caching.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="api.variables.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="variable.cache.lifetime.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">$caching </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> $cache_lifetime</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

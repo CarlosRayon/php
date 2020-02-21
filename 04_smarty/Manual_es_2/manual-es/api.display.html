@@ -1,0 +1,132 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>display()</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="api.functions.html" title="Chapter 13. La clase Methods() de Smarty">
+<link rel="prev" href="api.config.load.html" title="config_load()">
+<link rel="next" href="api.fetch.html" title="fetch()">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">display()</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="api.config.load.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 13. La clase Methods() de Smarty</th>
+<td width="20%" align="right"> <a accesskey="n" href="api.fetch.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="refentry" title="display()">
+<a name="api.display"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p>display() — Despliega el Template</p>
+</div>
+<div class="refsect1" title="Descripción">
+<a name="id2753230"></a><h2>Descripción </h2>
+<code class="methodsynopsis"><span class="type">void </span><span class="methodname">display</span>(<span class="methodparam"><span class="type">string </span><span class="parameter">template</span></span>,<br>             <span class="methodparam"><span class="type">string </span><span class="parameter">cache_id</span></span>,<br>             <span class="methodparam"><span class="type">string </span><span class="parameter">compile_id</span></span>);</code><p>
+   Este despliega el template diferente de <a class="link" href="api.fetch.html" title="fetch()">fetch()</a>. Cargando un tipo valido de path
+   <a class="link" href="template.resources.html" title="Recursos">template resource</a>.
+   Como un segundo parámetro opcional, usted puede pasar un
+   identificador de cache.
+   Vea el <a class="link" href="caching.html" title="Chapter 14. Cache">caching section</a> para mayor
+   información.
+  </p>
+<p>
+ Como tercer parametro opcional, usted puede pasar <em class="parameter"><code>compile_id</code></em>. 
+ Este en el caso que usted quira compilar diferentes versiones del mismo Tempalte,
+ tal como tener separadas varios Templates compilados de diferentes lenguajes.
+ Otro uso para compile_id es cuando usted usa mas de un $template_dir pero solo un $compile_dir. 
+ Ponga separado <em class="parameter"><code>compile_id</code></em> por cada $template_dir, de otra manera 
+ los tempate con el mismo nombre se sobre escibiran uno sobre otro. 
+ Uste puede poner también la variable <a class="link" href="variable.compile.id.html" title="$compile_id">$compile_id</a> 
+ una vez en lugar de pasar esta por cada llamada a la función.
+</p>
+<div class="example">
+<a name="id2753980"></a><p class="title"><b>Example 13.12. display()</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+&lt;?php
+include("Smarty.class.php");
+$smarty = new Smarty;
+$smarty-&gt;caching = true;
+
+// only do db calls if cache doesn't exist
+if(!$smarty-&gt;is_cached("index.tpl")) {
+
+  // dummy up some data
+  $address = "245 N 50th";
+  $db_data = array(
+               "City" =&gt; "Lincoln",
+               "State" =&gt; "Nebraska",
+               "Zip" =&gt; "68502"
+             );
+
+  $smarty-&gt;assign("Name","Fred");
+  $smarty-&gt;assign("Address",$address);
+  $smarty-&gt;assign($db_data);
+
+}
+
+// display the output
+$smarty-&gt;display("index.tpl");
+?&gt;
+
+   </pre></div>
+</div>
+<br class="example-break"><p>
+   Use la sintaxis <a class="link" href="template.resources.html" title="Recursos">template resources</a>
+   para mostrar archivos fuera del directorio 
+   <a class="link" href="api.variables.html#variable.template.dir" title="$template_dir">$template_dir</a>.
+  </p>
+<div class="example">
+<a name="id2754034"></a><p class="title"><b>Example 13.13. Ejemplos de recursos de la función display</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+&lt;?php
+// absolute filepath
+$smarty-&gt;display('/usr/local/include/templates/header.tpl');
+
+// absolute filepath (same thing)
+$smarty-&gt;display('file:/usr/local/include/templates/header.tpl');
+
+// windows absolute filepath (MUST use "file:" prefix)
+$smarty-&gt;display('file:C:/www/pub/templates/header.tpl');
+
+// include from template resource named "db"
+$smarty-&gt;display('db:header.tpl');
+?&gt;
+
+   </pre></div>
+</div>
+<br class="example-break"><p>
+     Ver también <a class="link" href="api.fetch.html" title="fetch()">fetch()</a> y
+     <a class="link" href="api.template.exists.html" title="template_exists()">template_exists()</a>.
+    </p>
+</div>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="api.config.load.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="api.functions.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="api.fetch.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">config_load() </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> fetch()</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

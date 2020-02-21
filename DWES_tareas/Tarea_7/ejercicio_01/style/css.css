@@ -1,0 +1,26 @@
+
+
+#contenedor{
+    
+    height: auto;
+    width: 500px;        
+    border: 2px solid;
+    margin: 20px auto;
+    padding: 50px;
+    
+}
+
+#formulario{      
+    border: 2px solid;
+    margin: 20px;
+    padding: 30px;
+    
+}
+
+#pares{
+    background-color:#e5e5e5;
+}
+
+#impares{
+    background-color:#a894be;
+}

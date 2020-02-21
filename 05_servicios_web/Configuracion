@@ -1,0 +1,13 @@
+Para activar soap debemos ir a php.ini y descomentar la linea:
+
+extension=php_soap.dll
+
+Reiniciamos el servidor
+
+Hacemos un phpinfo() 
+
+y buscamos soap. Una subseccion nos aparacera como que esta activo el soap
+
+Cambiar tambien:
+soap.wsdl_cache_enabled=0 
+Por defecto estara en 1. Ponerlo en 0  En caso contrario, con su valor por defecto (1) los cambios que realices en los ficheros WSDL no tendrán efecto de forma inmediata.

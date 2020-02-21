@@ -1,0 +1,199 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Chapter 17. Localización de Errores</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="appendixes.html" title="Part IV. Appendixes">
+<link rel="prev" href="appendixes.html" title="Part IV. Appendixes">
+<link rel="next" href="tips.html" title="Chapter 18. Consejos y Trucos">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Chapter 17. Localización de Errores</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="appendixes.html">Prev</a> </td>
+<th width="60%" align="center">Part IV. Appendixes</th>
+<td width="20%" align="right"> <a accesskey="n" href="tips.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="chapter" title="Chapter 17. Localización de Errores">
+<div class="titlepage"><div><div><h2 class="title">
+<a name="troubleshooting"></a>Chapter 17. Localización de Errores</h2></div></div></div>
+<div class="toc">
+<p><b>Table of Contents</b></p>
+<dl><dt><span class="sect1"><a href="troubleshooting.html#smarty.php.errors">Errores Smarty/PHP</a></span></dt></dl>
+</div>
+<p></p>
+<div class="sect1" title="Errores Smarty/PHP">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="smarty.php.errors"></a>Errores Smarty/PHP</h2></div></div></div>
+<p>
+    El Smarty puede obtener muchos errores tales como, atributos de 
+    etiquetas perdidos o nombres de variables mal formadas. Si este 
+    ocurre, Usted vera un error similar al siguiente:
+   </p>
+<div class="example">
+<a name="id2778924"></a><p class="title"><b>Example 17.1. Errores de Smarty</b></p>
+<div class="example-contents"><pre class="screen">
+
+Warning: Smarty: [in index.tpl line 4]: syntax error: unknown tag - '%blah'
+       in /path/to/smarty/Smarty.class.php on line 1041
+
+Fatal error: Smarty: [in index.tpl line 28]: syntax error: missing section name
+       in /path/to/smarty/Smarty.class.php on line 1041
+
+    </pre></div>
+</div>
+<br class="example-break"><p>
+    Smarty te mostra el nombre del template, el número de la linea y
+    el error. Después de esto, el error consiste en el número de la
+    linea de la clase Smarty donde ocurrio el error.
+   </p>
+<p>
+    Existen ciertos errores que el Smarty no puede entender, 
+    tales como un etiqueta de cierre errado. Estos tipos de 
+    erros normalmente termina en una interpretacion de error 
+    del tiempo de compilacion de PHP.
+   </p>
+<div class="example">
+<a name="id2779000"></a><p class="title"><b>Example 17.2. Errores de analisis gramatical de PHP</b></p>
+<div class="example-contents"><pre class="screen">
+
+Parse error: parse error in /path/to/smarty/templates_c/index.tpl.php on line 75
+
+    </pre></div>
+</div>
+<br class="example-break"><p>
+    Cuando usted encuentra un error de analisis de PHP, el número de la
+    linea de error corresponde al script PHP compilado, no al template 
+    en si. Normalmente usted puede en el template localizar el error de 
+    sinxis. Algunas cosas que usted puede buscar: falta de cierre de 
+    etiquetas para  <a class="link" href="language.function.if.html" title="if,elseif,else">{if}{/if}}</a> 
+    o <a class="link" href="language.function.if.html" title="if,elseif,else">{section}{/section}</a>, o 
+    sintaxis de la lógica dentro de una etiqueta {if}. Si usted no encuentra 
+    el error, usted tendra que abrir el archivo PHP compilado y dirigirse al 
+    número de linea mostrado, donde el correspondiente error esta en el template.
+   </p>
+<div class="example">
+<a name="id2779053"></a><p class="title"><b>Example 17.3. Otros errores comunes</b></p>
+<div class="example-contents"><div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem">
+<pre class="screen">
+
+Warning: Smarty error: unable to read resource: "index.tpl" in...
+or
+Warning: Smarty error: unable to read resource: "site.conf" in...
+
+    </pre>
+<p>
+    </p>
+<div class="itemizedlist"><ul class="itemizedlist" type="circle">
+<li class="listitem"><p>
+      El <a class="link" href="api.variables.html#variable.template.dir" title="$template_dir">$template_dir</a>
+      no existe o es incorrecto, o
+      el archivo <code class="filename">index.tpl</code> no esta en la carpeta 
+      <code class="filename">templates/</code>
+      </p></li>
+<li class="listitem"><p>
+        La función <a class="link" href="language.function.config.load.html" title="config_load">{config_load}</a>
+        esta dentro del template (o <a class="link" href="api.config.load.html" title="config_load()">config_load()</a>
+        habia sido llamado)  y cualquira de los dos
+        <a class="link" href="variable.config.dir.html" title="$config_dir">$config_dir</a>
+        es incorrecto, no exista o 
+        <code class="filename">site.conf</code> no existe en el directorio.
+        </p></li>
+</ul></div>
+<p>
+    </p>
+</li>
+<li class="listitem">
+<pre class="screen">
+
+Fatal error: Smarty error: the $compile_dir 'templates_c' does not exist,
+or is not a directory...
+
+    </pre>
+<p>
+    Cualquiera de las dos el
+    <a class="link" href="variable.compile.dir.html" title="$compile_dir">$compile_dir</a>
+    es asignado incorrectamente, el directorio no existe,
+    o <code class="filename">templates_c</code> es un archivo y no un directorio.
+    </p>
+</li>
+<li class="listitem">
+<pre class="screen">
+
+Fatal error: Smarty error: unable to write to $compile_dir '....
+
+    </pre>
+<p>
+    El <a class="link" href="variable.compile.dir.html" title="$compile_dir">$compile_dir</a>
+    no puede ser reescrito por el servidor web. Vea a fondo la pagina de permisos del
+    <a class="link" href="installing.smarty.basic.html" title="Instalación Básica">instalación de smarty</a>.
+    </p>
+</li>
+<li class="listitem">
+<pre class="screen">
+
+Fatal error: Smarty error: the $cache_dir 'cache' does not exist,
+or is not a directory. in /..
+
+    </pre>
+<p>
+    Esto significa que 
+    <a class="link" href="variable.caching.html" title="$caching">$caching</a> es habilitado y 
+    cualquiera de los dos; el 
+    <a class="link" href="variable.cache.dir.html" title="$cache_dir">$cache_dir</a>
+    es asignado incorrectamente, o el directorio no existe,
+    o <code class="filename">cache</code> es un archivo y no un directorio.
+    </p>
+</li>
+<li class="listitem">
+<pre class="screen">
+
+Fatal error: Smarty error: unable to write to $cache_dir '/...
+
+    </pre>
+<p>
+    Esto significa que
+    <a class="link" href="variable.caching.html" title="$caching">$caching</a> es habilitado y el
+    <a class="link" href="variable.cache.dir.html" title="$cache_dir">$cache_dir</a>
+    no puede ser rescrito por el web server. Ver ampliamente la pagina de permisos de 
+    <a class="link" href="installing.smarty.basic.html" title="Instalación Básica">la instalacion de smarty</a>.
+    </p>
+</li>
+</ul></div></div>
+</div>
+<br class="example-break"><p>
+   Vea también
+   <a class="link" href="chapter.debugging.console.html" title="Chapter 10. Debugging Console">debugging</a>,
+   <a class="link" href="variable.error.reporting.html" title="$error_reporting">$error_reporting</a>
+   y <a class="link" href="api.trigger.error.html" title="trigger_error">trigger_error()</a>.
+   </p>
+</div>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="appendixes.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="appendixes.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="tips.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">Part IV. Appendixes </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> Chapter 18. Consejos y Trucos</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

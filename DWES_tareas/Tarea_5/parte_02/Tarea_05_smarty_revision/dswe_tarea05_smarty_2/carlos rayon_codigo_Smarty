@@ -1,0 +1,67 @@
+	
+	---------------------------------------	
+
+Listado de módulo con enlaces
+
+			   <label>Relación de módulos:</label><br/>
+
+                <table class="sombreado">
+                    {foreach from=$modulo item=value} {* me recorre el array de modulos con todos sus valores   *}
+                            <tr>
+                                <td>{$value->getCod()}</td>
+                                <td>{$value->getNombre()}</td>
+                                {if $value instanceof Comun}
+                                    
+                                <td>  <a href="maestra.php?consultar={$value->getCod()}">Consultar</a> </td>
+                                {else}
+                                 <td>  <a href="consultar.php?consultar={$value->getCod()}">Consultar</a> </td>   
+                                 {/if}
+                            </tr>
+                    {/foreach}
+					
+	
+								
+	---------------------------------------	
+	Listado de módulo con enlaces y files de cores diferente
+	
+			        {foreach from=$modulos item=modulo name=modulos}
+                        <tr>
+                            <td {if $smarty.foreach.modulos.iteration % 2 == 0} class='blanco' {else} class='morado' {/if}>
+                                {$modulo->getCodigo()}
+                            </td>
+                            <td {if $smarty.foreach.modulos.iteration % 2 == 0} class='blanco' {else} class='morado' {/if}>
+                                {$modulo->getNombre()}
+                            </td>
+                            <td class='blanco'>
+                                <a href='consulta.php?cod={$modulo->getcodigo()}&ciclo={$modulo->getCiclo()}'>Consultar</a>
+                            </td>
+                        </tr>
+                    {/foreach}
+					
+	-------------------------------------------
+	
+	{if $ciclo == 'COM' } 
+	
+	
+	-----------------------
+	   
+Listado de alumno matriculados en un modulo (no comun)
+  
+  <body>
+        <table width="100%" border="3">
+            <tr><td>Nombre</td><td>Sexo</td><td>Nacimiento</td><td>DNI</td><td>Fichero</td></tr>
+            {*Listado de alumnos matriculados*}
+            {foreach from=$alumnos item=alumno}
+                <tr>
+                    <td>{$alumno->getAlumno()}</td>
+                    <td>{$alumno->getSexo()}</td>
+                    <td>{$alumno->getNacimiento()}</td>
+                    <td>{$alumno->getDni()}</td>
+                    <td>{$alumno->getFichero()}</td>
+                </tr>
+            {/foreach}
+        </table>
+    </body>
+
+				
+	

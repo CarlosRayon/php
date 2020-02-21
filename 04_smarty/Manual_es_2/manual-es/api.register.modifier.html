@@ -1,0 +1,107 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>register_modifier()</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="api.functions.html" title="Chapter 13. La clase Methods() de Smarty">
+<link rel="prev" href="api.register.function.html" title="register_function()">
+<link rel="next" href="api.register.object.html" title="register_object()">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">register_modifier()</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="api.register.function.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 13. La clase Methods() de Smarty</th>
+<td width="20%" align="right"> <a accesskey="n" href="api.register.object.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="refentry" title="register_modifier()">
+<a name="api.register.modifier"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p>register_modifier() — mofidica dinámicamente plugins registrados</p>
+</div>
+<div class="refsect1" title="Descripción">
+<a name="id2757061"></a><h2>Descripción</h2>
+<code class="methodsynopsis"><span class="type">void </span><span class="methodname">register_modifier</span>(<span class="methodparam"><span class="type">string </span><span class="parameter">name</span></span>,<br>                       <span class="methodparam"><span class="type">mixed </span><span class="parameter">impl</span></span>);</code><p>
+   Pase en el template el nombre del modificador, seguido de la
+   función PHP que implemente esto.
+  </p>
+<p>
+   La llamada de la funcion-php <em class="parameter"><code>impl</code></em> puede ser
+  </p>
+<div class="orderedlist"><ol class="orderedlist" type="a">
+<li class="listitem"><p>una cadena conteniendo el nombre de la función 
+    </p></li>
+<li class="listitem"><p>un arreglo con la forma <code class="literal">array(&amp;$object, $method)</code> con 
+    <code class="literal">&amp;$object</code> siendo una referencia para un objeto y
+    <code class="literal">$method</code> siendo una cadena conteniendo el nombre de un metodo 
+    </p></li>
+<li class="listitem"><p>
+     un arreglo con la forma 
+     <code class="literal">array(&amp;$class, $method)</code> con
+     <code class="literal">$class</code> siendo el nombre de una clase y
+     <code class="literal">$method</code> siendo un metodo de esta clase. 
+    </p></li>
+</ol></div>
+<div class="example">
+<a name="id2758184"></a><p class="title"><b>Example 13.24. register_modifier()</b></p>
+<div class="example-contents">
+<pre class="programlisting">
+
+&lt;?php
+
+// let's map PHP's stripslashes function to a Smarty modifier.
+$smarty-&gt;register_modifier('sslash', 'stripslashes');
+
+?&gt;
+
+</pre>
+<p>template</p>
+<pre class="programlisting">
+
+&lt;?php
+{* use 'sslash' to strip slashes from variables *}
+{$var|sslash}
+?&gt;
+
+</pre>
+</div>
+</div>
+<br class="example-break"><p>
+    Ver También
+    <a class="link" href="api.unregister.modifier.html" title="unregister_modifier()">unregister_modifier()</a>,
+    <a class="link" href="api.register.function.html" title="register_function()">register_function()</a>,
+    <a class="link" href="language.modifiers.html" title="Chapter 5. Modificadores de variables">modifiers</a>,
+    <a class="link" href="plugins.html" title="Chapter 16. Extendiendo Smarty con plugins">Extending Smarty with plugins</a>
+    y
+    <a class="link" href="plugins.modifiers.html" title="Modificadores">Creating Plugin modifiers</a>,
+ </p>
+</div>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="api.register.function.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="api.functions.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="api.register.object.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">register_function() </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> register_object()</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

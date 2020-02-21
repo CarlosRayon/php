@@ -1,0 +1,82 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>clear_config()</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="api.functions.html" title="Chapter 13. La clase Methods() de Smarty">
+<link rel="prev" href="api.clear.compiled.tpl.html" title="clear_compiled_tpl()">
+<link rel="next" href="api.config.load.html" title="config_load()">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">clear_config()</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="api.clear.compiled.tpl.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 13. La clase Methods() de Smarty</th>
+<td width="20%" align="right"> <a accesskey="n" href="api.config.load.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="refentry" title="clear_config()">
+<a name="api.clear.config"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p>clear_config() — Esto limpia todas las variables de configuración</p>
+</div>
+<div class="refsect1" title="Descripción">
+<a name="id2753037"></a><h2>Descripción</h2>
+<code class="methodsynopsis"><span class="type">void </span><span class="methodname">clear_config</span>(<span class="methodparam"><span class="type">string </span><span class="parameter">var</span></span>);</code><p>
+   Esto limpia todas las variables de 
+   <a class="link" href="language.config.variables.html" title="Variables cargadas desde archivos de configuración">configuración asignadas</a>. 
+   Si es proporcionado el nombre de una variable, solo esa variable es limpiada.
+  </p>
+<div class="example">
+<a name="id2751938"></a><p class="title"><b>Example 13.10. clear_config()</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+&lt;?php
+// clear all assigned config variables.
+$smarty-&gt;clear_config();
+
+// clear one variable
+$smarty-&gt;clear_config('foobar');
+?&gt;
+
+   </pre></div>
+</div>
+<br class="example-break"><p>
+  Ver también
+  <a class="link" href="api.get.config.vars.html" title="get_config_vars()">get_config_vars()</a>,
+  <a class="link" href="language.config.variables.html" title="Variables cargadas desde archivos de configuración">config variables</a>,
+  <a class="link" href="config.files.html" title="Chapter 9. Config Files">config files</a>,
+  <a class="link" href="language.function.config.load.html" title="config_load">{config_load}</a>,
+  <a class="link" href="api.config.load.html" title="config_load()">config_load()</a>
+  y
+  <a class="link" href="api.clear.assign.html" title="clear_assign()">clear_assign()</a>
+  </p>
+</div>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="api.clear.compiled.tpl.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="api.functions.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="api.config.load.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">clear_compiled_tpl() </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> config_load()</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

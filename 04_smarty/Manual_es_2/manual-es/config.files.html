@@ -1,0 +1,126 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Chapter 9. Config Files</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="smarty.for.designers.html" title="Part II. Smarty For Template Designers">
+<link rel="prev" href="language.function.textformat.html" title="{textformat}">
+<link rel="next" href="chapter.debugging.console.html" title="Chapter 10. Debugging Console">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Chapter 9. Config Files</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="language.function.textformat.html">Prev</a> </td>
+<th width="60%" align="center">Part II. Smarty For Template Designers</th>
+<td width="20%" align="right"> <a accesskey="n" href="chapter.debugging.console.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="chapter" title="Chapter 9. Config Files">
+<div class="titlepage"><div><div><h2 class="title">
+<a name="config.files"></a>Chapter 9. Config Files</h2></div></div></div>
+<p>
+  Los archivos de configuración son utiles para diseñar y administrar
+  variables globales para los templates a partir de un archivo.
+  Un ejemplo son los colores del template. Normalmente si usted quiere 
+  cambiar el esquema de colores de una aplicación, usted debe ir a cada 
+  uno de los archivos del template y cambiar los colores.
+  Con un archivo de configuración, los colores pueden estar mantenidos 
+  en un lugar y solo necesita actualizar este para cambiar los colores.
+ </p>
+<div class="example">
+<a name="id2740491"></a><p class="title"><b>Example 9.1. Ejemplo de sintaxis de un archivo de configuración</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+# global variables
+pageTitle = "Main Menu"
+bodyBgColor = #000000
+tableBgColor = #000000
+rowBgColor = #00ff00
+
+[Customer]
+pageTitle = "Customer Info"
+
+[Login]
+pageTitle = "Login"
+focus = "username"
+Intro = """This is a value that spans more
+           than one line. you must enclose
+           it in triple quotes."""
+
+# hidden section
+[.Database]
+host=my.domain.com
+db=ADDRESSBOOK
+user=php-user
+pass=foobar
+
+  </pre></div>
+</div>
+<br class="example-break"><p>
+  Los valores de las variables pueden estar entre comillas, mas no es 
+  necesario. Usted puede usar comillas simples o dobles. Si usted 
+  tuviera un valor que ocupe mas de una linea, coloque todo el valor 
+  entre tres comillas ("""). Usted puede colocar comentarios en un 
+  archivo de configuración con cualquier sintaxis que no sea valida 
+  en un archivo de configuración. Nosotros recomendamos usar un 
+  <code class="literal">#</code> en el princio de cada linea.
+ </p>
+<p>
+  Este archivo de configuración tiene dos secciones. Los nombres de 
+  secciones debe estar entre corchetes []. Los nombres de sección 
+  pueden ser cadenas arbitrarias que no contengan los simbolos
+  <code class="literal">[</code> or <code class="literal">]</code>. Las cuatro variables 
+  en la cabecera son variables globales, o no son variables de sección.
+  Estas variables son siempre cargadas del archivo de configuración. Si 
+  una sección en particular fuera cargada, entonces las variables 
+  globales y las variables de esta sección son cargadas. Si una variable 
+  existe como global y dentro de una sección, la variable de sección 
+  será utilizada. Si usted tuviera dos variables en la misma sección con 
+  el mismo nombre, la ultima será utilizada.
+ </p>
+<p>
+  Los archivos de configuración son cargados en el template con una
+  función incrustada <a class="link" href="language.function.config.load.html" title="config_load">
+   <span class="command"><strong>{config_load}</strong></span></a>.
+  (Ver También <a class="link" href="api.config.load.html" title="config_load()"><span class="command"><strong>config_load()</strong></span></a> ).
+
+ </p>
+<p>
+  Usted puede ocultar variables o secciones enteras colocando un punto 
+  antes del nombre de la variable. Esto es útil si su aplicación lee los 
+  archivos de configuración y los datos sensibles a partir de ellos que 
+  la herramienta del template no lo necesita. Si usted tiene a otras 
+  personas realizando la edición de templates, usted tendra la certesa 
+  que ellos no leeran datos sensibles del archivo de configuración 
+  cargando estos en el template.
+ </p>
+<p>
+  Ver También <a class="link" href="language.function.config.load.html" title="config_load">{config_load}</a>, <a class="link" href="variable.config.overwrite.html" title="$config_overwrite">$config_overwrite</a>, <a class="link" href="api.get.config.vars.html" title="get_config_vars()">get_config_vars()</a>, <a class="link" href="api.clear.config.html" title="clear_config()">clear_config()</a> y <a class="link" href="api.config.load.html" title="config_load()">config_load()</a>
+ </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="language.function.textformat.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="smarty.for.designers.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="chapter.debugging.console.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">{textformat} </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> Chapter 10. Debugging Console</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{html_radios}</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="language.custom.functions.html" title="Chapter 8. Custom Functions">
+<link rel="prev" href="language.function.html.options.html" title="{html_options}">
+<link rel="next" href="language.function.html.select.date.html" title="{html_select_date}">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">{html_radios}</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="language.function.html.options.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 8. Custom Functions</th>
+<td width="20%" align="right"> <a accesskey="n" href="language.function.html.select.date.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="{html_radios}">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="language.function.html.radios"></a>{html_radios}</h2></div></div></div>
+<div class="informaltable"><table border="1">
+<colgroup>
+<col align="center">
+<col align="center">
+<col align="center">
+<col align="center">
+<col>
+</colgroup>
+<thead><tr>
+<th align="center">Nombre del Atributo</th>
+<th align="center">Tipo</th>
+<th align="center">Requerido</th>
+<th align="center">Default</th>
+<th>Descripción</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="center">name</td>
+<td align="center">string</td>
+<td align="center">No</td>
+<td align="center"><span class="emphasis"><em>radio</em></span></td>
+<td>Nombre de la lista del radio</td>
+</tr>
+<tr>
+<td align="center">values</td>
+<td align="center">array</td>
+<td align="center">Si, a menos que utilice el atributo options</td>
+<td align="center"><span class="emphasis"><em>n/a</em></span></td>
+<td>una matriz de valores para radio buttons</td>
+</tr>
+<tr>
+<td align="center">output</td>
+<td align="center">array</td>
+<td align="center">Si, a menos que utilice el atributo options</td>
+<td align="center"><span class="emphasis"><em>n/a</em></span></td>
+<td>una matriz de salida para radio buttons</td>
+</tr>
+<tr>
+<td align="center">selected</td>
+<td align="center">string</td>
+<td align="center">No</td>
+<td align="center"><span class="emphasis"><em>empty</em></span></td>
+<td>El elemento del radio selccionado</td>
+</tr>
+<tr>
+<td align="center">options</td>
+<td align="center">arreglo asociativo</td>
+<td align="center">Si, a menos qie utilice valores y salida</td>
+<td align="center"><span class="emphasis"><em>n/a</em></span></td>
+<td>una matriz asociativa de valores y salida</td>
+</tr>
+<tr>
+<td align="center">separator</td>
+<td align="center">string</td>
+<td align="center">No</td>
+<td align="center"><span class="emphasis"><em>empty</em></span></td>
+<td>cadena de texto para separar cada objeto de radio</td>
+</tr>
+</tbody>
+</table></div>
+<p>
+    {html_radios} es una 
+    <a class="link" href="language.custom.functions.html" title="Chapter 8. Custom Functions">función customizada</a> 
+    que crea grupos de botones de radio html con los datos proporcionados. 
+    Este esta atento para saber cual objeto esta selccionado por default.
+    Los atributos requeridos son valores y salidas, a menos que usted 
+    use option en lugar de eso. Toda salida es compatible con XHTML.
+			</p>
+<p>
+   Todos los parámetros que no estan en la lista de arriba son impresos 
+   como pares de name/value dentro de cada etiqueta &lt;input&gt; creada.
+			</p>
+<div class="example">
+<a name="id2723557"></a><p class="title"><b>Example 8.12. {html_radios} : Ejemplo 1</b></p>
+<div class="example-contents">
+<pre class="programlisting">
+
+&lt;?php
+
+$smarty-&gt;assign('cust_ids', array(1000,1001,1002,1003));
+$smarty-&gt;assign('cust_names', array(
+                              'Joe Schmoe',
+                              'Jack Smith',
+                              'Jane Johnson',
+                              'Charlie Brown')
+                              );
+$smarty-&gt;assign('customer_id', 1001);
+
+?&gt;
+
+  </pre>
+<p>
+   Donde el template es:
+  </p>
+<pre class="programlisting">
+
+{html_radios name="id" values=$cust_ids output=$cust_names
+       selected=$customer_id separator="&lt;br /&gt;"}
+   
+  </pre>
+</div>
+</div>
+<br class="example-break"><div class="example">
+<a name="id2723593"></a><p class="title"><b>Example 8.13. {html_radios} : Ejemplo 2</b></p>
+<div class="example-contents">
+<pre class="programlisting">
+
+&lt;?php
+
+$smarty-&gt;assign('cust_radios', array(
+                               1000 =&gt; 'Joe Schmoe',
+                               1001 =&gt; 'Jack Smith',
+                               1002 =&gt; 'Jane Johnson',
+                               1003 =&gt; 'Charlie Brown'));
+$smarty-&gt;assign('customer_id', 1001);
+
+?&gt;
+
+  </pre>
+<p>
+   Donde index.tpl es:
+  </p>
+<pre class="programlisting">
+
+{html_radios name="id" options=$cust_radios selected=$customer_id separator="&lt;br /&gt;"}
+
+  </pre>
+<p>
+   Salida de ambos ejemplos:
+  </p>
+<pre class="screen">
+
+&lt;label for="id_1000"&gt;
+&lt;input type="radio" name="id" value="1000" id="id_1000" /&gt;Joe
+Schmoe&lt;/label&gt;&lt;br /&gt;
+&lt;label for="id_1001"&gt;&lt;input type="radio" name="id" value="1001" id="id_1001"
+checked="checked" /&gt;Jack
+Smith&lt;/label&gt;&lt;br /&gt;
+&lt;label for="id_1002"&gt;&lt;input type="radio" name="id" value="1002" id="id_1002" /&gt;Jane
+Johnson&lt;/label&gt;&lt;br /&gt;
+&lt;label for="id_1003"&gt;&lt;input type="radio" name="id" value="1003" id="id_1003" /&gt;Charlie
+Brown&lt;/label&gt;&lt;br /&gt;
+
+  </pre>
+</div>
+</div>
+<br class="example-break"><div class="example">
+<a name="id2723643"></a><p class="title"><b>Example 8.14. {html_radios}- Ejemplo con base de Datos (eg PEAR o ADODB):</b></p>
+<div class="example-contents">
+<pre class="programlisting">
+
+&lt;?php
+
+$sql = 'select type_id, types from types order by type';
+$smarty-&gt;assign('types',$db-&gt;getAssoc($sql));
+
+$sql = 'select contact_id, name, email, type_id
+        from contacts where contact_id='.$contact_id;
+$smarty-&gt;assign('contact',$db-&gt;getRow($sql));
+
+?&gt;
+
+</pre>
+<p>
+y el template:
+</p>
+<pre class="programlisting">
+
+{html_radios name="type" options=$types selected=$contact.type_id separator="&lt;br /&gt;"}
+
+</pre>
+</div>
+</div>
+<br class="example-break"><p>
+   ver también
+   <a class="link" href="language.function.html.checkboxes.html" title="{html_checkboxes}">{html_checkboxes}</a>
+   y <a class="link" href="language.function.html.options.html" title="{html_options}">{html_options}</a>
+ </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="language.function.html.options.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="language.custom.functions.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="language.function.html.select.date.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">{html_options} </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> {html_select_date}</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

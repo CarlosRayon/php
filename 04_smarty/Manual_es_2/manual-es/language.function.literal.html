@@ -1,0 +1,87 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>literal</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="language.builtin.functions.html" title="Chapter 7. Funciones Integradas">
+<link rel="prev" href="language.function.ldelim.html" title="{ldelim},{rdelim}">
+<link rel="next" href="language.function.php.html" title="{php}">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">literal</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="language.function.ldelim.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 7. Funciones Integradas</th>
+<td width="20%" align="right"> <a accesskey="n" href="language.function.php.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="literal">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="language.function.literal"></a>literal</h2></div></div></div>
+<p>
+   Las etiquetas literal permiten que un block de datos sea tomado literalmente,
+   no siendo interpretado por el smarty. Esto es generalmente utilizado alrededor 
+   de bloques javascript o stylesheet, en donde pueden haber sintaxis
+   <a class="link" href="variable.left.delimiter.html" title="$left_delimiter">delimitadoras</a> que puedan 
+   interferir con el template.
+
+   Cualquer cosa dentro de las etiquetas {literal}{/literal} no es
+   interpretado, si no desplegado tal como esta. Si usted necesita en su
+   template etiquetas incrustadas en su bloque de literal, considere usar
+   <a class="link" href="language.function.ldelim.html" title="{ldelim},{rdelim}">{ldelim}{rdelim}</a> para
+   escapar delimitadores individuales en lugar de eso.
+  </p>
+<div class="example">
+<a name="id2709749"></a><p class="title"><b>Example 7.15. Etiqueta literal</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+{literal}
+	&lt;script type="text/javascript"&gt;
+
+        	&lt;!--
+                	function isblank(field) {
+                	if (field.value == '')
+                        	{ return false; }
+                	else
+                        	{
+                        	document.loginform.submit();
+                        	return true;
+                        	}
+                	}
+        	// --&gt;
+
+	&lt;/script&gt;
+{/literal}
+
+   </pre></div>
+</div>
+<br class="example-break"><p>
+      Ver también <a class="link" href="language.escaping.html" title="Escaping Smarty Parsing">Escaping Smarty Parsing</a>.
+   </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="language.function.ldelim.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="language.builtin.functions.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="language.function.php.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">{ldelim},{rdelim} </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> {php}</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

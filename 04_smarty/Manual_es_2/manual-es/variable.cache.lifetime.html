@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>$cache_lifetime</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="api.variables.html" title="Chapter 12. Clase Variables de Smarty">
+<link rel="prev" href="variable.cache.dir.html" title="$cache_dir">
+<link rel="next" href="variable.cache.handler.func.html" title="$cache_handler_func">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">$cache_lifetime</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="variable.cache.dir.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 12. Clase Variables de Smarty</th>
+<td width="20%" align="right"> <a accesskey="n" href="variable.cache.handler.func.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="$cache_lifetime">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="variable.cache.lifetime"></a>$cache_lifetime</h2></div></div></div>
+<p>
+     Este es la duración del tiempo en segundos que un cache de template 
+     es valido. Una vez que este tiempo está expirado, el cache sera 
+     regenerado. $caching debe ser asignado a "true" para $cache_lifetime 
+     hasta tener algún propósito. Un valor de -1 forza el cache a nunca 
+     expirar. Un valor de 0 forzara a que el cache sea siempre regenerado 
+     (bueno solo para probar, el método mas eficiente para desabilitar cache 
+     es asignar <a class="link" href="variable.caching.html" title="$caching">$caching</a> = false.)
+    </p>
+<p>
+     Si <a class="link" href="variable.force.compile.html" title="$force_compile">$force_compile</a> 
+     está habilitado, los archivos de cache serán regenerados todo el 
+     tiempo, efectivamente desabilitando caching. Usted puede limpiar 
+     todos los archivos de cache con la función 
+     <a class="link" href="api.clear.all.cache.html" title="clear_all_cache">clear_all_cache()</a>,
+     o archivos individuales de cache (o grupos) con la función 
+     <a class="link" href="api.clear.cache.html" title="clear_cache()">clear_cache()</a>.
+    </p>
+<div class="note" title="Nota Técnica" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Nota Técnica</h3>
+<p>
+       Si usted quisiera dar a ciertos templates su propio tiempo de 
+       vida de cache, usted puede hacer esto asignando 
+       <a class="link" href="variable.caching.html" title="$caching">$caching</a> = 2, entonces 
+       determina $cache_lifetime a un único valor justo antes de llamar 
+       <a class="link" href="api.display.html" title="display()">display()</a>
+       o <a class="link" href="api.fetch.html" title="fetch()">fetch()</a>.
+     </p>
+</div>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="variable.cache.dir.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="api.variables.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="variable.cache.handler.func.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">$cache_dir </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> $cache_handler_func</td>
+</tr>
+</table>
+</div>
+</body>
+</html>
