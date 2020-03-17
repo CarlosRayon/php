@@ -9,7 +9,7 @@
         -Igual que require pero se impide la carga de un mismo archivo más de una vez.
  
     -include 'NombreClase.php';
-        -Si hay error el programa marcara error pero seguira ejecutandose, aunque posiblemente mal.
+        -Si hay error el programa marcara error pero seguirá ejecutándose, aunque posiblemente mal.
 
     -include_once 'NombreClase.php':
         -Igual que include  pero se impide la carga de un mismo archivo más de una vez
