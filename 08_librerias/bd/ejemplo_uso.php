@@ -7,19 +7,29 @@ include_once 'libphp/bd.php';
         EJEMPLO DE USO DE UN SELECT NORMAL
 ----------------------------------------------------------------------*/
 
+/*SELECT */
 /* Preparamos la consulta */
 $sql = "SELECT equipos.id, equipos.nombre, imagenes.imagen FROM equipos
         INNER JOIN imagenes ON equipos.Id = imagenes.id_equipo";
 
 /* Ejecutamos la consulta */
- 
+
 $stm = DB::ejecutarSQL($sql, null);
+
+/* INSERT */
+$sql = "INSERT INTO usuario (nombre) VALUES ('test')";
+DB::ejecutarSQL($sql, null);
 
 
 /* -------------- Con parametros --------------*/
 
+/* SELECT */
 $sql = "SELECT e.id, e.nombre, e.imagen FROM equipos e WHERE e.id = :id AND e.nombre = :nombre ";
 $stm = DB::ejecutarSQL($sql, array(':id' => 123, ':nombre' => 'barcelona'));
+
+/*INSERT*/
+$sql = "INSERT INTO usuario (nombre) VALUES (:nombre)";
+DB::ejecutarSQL($sql, array(':nombre' => 'Carlos'));
 
 
 
@@ -33,8 +43,8 @@ $equipos = $stm->fetchAll(PDO::FETCH_ASSOC);
 
 //Guardar los datos uno a uno (Si hay mucho datos que recuperar es la mejor opcion. Evitamos cuello botella)
 $arrayConsulta = array();
-while ($filaArray = $stmt->fetch(PDO::FETCH_ASSOC)) { //usamos el método fetch() de PDOstmt   
-    array_push($arrayConsulta, $filaArray); //guardamos los datos en un array       
+while ($filaArray = $stmt->fetch(PDO::FETCH_ASSOC)) { //usamos el método fetch() de PDOstmt
+    array_push($arrayConsulta, $filaArray); //guardamos los datos en un array
 }
 
 
