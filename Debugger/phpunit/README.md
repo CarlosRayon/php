@@ -51,9 +51,11 @@ Ejecutar el test sin fichero xml de configuración:
 Podemos crear un xml de configuracion (phpunit.xml) que nos evita tener que poner las banderas por linea de comandos. Un ejemplo sencillo que nos evita poner las bandera `--bootstrap` y `--colors`:
 
 ```xml
-<phpunit>
+<phpunit
     bootstrap="vendor/autoload.php"
     colors="true"
+    testdox="true"
+    >
 </phpunit>
 
 ```
@@ -73,6 +75,8 @@ Podemos tambien ejecutar todas las clases de test que esten dentro de un directo
 ./vendor/bin/phpunit test/
 
 ```
+
+Disponemos de multiples [atributos de configuracion](https://phpunit.readthedocs.io/en/9.5/configuration.html) asi como [multiples banderas CLI](https://phpunit.readthedocs.io/en/9.5/textui.html) para usar.
 
 ## [Fixtures](https://phpunit.readthedocs.io/en/9.5/fixtures.html)
 
