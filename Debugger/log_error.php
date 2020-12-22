@@ -14,11 +14,6 @@
         echo 'Insertado';
     }
 
-    /*** */
-
-
-
-
     /* PHP */
     try {
 
@@ -29,14 +24,11 @@
         $debugger = false;
 
         $db->beginTransaction();
-
-
         /* Processes */
 
         /* Debugger */
         if ($debugger) {
-
-            /* Debugger */
+            /* ... */
         }
         $db->commit();
 
