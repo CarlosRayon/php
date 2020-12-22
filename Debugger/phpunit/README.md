@@ -10,7 +10,11 @@ Instalar las dependencias con:
 
 composer install
 
+composer dump-autoload -o
+
 ```
+
+*`composer dump-autoload -o`  lo ejecuto para que se generen los autoload de namespace de forma correcta.*
 
 ## [Autoload con psr-4](https://getcomposer.org/doc/04-schema.md#psr-4)
 
