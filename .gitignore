@@ -1,2 +1,3 @@
 # Ignore all vendor
 vendor
+.phpunit.result.cache
