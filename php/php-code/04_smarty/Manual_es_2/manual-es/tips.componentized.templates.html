@@ -1,0 +1,117 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Templates con Componetes</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="tips.html" title="Chapter 18. Consejos y Trucos">
+<link rel="prev" href="tips.wap.html" title="WAP/WML">
+<link rel="next" href="tips.obfuscating.email.html" title="Ofuscando direcciones de E-mail">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Templates con Componetes</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="tips.wap.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 18. Consejos y Trucos</th>
+<td width="20%" align="right"> <a accesskey="n" href="tips.obfuscating.email.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="Templates con Componetes">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="tips.componentized.templates"></a>Templates con Componetes</h2></div></div></div>
+<p>
+    Tradicionalmente, programar templates en sus aplicaciones es de  
+    la siguiente forma: Primero, usted acumula sus variables dentro de su 
+    aplicación PHP, (talvez como requisiciones de una base de datos).
+    Entonces, usted instancia su objeto Smarty 
+    <a class="link" href="api.assign.html" title="assign()">assign()</a>, atribuye valores a 
+    las variables y muestra el template 
+    <a class="link" href="api.display.html" title="display()">display()</a>. Por ejemplo nosotros 
+    tenemos un registrador de existencias en nuestro template. Nosotros 
+    recolectaremos los datos de las existencias en nuestra aplicación,
+    entonces damos valor a estas variables en el template y lo mostramos.
+    Ahora esto seria genial si usted adicionara este registrador de
+    almacenamiento (stock ticker) a cualquier aplicación simplemente
+    incluyendolo en el template, y no preocuparse hacerca de como ir
+    a traer los datos al frente?
+   </p>
+<p>
+    Usted puede escribir este plugin haciendo que traiga un  
+    contenido y asignarlo a la variable del template.
+   </p>
+<div class="example">
+<a name="id2780905"></a><p class="title"><b>Example 18.7. Templates con Componetes</b></p>
+<div class="example-contents">
+<p>
+      <code class="filename">function.load_ticker.php</code> -
+      deja el archivo en 
+      <a class="link" href="variable.plugins.dir.html" title="$plugins_dir">$plugins directory</a>
+    </p>
+<pre class="programlisting">
+
+&lt;?php
+
+// deja el archivo "function.load_ticker.php" en el directorio de plugins
+
+// configura nuestra funci&amp;oacute;n para traer los datos almacenados
+function fetch_ticker($symbol) 
+{
+   // ponga la lógica aquí que traera $ticker_name
+   // y $ticker_price de algun recurso
+   return $ticker_info;
+}
+
+function smarty_function_load_ticker($params, &amp;$smarty) 
+{
+   // llama la función
+   $ticker_info = fetch_ticker($params['symbol']);
+   
+   // asigna las variables al template
+   $smarty-&gt;assign($params['assign'], $ticker_info);
+}
+?&gt;
+
+    </pre>
+<p>
+          <code class="filename">index.tpl</code>
+    </p>
+<pre class="programlisting">
+
+{load_ticker symbol="YHOO" assign="ticker"}
+
+Stock Name: {$ticker.name} Stock Price: {$ticker.price}
+
+    </pre>
+</div>
+</div>
+<br class="example-break"><p>
+    Vea también <a class="link" href="language.function.include.php.html" title="{include_php}">{include_php}</a>,
+    <a class="link" href="language.function.include.html" title="include">{include}</a> y
+    <a class="link" href="language.function.php.html" title="{php}">{php}</a>.
+   </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="tips.wap.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="tips.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="tips.obfuscating.email.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">WAP/WML </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> Ofuscando direcciones de E-mail</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

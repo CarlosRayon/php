@@ -1,0 +1,90 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>register_prefilter()</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="api.functions.html" title="Chapter 13. La clase Methods() de Smarty">
+<link rel="prev" href="api.register.postfilter.html" title="register_postfilter()">
+<link rel="next" href="api.register.resource.html" title="register_resource">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">register_prefilter()</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="api.register.postfilter.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 13. La clase Methods() de Smarty</th>
+<td width="20%" align="right"> <a accesskey="n" href="api.register.resource.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="refentry" title="register_prefilter()">
+<a name="api.register.prefilter"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p>register_prefilter() — Registra dinamicamente prefiltros</p>
+</div>
+<div class="refsect1" title="Descripción">
+<a name="id2758850"></a><h2> Descripción</h2>
+<code class="methodsynopsis"><span class="type">void </span><span class="methodname">register_prefilter</span>(<span class="methodparam"><span class="type">mixed </span><span class="parameter">function</span></span>);</code><p>
+   Use esto para registrar 
+   <a class="link" href="advanced.features.prefilters.html" title="Prefilters">prefiltros</a> 
+   dinámicamente para correr templates antes de que estos sean compilados. 
+   Vea <a class="link" href="advanced.features.prefilters.html" title="Prefilters">template prefilters</a>
+   para mayores informes de como configurar una función de prefiltering.
+  </p>
+<p>
+   La llamada de la funcion-php <em class="parameter"><code>function</code></em> puede ser:
+  </p>
+<div class="orderedlist"><ol class="orderedlist" type="a">
+<li class="listitem"><p>
+      una cadena conteniendo un nombre de función
+     </p></li>
+<li class="listitem"><p>
+       un arreglo con la forma
+       <code class="literal">array(&amp;$object, $method)</code> con
+       <code class="literal">&amp;$object</code> siendo una referencia para un
+       objeto y <code class="literal">$method</code> siendo una cadena conteniendo
+       el nombre de un método 
+     </p></li>
+<li class="listitem"><p>
+       un arreglo con la forma 
+      <code class="literal">array(&amp;$class, $method)</code> con
+      <code class="literal">$class</code> siendo un nombre de clase y
+      <code class="literal">$method</code> siendo un método de esta clase.
+     </p></li>
+</ol></div>
+<p>
+    Ver también
+    <a class="link" href="api.unregister.prefilter.html" title="unregister_prefilter()">unregister_prefilter()</a>,
+    <a class="link" href="api.register.postfilter.html" title="register_postfilter()">register_postfilter()</a>,
+    <a class="link" href="api.register.outputfilter.html" title="register_outputfilter()">register_ouputfilter()</a>,
+    <a class="link" href="api.load.filter.html" title="load_filter()">load_filter()</a>,
+    <a class="link" href="variable.autoload.filters.html" title="$autoload_filters">$autoload_filters</a>
+    y <a class="link" href="advanced.features.outputfilters.html" title="Filtros de salida">template output filters</a>.
+    </p>
+</div>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="api.register.postfilter.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="api.functions.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="api.register.resource.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">register_postfilter() </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> register_resource</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

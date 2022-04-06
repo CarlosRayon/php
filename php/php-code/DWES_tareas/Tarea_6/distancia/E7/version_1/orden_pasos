@@ -1,0 +1,10 @@
+
+
+Lado servidor:
+
+1º Creamos archivo con la clase que tendra las funciones
+2ª Creamos archivo servidor que servira las clases al cliente
+
+Lado cliente:
+
+Creamos archivo cliente que hara uso de las clases servidas por el servidor

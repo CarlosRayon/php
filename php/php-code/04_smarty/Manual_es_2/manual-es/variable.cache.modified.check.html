@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>$cache_modified_check</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="api.variables.html" title="Chapter 12. Clase Variables de Smarty">
+<link rel="prev" href="variable.cache.handler.func.html" title="$cache_handler_func">
+<link rel="next" href="variable.config.overwrite.html" title="$config_overwrite">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">$cache_modified_check</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="variable.cache.handler.func.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 12. Clase Variables de Smarty</th>
+<td width="20%" align="right"> <a accesskey="n" href="variable.config.overwrite.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="$cache_modified_check">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="variable.cache.modified.check"></a>$cache_modified_check</h2></div></div></div>
+<p>
+       Si es asignado true, Smarty respetara el If-Modified-Since 
+       encabezado enviado para el cliente. Si el timestamp del 
+       archivo de cache no fue alterado desde la ultima visita,
+       entonces un encabezado "304 Not Modified" sera enviado en 
+       vez del contenido.
+       Esto funciona solamente en archivos de cache sin etiquetas
+       <a class="link" href="language.function.insert.html" title="insert"><span class="command"><strong>{insert}</strong></span></a>.
+      </p>
+<p>
+  Ver también 
+  <a class="link" href="variable.caching.html" title="$caching">$caching</a>,
+   <a class="link" href="variable.cache.lifetime.html" title="$cache_lifetime">$cache_lifetime</a>,
+  <a class="link" href="variable.cache.handler.func.html" title="$cache_handler_func">$cache_handler_func</a>,
+  y
+  <a class="link" href="caching.html" title="Chapter 14. Cache">Caching section</a>.
+  </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="variable.cache.handler.func.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="api.variables.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="variable.config.overwrite.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">$cache_handler_func </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> $config_overwrite</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

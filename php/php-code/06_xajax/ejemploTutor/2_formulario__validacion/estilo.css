@@ -1,0 +1,31 @@
+.DivGlobal
+{
+   text-align:center;
+   margin: 2px;
+   padding: 2px;
+   border-top: 2px solid #f0c51b;
+   border-bottom: 2px solid #f0c51b;
+   color: red;
+   font-size: 11px;
+   background-color: #f9eec1;
+}
+.DivTable
+{
+   text-align:center;
+   margin:auto;
+   border:2px solid #000;
+   width:620px;
+   background-color: #edf3ff;
+}
+.DivLocal
+{
+   margin: auto;
+   color: green;
+   font-size: 11px;
+} 
+.Campos
+{
+   color: black;
+   font-size: 11px;
+   font-weight:bold;
+}

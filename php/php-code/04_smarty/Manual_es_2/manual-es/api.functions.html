@@ -1,0 +1,166 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Chapter 13. La clase Methods() de Smarty</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="smarty.for.programmers.html" title="Part III. Smarty For Programmers">
+<link rel="prev" href="variable.default.resource.type.html" title="$default_resource_type">
+<link rel="next" href="api.append.html" title="append()">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Chapter 13. La clase Methods() de Smarty</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="variable.default.resource.type.html">Prev</a> </td>
+<th width="60%" align="center">Part III. Smarty For Programmers</th>
+<td width="20%" align="right"> <a accesskey="n" href="api.append.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="chapter" title="Chapter 13. La clase Methods() de Smarty">
+<div class="titlepage"><div><div><h2 class="title">
+<a name="api.functions"></a>Chapter 13. La clase Methods() de Smarty</h2></div></div></div>
+<div class="toc">
+<p><b>Table of Contents</b></p>
+<dl>
+<dt>
+<span class="refentrytitle"><a href="api.append.html">append()</a></span><span class="refpurpose"> — agregando elementos a una matriz asignada</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.append.by.ref.html">append_by_ref</a></span><span class="refpurpose"> — pasando valores por referencia</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.assign.html">assign()</a></span><span class="refpurpose"> — pasando valores para el template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.assign.by.ref.html">assign_by_ref</a></span><span class="refpurpose"> — pasando valores por referencia</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.clear.all.assign.html">clear_all_assign()</a></span><span class="refpurpose"> — &gt;limpia el valor de todas las variables asignadas</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.clear.all.cache.html">clear_all_cache</a></span><span class="refpurpose"> — limpia completamente el cache del template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.clear.assign.html">clear_assign()</a></span><span class="refpurpose"> — limpia el valor de una variable asignada</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.clear.cache.html">clear_cache()</a></span><span class="refpurpose"> — Esto limpia el cache de un template especifico</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.clear.compiled.tpl.html">clear_compiled_tpl()</a></span><span class="refpurpose"> — Esto limpia la vesion compilada del recurso de un template especifico</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.clear.config.html">clear_config()</a></span><span class="refpurpose"> — Esto limpia todas las variables de configuración</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.config.load.html">config_load()</a></span><span class="refpurpose"> — Carga el archivo de configuración y lo asigna al template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.display.html">display()</a></span><span class="refpurpose"> — Despliega el Template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.fetch.html">fetch()</a></span><span class="refpurpose"> — Retorna la salida del template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.get.config.vars.html">get_config_vars()</a></span><span class="refpurpose"> — retorna el valor asignado a la variable de configuración</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.get.registered.object.html">get_registered_object()</a></span><span class="refpurpose"> — Este retorna una referencia para un objeto registrado.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.get.template.vars.html">get_template_vars()</a></span><span class="refpurpose"> — Retorna el valor asignado a una variable</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.is.cached.html">is_cached()</a></span><span class="refpurpose"> — Retorna true si hay cache valido para ese template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.load.filter.html">load_filter()</a></span><span class="refpurpose"> — Carga un filtro de plugin</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.block.html">register_block()</a></span><span class="refpurpose"> — Registra dinamicamente bloques de funciones de plugins </span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.compiler.function.html">register_compiler_function</a></span><span class="refpurpose"> — Registra dinamicamente un plugin de una funcion compiladora</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.function.html">register_function()</a></span><span class="refpurpose"> — Registra dinamicamente un plugin de función para un template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.modifier.html">register_modifier()</a></span><span class="refpurpose"> — mofidica dinámicamente plugins registrados</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.object.html">register_object()</a></span><span class="refpurpose"> — Registr un objeto para usar en el template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.outputfilter.html">register_outputfilter()</a></span><span class="refpurpose"> — Registra dinamicamente filtros de salida</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.postfilter.html">register_postfilter()</a></span><span class="refpurpose"> — Resgistr dinamicamente postfiltros</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.prefilter.html">register_prefilter()</a></span><span class="refpurpose"> — Registra dinamicamente prefiltros</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.register.resource.html">register_resource</a></span><span class="refpurpose"> — Registra dinamicamente un plugin de recurso</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.trigger.error.html">trigger_error</a></span><span class="refpurpose"> — Despliega un mensaje de error</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.template.exists.html">template_exists()</a></span><span class="refpurpose"> — Verifica si el template especificado existe</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.block.html">unregister_block</a></span><span class="refpurpose"> — Des-registra dinamicamente un plugin de bloque de funciones</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.compiler.function.html">unregister_compiler_function()</a></span><span class="refpurpose"> — des-registrar dinámicamente una función de compilación</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.function.html">unregister_function()</a></span><span class="refpurpose"> — des-registrar dinámicamente una función de plugin del template</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.modifier.html">unregister_modifier()</a></span><span class="refpurpose"> — des-registrar dinámicamente un modificador de plugin</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.object.html">unregister_object()</a></span><span class="refpurpose"> — Des-registra dinamicamente un objeto</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.outputfilter.html">unregister_outputfilter()</a></span><span class="refpurpose"> — des-registra dinámicamente un filtro de salida</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.postfilter.html">unregister_postfilter()</a></span><span class="refpurpose"> — Des-registra dinamicamente un postfiltro</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.prefilter.html">unregister_prefilter()</a></span><span class="refpurpose"> — Des-registra dinamicamente un prefiltro</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="api.unregister.resource.html">unregister_resource()</a></span><span class="refpurpose"> — Des-registra dinamicamente un plugin de recurso</span>
+</dt>
+</dl>
+</div>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="variable.default.resource.type.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="smarty.for.programmers.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="api.append.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">$default_resource_type </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> append()</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Chapter 18. Consejos y Trucos</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="appendixes.html" title="Part IV. Appendixes">
+<link rel="prev" href="troubleshooting.html" title="Chapter 17. Localización de Errores">
+<link rel="next" href="tips.default.var.handling.html" title="Manipulación del valor default de una variable">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Chapter 18. Consejos y Trucos</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="troubleshooting.html">Prev</a> </td>
+<th width="60%" align="center">Part IV. Appendixes</th>
+<td width="20%" align="right"> <a accesskey="n" href="tips.default.var.handling.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="chapter" title="Chapter 18. Consejos y Trucos">
+<div class="titlepage"><div><div><h2 class="title">
+<a name="tips"></a>Chapter 18. Consejos y Trucos</h2></div></div></div>
+<div class="toc">
+<p><b>Table of Contents</b></p>
+<dl>
+<dt><span class="sect1"><a href="tips.html#tips.blank.var.handling">Manipulación de Variables Vacias</a></span></dt>
+<dt><span class="sect1"><a href="tips.default.var.handling.html">Manipulación del valor default de una variable</a></span></dt>
+<dt><span class="sect1"><a href="tips.passing.vars.html">Pasando la variable titulo a la cabecera del template</a></span></dt>
+<dt><span class="sect1"><a href="tips.dates.html">Fechas</a></span></dt>
+<dt><span class="sect1"><a href="tips.wap.html">WAP/WML</a></span></dt>
+<dt><span class="sect1"><a href="tips.componentized.templates.html">Templates con Componetes</a></span></dt>
+<dt><span class="sect1"><a href="tips.obfuscating.email.html">Ofuscando direcciones de E-mail</a></span></dt>
+</dl>
+</div>
+<p>
+  </p>
+<div class="sect1" title="Manipulación de Variables Vacias">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="tips.blank.var.handling"></a>Manipulación de Variables Vacias</h2></div></div></div>
+<p>
+    Cuando usted en algunas ocaciones quiere imprimir un valor que 
+    usted defíne a una variable vacia en vez de imprimir nada, tal 
+    como imprimir "&amp;nbsp;" a fin de que el plano del fondo de 
+    la tabla funcione correctamente. Muchos usarian una sentencia 
+    <a class="link" href="language.function.if.html" title="if,elseif,else">{if}</a> para manejar esto, 
+    mas existe otra forma con Smarty, usando el modificador de la variable 
+    <a class="link" href="language.modifier.default.html" title="default"><span class="emphasis"><em>default</em></span></a>.
+   </p>
+<div class="example">
+<a name="id2779443"></a><p class="title"><b>Example 18.1. Imprimiendo &amp;nbsp; cuando una variable esta vacia</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+{* the long way *}
+
+{if $title eq ""}
+   &amp;nbsp;
+{else}
+   {$title}
+{/if}
+
+
+{* the short way *}
+
+{$title|default:"&amp;nbsp;"}
+
+    </pre></div>
+</div>
+<br class="example-break"><p>
+     Ver tambien <a class="link" href="language.modifier.default.html" title="default">default</a>
+     y <a class="link" href="tips.default.var.handling.html" title="Manipulación del valor default de una variable">Default Variable Handling</a>.
+   </p>
+</div>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="troubleshooting.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="appendixes.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="tips.default.var.handling.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">Chapter 17. Localización de Errores </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> Manipulación del valor default de una variable</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

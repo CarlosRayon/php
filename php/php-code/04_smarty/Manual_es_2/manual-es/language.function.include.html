@@ -1,0 +1,205 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>include</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="language.builtin.functions.html" title="Chapter 7. Funciones Integradas">
+<link rel="prev" href="language.function.foreach.html" title="{foreach},{foreachelse}">
+<link rel="next" href="language.function.include.php.html" title="{include_php}">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">include</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="language.function.foreach.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 7. Funciones Integradas</th>
+<td width="20%" align="right"> <a accesskey="n" href="language.function.include.php.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="include">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="language.function.include"></a>include</h2></div></div></div>
+<div class="informaltable"><table border="1">
+<colgroup>
+<col align="center">
+<col align="center">
+<col align="center">
+<col align="center">
+<col>
+</colgroup>
+<thead><tr>
+<th align="center">Nombre del Atributo</th>
+<th align="center">Tipo</th>
+<th align="center">requerido</th>
+<th align="center">Default</th>
+<th>Descripción</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="center">file</td>
+<td align="center">string</td>
+<td align="center">Si</td>
+<td align="center"><span class="emphasis"><em>n/a</em></span></td>
+<td>El nombre del archivo de template a Incluir.</td>
+</tr>
+<tr>
+<td align="center">assign</td>
+<td align="center">string</td>
+<td align="center">No</td>
+<td align="center"><span class="emphasis"><em>n/a</em></span></td>
+<td>El nombre de una variable que contendra toda la
+                         salida del template.</td>
+</tr>
+<tr>
+<td align="center">[var ...]</td>
+<td align="center">[var type]</td>
+<td align="center">No</td>
+<td align="center"><span class="emphasis"><em>n/a</em></span></td>
+<td>Variable para pasar localmente a el template</td>
+</tr>
+</tbody>
+</table></div>
+<p>
+    Las etiquetas {include} son usadas para incluir otros templates en 
+    el template actual. Cualquier variable disponible en el template 
+    actual, también esta disponible dentro del template incluido.
+    La etiqueta {include} debe tener el atributo "file", el cual contiene 
+    la ruta del archivo a incluir.
+			</p>
+<p>
+   Usted puede opcionalmente pasar el atributo <span class="emphasis"><em>'assign'</em></span>, 
+   el cual especificara el nombre de una variable de template para el cual 
+   contendra toda la salida de {include} en vez de mostrarla.
+			</p>
+<div class="example">
+<a name="id2707187"></a><p class="title"><b>Example 7.7. funcion {include}</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;{$title}&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+{include file="page_header.tpl"}
+
+{* el cuerpo del template va aqui *}
+{include file="/$tpl_name.tpl"} &lt;-- will replace $tpl_name with value
+
+{include file="page_footer.tpl"}
+&lt;/body&gt;
+&lt;/html&gt;
+
+  </pre></div>
+</div>
+<br class="example-break"><p>
+            Usted también puede pasar variables al template incluidas como
+            atributos. Cualquier variable pasada al template incluidas como 
+            atributos estan disponibles solamente dentro el espacio del template.
+            Las variables pasadas como atributos sobreescriben a las variables
+            del template actual, en el caso en el que estas tengan el mismo nombre.
+			</p>
+<div class="example">
+<a name="id2707202"></a><p class="title"><b>Example 7.8. Función {include} pasando variables</b></p>
+<div class="example-contents">
+<pre class="programlisting">
+
+{include file="header.tpl" title="Main Menu" table_bgcolor="#c0c0c0"}
+
+{* el cuerpo del template va aqui *}
+
+{include file="footer.tpl" logo="http://my.example.com/logo.gif"}
+
+  </pre>
+<p>Donde header.tpl puede ser</p>
+<pre class="programlisting">
+
+&lt;table border='1' width='100%' bgcolor='{$table_bgcolor|default:"#0000FF"}'&gt;
+  &lt;tr&gt;&lt;td&gt;
+    &lt;h1&gt;{$title}&lt;/h1&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+</pre>
+</div>
+</div>
+<br class="example-break"><div class="example">
+<a name="id2707250"></a><p class="title"><b>Example 7.9. {include} y asignacion de variables</b></p>
+<div class="example-contents">
+<p>En este ejemplo asignan el contenido de nav.tpl en la variable $navbar,
+   entonces la salida hasta arriba y hasta abajo de pagina.
+   </p>
+<pre class="programlisting">
+ 
+&lt;body&gt;
+{include file="nav.tpl" assign="navbar"}
+{include file="header.tpl" title="Main Menu" table_bgcolor="#c0c0c0"}
+{$navbar}
+
+{* el cuerpo del template va aqui *}
+
+{include file="footer.tpl" logo="http://my.example.com/logo.gif"}
+{$navbar}
+&lt;/body&gt;
+
+   </pre>
+</div>
+</div>
+<br class="example-break"><p>
+			 Use la sintaxis de  <a class="link" href="template.resources.html" title="Recursos">template resources</a> 
+    para incluir archivos fuera del directorio 
+    <a class="link" href="api.variables.html#variable.template.dir" title="$template_dir">$template_dir</a>.
+			</p>
+<div class="example">
+<a name="id2707303"></a><p class="title"><b>Example 7.10. Ejemplos de recursos para la función include</b></p>
+<div class="example-contents">
+<pre class="programlisting">
+
+{* ruta absoluta *}
+{include file="/usr/local/include/templates/header.tpl"}
+
+{* ruta absoluta (lo mismo) *}
+{include file="file:/usr/local/include/templates/header.tpl"}
+
+{* ruta absoluta de windows (DEBE usar el prefijo "file:") *}
+{include file="file:C:/www/pub/templates/header.tpl"}
+
+{* incluir a partir del recurso de template denominado "db" *}
+{include file="db:header.tpl"}
+
+  </pre>
+<p>
+  ver también
+  <a class="link" href="language.function.include.php.html" title="{include_php}">{include_php}</a>,
+  <a class="link" href="language.function.php.html" title="{php}">{php}</a>,
+  <a class="link" href="template.resources.html" title="Recursos">Template Resources</a> y
+  <a class="link" href="tips.componentized.templates.html" title="Templates con Componetes">Componentized Templates</a>.
+ </p>
+</div>
+</div>
+<br class="example-break">
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="language.function.foreach.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="language.builtin.functions.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="language.function.include.php.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">{foreach},{foreachelse} </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> {include_php}</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

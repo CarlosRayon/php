@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>load_filter()</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="api.functions.html" title="Chapter 13. La clase Methods() de Smarty">
+<link rel="prev" href="api.is.cached.html" title="is_cached()">
+<link rel="next" href="api.register.block.html" title="register_block()">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">load_filter()</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="api.is.cached.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 13. La clase Methods() de Smarty</th>
+<td width="20%" align="right"> <a accesskey="n" href="api.register.block.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="refentry" title="load_filter()">
+<a name="api.load.filter"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p>load_filter() — Carga un filtro de plugin</p>
+</div>
+<div class="refsect1" title="Descripción">
+<a name="id2754908"></a><h2> Descripción</h2>
+<code class="methodsynopsis"><span class="type">void </span><span class="methodname">load_filter</span>(<span class="methodparam"><span class="type">string </span><span class="parameter">type</span></span>,<br>                 <span class="methodparam"><span class="type">string </span><span class="parameter">name</span></span>);</code><p>
+   El primer argumento especifíca el tipo de filtro a cargar y puede
+   ser uno de los siguientes: 'pre', 'post', o 'output'. El segundo 
+   argumento especifíca el nombre del filtro del plugin, por ejemplo, 
+   'trim'.
+  </p>
+<div class="example">
+<a name="id2756342"></a><p class="title"><b>Example 13.21. loading filter plugins</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+&lt;?php
+$smarty-&gt;load_filter('pre', 'trim');        // load prefilter named 'trim'
+$smarty-&gt;load_filter('pre', 'datefooter');  // load another prefilter named 'datefooter'
+$smarty-&gt;load_filter('output', 'compress'); // load output filter named 'compress'
+?&gt;
+
+   </pre></div>
+</div>
+<br class="example-break"><p>
+  Ver también 
+  <a class="link" href="api.register.prefilter.html" title="register_prefilter()">register_prefilter()</a>,
+  <a class="link" href="api.register.postfilter.html" title="register_postfilter()">register_postfilter()</a>,
+  <a class="link" href="api.register.outputfilter.html" title="register_outputfilter()">register_outputfilter()</a>,
+  <a class="link" href="variable.autoload.filters.html" title="$autoload_filters">$autoload_filters</a>
+  y 
+  <a class="link" href="advanced.features.html" title="Chapter 15. Caracteristicas Avanzadas">Advanced features</a>.
+  </p>
+</div>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="api.is.cached.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="api.functions.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="api.register.block.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">is_cached() </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> register_block()</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

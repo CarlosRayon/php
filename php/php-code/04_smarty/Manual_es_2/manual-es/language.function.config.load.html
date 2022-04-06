@@ -1,0 +1,196 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>config_load</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="language.builtin.functions.html" title="Chapter 7. Funciones Integradas">
+<link rel="prev" href="language.builtin.functions.html" title="Chapter 7. Funciones Integradas">
+<link rel="next" href="language.function.foreach.html" title="{foreach},{foreachelse}">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">config_load</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="language.builtin.functions.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 7. Funciones Integradas</th>
+<td width="20%" align="right"> <a accesskey="n" href="language.function.foreach.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="config_load">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="language.function.config.load"></a>config_load</h2></div></div></div>
+<div class="informaltable"><table border="1">
+<colgroup>
+<col align="center">
+<col align="center">
+<col align="center">
+<col align="center">
+<col>
+</colgroup>
+<thead><tr>
+<th align="center">Nombre del Atributo</th>
+<th align="center">Tipo</th>
+<th align="center">Requerido</th>
+<th align="center">Default</th>
+<th>Descripción</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="center">file</td>
+<td align="center">string</td>
+<td align="center">Si</td>
+<td align="center"><span class="emphasis"><em>n/a</em></span></td>
+<td>El nombre del archivo de configuración a incluir</td>
+</tr>
+<tr>
+<td align="center">section</td>
+<td align="center">string</td>
+<td align="center">No</td>
+<td align="center"><span class="emphasis"><em>n/a</em></span></td>
+<td>El nombre de la sección a cargar</td>
+</tr>
+<tr>
+<td align="center">scope</td>
+<td align="center">string</td>
+<td align="center">no</td>
+<td align="center"><span class="emphasis"><em>local</em></span></td>
+<td>
+       Como el scope carga las variables debe ser tratado de
+       manera local, como padre y no como global. local indica 
+       que las variables son cargadas en el contexto del template
+       local. parent indica que las variables son cargadas en el 
+       contexto actual y en el template que llamo. global indica 
+       que las variables estan disponibles para todos los templates.
+     </td>
+</tr>
+<tr>
+<td align="center">global</td>
+<td align="center">boolean</td>
+<td align="center">No</td>
+<td align="center"><span class="emphasis"><em>No</em></span></td>
+<td>
+      Cuando las variables no son vistas en el template
+      padre (al que llamo este), lo mismo que scope=parent.
+      NOTA: este atributo esta obsoleto pero el atributo scope, 
+      puede dar el soporte. Si scope es el indicado, este valor 
+      es ignorado.
+     </td>
+</tr>
+</tbody>
+</table></div>
+<p>
+  Esta función es usada para cargar las <a class="link" href="language.config.variables.html" title="Variables cargadas desde archivos de configuración">#variables#</a> 
+  de un archivo de configuración dentro de un template.
+  Vea <a class="link" href="config.files.html" title="Chapter 9. Config Files">Config Files</a> para mayor 
+  información.
+ </p>
+<div class="example">
+<a name="id2705445"></a><p class="title"><b>Example 7.2. Función {config_load}</b></p>
+<div class="example-contents">
+<p>
+     ejemplo.conf
+  </p>
+<pre class="programlisting">
+
+#this is config file comment
+
+# global variables
+pageTitle = "Main Menu"
+bodyBgColor = #000000
+tableBgColor = #000000
+rowBgColor = #00ff00
+
+#customer variables section
+[Customer]
+pageTitle = "Customer Info"
+
+  </pre>
+<p>y el template</p>
+<pre class="programlisting">
+ 
+ {config_load file="example.conf"}
+
+ &lt;html&gt;
+      &lt;title&gt;{#pageTitle#|default:"No title"}&lt;/title&gt;
+      &lt;body bgcolor="{#bodyBgColor#}"&gt;
+     &lt;table border="{#tableBorderSize#}" bgcolor="{#tableBgColor#}"&gt;
+         &lt;tr bgcolor="{#rowBgColor#}"&gt;
+             &lt;td&gt;First&lt;/td&gt;
+             &lt;td&gt;Last&lt;/td&gt;
+             &lt;td&gt;Address&lt;/td&gt;
+         &lt;/tr&gt;
+     &lt;/table&gt;
+     &lt;/body&gt;
+ &lt;/html&gt;
+ 
+ </pre>
+</div>
+</div>
+<br class="example-break"><p>
+  Los <a class="link" href="config.files.html" title="Chapter 9. Config Files">archivos de configuración</a> 
+  pueden contener secciones también. Usted puede cargar variables de 
+  una sección adicionando el atributo <span class="emphasis"><em>'section'</em></span>.
+ </p>
+<div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>
+   <span class="emphasis"><em>Config file sections</em></span> es la función integrada 
+   de template  <a class="link" href="language.function.section.html" title="section,sectionelse"><span class="emphasis"><em>{section}</em></span></a> 
+   no tiene nada que ver uno con el otro, ellos justamente por casualidad 
+   tiene en común el convensionalismo del nombre.
+  </p>
+</div>
+<div class="example">
+<a name="id2705529"></a><p class="title"><b>Example 7.3. Función config_load con section</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+{config_load file="ejemplo.conf" section="Customer"}
+
+&lt;html&gt;
+&lt;title&gt;{#pageTitle#}&lt;/title&gt;
+&lt;body bgcolor="{#bodyBgColor#}"&gt;
+&lt;table border="{#tableBorderSize#}" bgcolor="{#tableBgColor#}"&gt;
+   &lt;tr bgcolor="{#rowBgColor#}"&gt;
+      &lt;td&gt;First&lt;/td&gt;
+      &lt;td&gt;Last&lt;/td&gt;
+      &lt;td&gt;Address&lt;/td&gt;
+   &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+  </pre></div>
+</div>
+<br class="example-break"><p>
+  Vea también <a class="link" href="config.files.html" title="Chapter 9. Config Files">Config files</a>,
+  <a class="link" href="language.config.variables.html" title="Variables cargadas desde archivos de configuración">Config variables</a>,
+  <a class="link" href="variable.config.dir.html" title="$config_dir">$config_dir</a>,
+  <a class="link" href="api.get.config.vars.html" title="get_config_vars()">get_config_vars()</a>
+  y <a class="link" href="api.config.load.html" title="config_load()">config_load()</a>.
+ </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="language.builtin.functions.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="language.builtin.functions.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="language.function.foreach.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">Chapter 7. Funciones Integradas </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> {foreach},{foreachelse}</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

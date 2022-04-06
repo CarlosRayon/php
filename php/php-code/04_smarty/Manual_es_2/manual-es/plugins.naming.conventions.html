@@ -1,0 +1,104 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Nombres convencionales</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="plugins.html" title="Chapter 16. Extendiendo Smarty con plugins">
+<link rel="prev" href="plugins.html" title="Chapter 16. Extendiendo Smarty con plugins">
+<link rel="next" href="plugins.writing.html" title="Escribiendo Plugins">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Nombres convencionales</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="plugins.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 16. Extendiendo Smarty con plugins</th>
+<td width="20%" align="right"> <a accesskey="n" href="plugins.writing.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="Nombres convencionales">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="plugins.naming.conventions"></a>Nombres convencionales</h2></div></div></div>
+<p>
+    Los archivos y funciones de Plugin deben seguir una convención 
+    de apariencia muy especifica a fin de que pueda ser localizada 
+    por el Smarty.
+    </p>
+<p>
+     Los archivos de plugin deben ser nombrados de la siguiente forma:
+     </p>
+<div class="blockquote"><blockquote class="blockquote"><p>
+       <code class="filename">
+        <em class="replaceable"><code>type</code></em>.<em class="replaceable"><code>name</code></em>.php
+       </code>
+      </p></blockquote></div>
+<p>
+    </p>
+<p>
+     Donde <code class="literal">type</code> es uno de los siguientes tipo de plugin:
+     </p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc" compact>
+<li class="listitem">function</li>
+<li class="listitem">modifier</li>
+<li class="listitem">block</li>
+<li class="listitem">compiler</li>
+<li class="listitem">prefilter</li>
+<li class="listitem">postfilter</li>
+<li class="listitem">outputfilter</li>
+<li class="listitem">resource</li>
+<li class="listitem">insert</li>
+</ul></div>
+<p>
+    </p>
+<p>
+     Y <code class="literal">name</code> seria un identificador valido (solo, letras,
+     números, y underscores).
+    </p>
+<p>
+     Algunos ejemplos: <code class="literal">function.html_select_date.php</code>,
+     <code class="literal">resource.db.php</code>, <code class="literal">modifier.spacify.php</code>.
+    </p>
+<p>
+     Las funciones de plugin dentro de los archivos de plugin deben ser
+     nombradas de la siguiente forma:
+     </p>
+<div class="blockquote"><blockquote class="blockquote"><p>
+      <code class="function">smarty_<em class="replaceable"><code>type</code></em>, _<em class="replaceable"><code>name</code></em></code>
+      </p></blockquote></div>
+<p>
+    </p>
+<p>
+     El significado de <code class="literal">type</code> and <code class="literal">name</code> son
+     los mismo que loas anteriores.
+    </p>
+<p>
+     El Smarty mostrara mensajes de error apropiados si el archivo de 
+     plugins que es necesario no es encontrado, o si el archivo a la 
+     función de plugin esta nombrado inadecuadamente.
+    </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="plugins.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="plugins.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="plugins.writing.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">Chapter 16. Extendiendo Smarty con plugins </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> Escribiendo Plugins</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

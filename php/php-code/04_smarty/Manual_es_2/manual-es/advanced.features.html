@@ -1,0 +1,166 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Chapter 15. Caracteristicas Avanzadas</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="smarty.for.programmers.html" title="Part III. Smarty For Programmers">
+<link rel="prev" href="caching.cacheable.html" title="Controlando salida de Cacheabilidad de plugins">
+<link rel="next" href="advanced.features.prefilters.html" title="Prefilters">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Chapter 15. Caracteristicas Avanzadas</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="caching.cacheable.html">Prev</a> </td>
+<th width="60%" align="center">Part III. Smarty For Programmers</th>
+<td width="20%" align="right"> <a accesskey="n" href="advanced.features.prefilters.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="chapter" title="Chapter 15. Caracteristicas Avanzadas">
+<div class="titlepage"><div><div><h2 class="title">
+<a name="advanced.features"></a>Chapter 15. Caracteristicas Avanzadas</h2></div></div></div>
+<div class="toc">
+<p><b>Table of Contents</b></p>
+<dl>
+<dt><span class="sect1"><a href="advanced.features.html#advanced.features.objects">Objetos</a></span></dt>
+<dt><span class="sect1"><a href="advanced.features.prefilters.html">Prefilters</a></span></dt>
+<dt><span class="sect1"><a href="advanced.features.postfilters.html">Postfilters</a></span></dt>
+<dt><span class="sect1"><a href="advanced.features.outputfilters.html">Filtros de salida</a></span></dt>
+<dt><span class="sect1"><a href="section.template.cache.handler.func.html">Función manipuladora de cache</a></span></dt>
+<dt><span class="sect1"><a href="template.resources.html">Recursos</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="template.resources.html#templates.from.template.dir">Templates desde $template_dir</a></span></dt>
+<dt><span class="sect2"><a href="template.resources.html#templates.from.any.dir">Templates partiendo de cualquier directorio</a></span></dt>
+<dt><span class="sect2"><a href="template.resources.html#templates.from.elsewhere">Templates partiendo de otras fuentes</a></span></dt>
+<dt><span class="sect2"><a href="template.resources.html#default.template.handler.function">Función manipuladora de Template por default</a></span></dt>
+</dl></dd>
+</dl>
+</div>
+<div class="sect1" title="Objetos">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="advanced.features.objects"></a>Objetos</h2></div></div></div>
+<p>
+      El Smarty permite acceso a objetos de PHP a través de sus templates.
+      Hay dos formas de accesarlos. Una forma es 
+      <a class="link" href="api.register.object.html" title="register_object()">registrando objetos</a> para el 
+      template, entonces acceselos mediante sintaxis similar a las funciones
+      habituales. La otra es <a class="link" href="api.assign.html" title="assign()">asignar objetos</a> al 
+      template y accesarlos como si fueran una variable asignada. El primer método 
+      tiene una sintaxis de template mucho mas agradable. Y también mas segura, a 
+      medida que un objeto registrado puede ser reescrito a ciertos métodos y 
+      propiedades. Sin embargo tanto, <span class="bold"><strong>un objeto registrado 
+       no puede ser puesto en loop o ser asignado en arreglos de objetos</strong></span>, 
+      etc. El método que usted escoja sera determinado por sus necesidades, pero 
+      utilice el primero método si es posible para mantener un minimo de sintaxis 
+      en el template.
+    </p>
+<p>
+  Si <a class="link" href="variable.security.html" title="$security">$security</a> esta habilitada, 
+  ninguno de los dos métodos privados o funciones pueden ser accesados 
+  (comenzando con "_"). Si un metodo y propiedades de un mismo nombre existe, 
+  el método será usado.
+	</p>
+<p>
+  Usted puede restringir los métodos y propiedades que pueden ser accesados 
+  listandolos en un arreglo como el tercer parámetro de registro.
+	</p>
+<p>
+  Por default, los parámetros pasados a los objetos a a través de los 
+  templates son pasados de la misma forma en que las 
+  <a class="link" href="language.custom.functions.html" title="Chapter 8. Custom Functions">funciones de costumbre</a> 
+  los obtienen. Un arreglo asociativo es pasado como el primer parámetro, 
+  y el objeto smarty como el segundo. Si usted quiere que los parámetros 
+  pasados uno de cada vez por cada argumento pasen como parámetros de un 
+  objeto tradicional, defina el cuarto parámetro de registro en falso.
+	</p>
+<p>
+  El quinto parámetro opcional solo tiene efecto con
+  <em class="parameter"><code>format</code></em> siendo <code class="literal">true</code>
+  y conteniendo una lista de métodos de ob que seran tratados 
+  como bloques. Esto significa que estos métodos tienen una 
+  etiqueta de cierre en el template 
+  (<code class="literal">{foobar-&gt;meth2}...{/foobar-&gt;meth2}</code>) y
+  los parámetros para los métodos tienen la misma sinopsis como 
+  los parámetros de <a class="link" href="plugins.block.functions.html" title="Block Functions">block-function-plugins</a>: 
+  Ellos reciben 4 parámetros 
+  <em class="parameter"><code>$params</code></em>,
+  <em class="parameter"><code>$content</code></em>,
+  <em class="parameter"><code>&amp;$smarty</code></em> y 
+  <em class="parameter"><code>&amp;$repeat</code></em> también se comportan como
+  block-function-plugins.
+	</p>
+<div class="example">
+<a name="id2771430"></a><p class="title"><b>Example 15.1. usando un objeto registrado o atribuido</b></p>
+<div class="example-contents">
+<pre class="programlisting">
+
+&lt;?php
+// el objeto
+
+class My_Object {
+ function meth1($params, &amp;$smarty_obj) {
+  return "this is my meth1";
+ }
+}
+
+$myobj = new My_Object;
+// registrando el objeto (será por referencia)
+$smarty-&gt;register_object("foobar",$myobj);
+// Si usted quiere restringir acceso a ciertos metodos o propriedades, listelos
+$smarty-&gt;register_object("foobar",$myobj,array('meth1','meth2','prop1'));
+// Si usted quiere usar el formato de parámetro del objeto tradicional, pase un booleano en false
+$smarty-&gt;register_object("foobar",$myobj,null,false);
+
+// también puede asignar ojetos. Posible cuando se asignan por referencia.
+$smarty-&gt;assign_by_ref("myobj", $myobj);
+
+$smarty-&gt;display("index.tpl");
+?&gt;
+
+  </pre>
+<p>
+   y como debera accesar a su objeto en index.tpl
+  </p>
+<pre class="programlisting">
+
+{* accesando a nuestro objeto registrado *}
+{foobar-&gt;meth1 p1="foo" p2=$bar}
+
+{* usted también puede asignar la salida *}
+{foobar-&gt;meth1 p1="foo" p2=$bar assign="output"}
+the output was {$output}
+
+{* accesando a nuestro objeto asignado *}
+{$myobj-&gt;meth1("foo",$bar)}
+
+  </pre>
+</div>
+</div>
+<br class="example-break">
+</div>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="caching.cacheable.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="smarty.for.programmers.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="advanced.features.prefilters.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">Controlando salida de Cacheabilidad de plugins </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> Prefilters</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

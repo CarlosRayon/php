@@ -1,0 +1,169 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Solución
+*/
+
+
+body{
+    background-color: white;
+    font-weight: bold;
+    color: #151515;
+    width: 45%;
+    text-align: left;
+}
+
+h3{
+    margin: 5px 15px 5px 15px;
+}
+
+h4{
+    margin: 2px 5px 0px 5px;
+    font-size: 25px;
+}
+
+h5{
+    margin: 0px 5px 0px 5px;
+    font-size: 15px;
+}
+
+
+#marco{
+    background-color: white;
+    border: 3px solid #00BFFF;
+    width: 800px;
+}
+
+#marco2{
+    background-color: white;
+    border: 3px solid #00BFFF;
+    width: 1000px;
+}
+
+#marco3{
+    background-color: white;
+    border: 3px solid #00BFFF;
+    width: 800px;
+}
+
+#cuadro{
+    text-align: left;
+    background-color: #EFFBF8;
+    margin: 10px 10px 10px 10px;
+    width:97%;
+}
+
+#cuadro2{
+    text-align: left;
+    background-color: #EFFBF8;
+    margin: 10px 10px 10px 10px;
+    width:98%;
+}
+
+#titulo{
+    color: white;
+    font-size: 20px;
+    background-color: #DA81F5;
+    padding: 10px 5px 10px 5px;
+}
+
+#titulo2{
+    color: white;
+    font-size: 20px;
+    background-color: #DA81F5;
+    padding: 10px 5px 10px 5px;
+    margin: 15px 5px 15px 5px;
+    /*width:100%;*/
+}
+
+#cuadroDatos{
+    width: 100%;    
+}
+
+.tablas{ 
+    width: 24%; 
+    margin: 10px 5px 10px 10px;
+    padding: 10px 5px 10px 10px;
+}
+
+.datos{
+    margin-left: 15px;
+}
+
+.rojo{
+    width: 90%;
+    margin-left: 15px;
+    color: red;
+    font-size: 30px
+}
+
+#matricula{
+    border: 3px solid #00BFFF;
+    width: 200px;
+    margin-left: 15px;
+    color: red;
+    font-size: 30px
+}
+
+#numMatricula{
+    font-size: 30px
+}
+
+#botones{
+    margin: 30px 0px 30px 0px;
+    width: 100%;
+}
+
+#botones2{
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin: 20px 5px 30px 5px;
+}
+
+.boton2{
+    width: 80px;
+    margin: 5px 10px 5px 10px;
+}
+
+.boton{
+    width: 50%;
+    text-align: center;
+}
+.recuadros{
+    width: 47%;
+    border: 3px solid #0B6121;
+    display: inline-block;
+    padding: 5px 5px 5px 5px;
+    margin: 1px 2px 1px 2px;
+}
+
+#documentosComunes{    
+    width: 99%;
+    border: 3px solid #0B6121;
+}
+
+#cuadrado{
+    display: inline-block;
+}
+
+#candidatos, #seleccionados{
+    height: 300px;
+    width: 430px;
+    overflow-y: scroll;
+    border: 1px solid black;
+    display: inline-block;
+    font-size: 14px;
+    margin: 5px 5px 5px 5px;
+}
+
+#modulos{
+    width: 95%;
+    border: 1px solid black;
+    padding: 5px 10px 5px 10px;
+    margin: 5px 10px 5px 10px;
+    font-size: 20px;
+}

@@ -1,0 +1,150 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>truncate</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="language.modifiers.html" title="Chapter 5. Modificadores de variables">
+<link rel="prev" href="language.modifier.strip.tags.html" title="strip_tags">
+<link rel="next" href="language.modifier.upper.html" title="upper">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">truncate</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="language.modifier.strip.tags.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 5. Modificadores de variables</th>
+<td width="20%" align="right"> <a accesskey="n" href="language.modifier.upper.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="truncate">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="language.modifier.truncate"></a>truncate</h2></div></div></div>
+<div class="informaltable"><table border="1">
+<colgroup>
+<col align="center">
+<col align="center">
+<col align="center">
+<col align="center">
+<col>
+</colgroup>
+<thead><tr>
+<th align="center">Posición del Parametro</th>
+<th align="center">Tipo</th>
+<th align="center">Requerido</th>
+<th align="center">Default</th>
+<th>Desdcripción</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td align="center">integer</td>
+<td align="center">No</td>
+<td align="center">80</td>
+<td>Este determina para cuantos carácteres truncar.</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">string</td>
+<td align="center">No</td>
+<td align="center">...</td>
+<td>Este es el texto para adicionar si el truncamiento ocurre. La 
+       longitud NO se incluye para la logitud del truncamiento</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">boolean</td>
+<td align="center">No</td>
+<td align="center">false</td>
+<td>Este determina cuando truncar o no o al final de una
+        palabra(false), o un carácter exacto(true).
+      </td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">boolean</td>
+<td align="center">No</td>
+<td align="center">false</td>
+<td>Este determina cuando ocurre el truncamiento al final de la cadena(false),
+      o en el centro de la cadena(true). Nota cuando este es true, 
+      entonces la palabra limite es ignorada.</td>
+</tr>
+</tbody>
+</table></div>
+<p>
+   Este trunca la variable en una cantidad de cacarteres, el default es 80.
+   Como segundo parámetro opcional, usted puede especificar una cadena
+   para mostrar al final si la variable fue truncada. Los carácteres en la
+   cadena son incluidos tamando el original para el truncamiento. 
+   Por default, truncate intentara cortar al final de una palabra.
+   Se usted quisiera cortar una cantidad exacta de carácteres, pase el 
+   tercer parámetro, que es opcional, como true.
+  </p>
+<div class="example">
+<a name="id2699922"></a><p class="title"><b>Example 5.20. truncate</b></p>
+<div class="example-contents">
+<pre class="programlisting">
+
+&lt;?php
+    
+$smarty-&gt;assign('articleTitle', 'Two Sisters Reunite after Eighteen Years at Checkout Counter.');
+
+?&gt;
+
+   </pre>
+<p>
+    Donde index.tpl es:
+   </p>
+<pre class="programlisting">
+
+{$articleTitle}
+{$articleTitle|truncate}
+{$articleTitle|truncate:30}
+{$articleTitle|truncate:30:""}
+{$articleTitle|truncate:30:"---"}
+{$articleTitle|truncate:30:"":true}
+{$articleTitle|truncate:30:"...":true}
+
+   </pre>
+<p>
+    Esta es la Salida:
+   </p>
+<pre class="screen">
+
+Two Sisters Reunite after Eighteen Years at Checkout Counter.
+Two Sisters Reunite after Eighteen Years at Checkout Counter.
+Two Sisters Reunite after...
+Two Sisters Reunite after
+Two Sisters Reunite after---
+Two Sisters Reunite after Eigh
+Two Sisters Reunite after E...
+
+   </pre>
+</div>
+</div>
+<br class="example-break">
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="language.modifier.strip.tags.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="language.modifiers.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="language.modifier.upper.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">strip_tags </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> upper</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

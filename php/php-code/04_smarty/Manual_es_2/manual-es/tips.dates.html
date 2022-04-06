@@ -1,0 +1,141 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Fechas</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="tips.html" title="Chapter 18. Consejos y Trucos">
+<link rel="prev" href="tips.passing.vars.html" title="Pasando la variable titulo a la cabecera del template">
+<link rel="next" href="tips.wap.html" title="WAP/WML">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Fechas</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="tips.passing.vars.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 18. Consejos y Trucos</th>
+<td width="20%" align="right"> <a accesskey="n" href="tips.wap.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="Fechas">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="tips.dates"></a>Fechas</h2></div></div></div>
+<p>
+    Como una regla basica, siempre pase fechas al Smarty como timestamps.
+    Esto permite al diseñador de template utilizar
+    <a class="link" href="language.modifier.date.format.html" title="date_format">date_format</a>
+    para el control completo sobre el formato de fechas, y también 
+    facilita la comparación de fechas si es necesario.
+   </p>
+<div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>
+     En el Smarty 1.4.0, usted puede parsar fechas al Smarty como 
+     timestamps unix,mysql, o cualquier otra fecha interpretable 
+     por <a class="ulink" href="http://php.net/strtotime" target="_top">strtotime()</a>.
+    </p>
+</div>
+<div class="example">
+<a name="id2780609"></a><p class="title"><b>Example 18.4. Usando date_format</b></p>
+<div class="example-contents">
+<pre class="programlisting">
+
+{$startDate|date_format}
+
+    </pre>
+<p>
+     Esta es la salida:
+    </p>
+<pre class="screen">
+
+Jan 4, 2001
+
+    </pre>
+<pre class="programlisting">
+
+{$startDate|date_format:"%Y/%m/%d"}
+
+    </pre>
+<p>
+     Esta es la Salida:
+    </p>
+<pre class="screen">
+
+2001/01/04
+
+    </pre>
+<pre class="programlisting">
+
+{if $date1 &lt; $date2}
+   ...
+{/if}
+
+    </pre>
+</div>
+</div>
+<br class="example-break"><p>
+    Cuando usa <a class="link" href="language.function.html.select.date.html" title="{html_select_date}">{html_select_date}</a> 
+    en un template, el programador normalmente va a querer convertir 
+    la salida de un formulario de vuelta al formato timestamp. Aquí 
+    esta una función para ayudar con esto.
+   </p>
+<div class="example">
+<a name="id2780676"></a><p class="title"><b>Example 18.5. Convirtiendo elementos en forma de fecha de vuelta a un timestamp</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+&lt;?php
+// esto asume que la forma de sus elementos son nombradas como
+// startDate_Day, startDate_Month, startDate_Year
+
+$startDate = makeTimeStamp($startDate_Year, $startDate_Month, $startDate_Day);
+
+function makeTimeStamp($year="", $month="", $day="")
+{
+   if(empty($year)) {
+       $year = strftime("%Y");
+   }
+   if(empty($month)) {
+       $month = strftime("%m");
+   }
+   if(empty($day)) {
+       $day = strftime("%d");
+   }
+
+   return mktime(0, 0, 0, $month, $day, $year);
+}
+?&gt;
+
+    </pre></div>
+</div>
+<br class="example-break"><p>
+   Vea también 
+   <a class="link" href="language.function.html.select.date.html" title="{html_select_date}">{html_select_date}</a>,
+   <a class="link" href="language.function.html.select.time.html" title="{html_select_time}">{html_select_time}</a>,
+   <a class="link" href="language.modifier.date.format.html" title="date_format">date_format</a>
+   y <a class="link" href="language.variables.smarty.html#language.variables.smarty.now" title="{$smarty.now}">$smarty.now</a>,
+   </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="tips.passing.vars.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="tips.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="tips.wap.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">Pasando la variable titulo a la cabecera del template </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> WAP/WML</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

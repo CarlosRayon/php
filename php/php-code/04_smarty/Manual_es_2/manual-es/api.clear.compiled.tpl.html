@@ -1,0 +1,79 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>clear_compiled_tpl()</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="api.functions.html" title="Chapter 13. La clase Methods() de Smarty">
+<link rel="prev" href="api.clear.cache.html" title="clear_cache()">
+<link rel="next" href="api.clear.config.html" title="clear_config()">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">clear_compiled_tpl()</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="api.clear.cache.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 13. La clase Methods() de Smarty</th>
+<td width="20%" align="right"> <a accesskey="n" href="api.clear.config.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="refentry" title="clear_compiled_tpl()">
+<a name="api.clear.compiled.tpl"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p>clear_compiled_tpl() — Esto limpia la vesion compilada del recurso de un template especifico</p>
+</div>
+<div class="refsect1" title="Descripción">
+<a name="id2751723"></a><h2>Descripción</h2>
+<code class="methodsynopsis"><span class="type">void </span><span class="methodname">clear_compiled_tpl</span>(<span class="methodparam"><span class="type">string </span><span class="parameter">tpl_file</span></span>,<br>                        <span class="methodparam"><span class="type">string </span><span class="parameter">compile_id</span></span>,<br>                        <span class="methodparam"><span class="type">int </span><span class="parameter">exp_time</span></span>);</code><p>
+    Esto limpia la versión compilada del recurso del template especificado,
+    o todos los archivos de templates compilados si no fueron especificados.
+    si usted pasa <a class="link" href="variable.compile.id.html" title="$compile_id">$compile_id</a> solo
+    sera compilado este template especificado 
+    <a class="link" href="variable.compile.id.html" title="$compile_id">$compile_id</a> es limpiado. 
+    Si usted lo pasa con ex_time, entonces solo compilara los templates 
+    anteriores al exp_time segundo seran limpiados, por default todos los 
+    templates son compilados y limpiados independientemente de su tiempo de vida.
+    Esta función es solo para uso avanzado, normalmente no es necesaria.
+  </p>
+<div class="example">
+<a name="id2752123"></a><p class="title"><b>Example 13.9. clear_compiled_tpl()</b></p>
+<div class="example-contents"><pre class="programlisting">
+
+&lt;?php
+// clear a specific template resource
+$smarty-&gt;clear_compiled_tpl("index.tpl");
+
+// clear entire compile directory
+$smarty-&gt;clear_compiled_tpl();
+?&gt;
+
+   </pre></div>
+</div>
+<br class="example-break">
+</div>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="api.clear.cache.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="api.functions.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="api.clear.config.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">clear_cache() </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> clear_config()</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

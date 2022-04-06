@@ -1,0 +1,44 @@
+
+
+#contenedor{
+    width: 80%;
+    height: auto;
+    margin: 30px;
+/*    border: 2px solid;*/
+    padding: 20px;  
+    float: left;
+}
+
+/*Centramos input label*/
+label{
+    display: inline-block;   
+    width: 80px;
+    text-align: left;
+} 
+input {
+    display: inline-block;
+    text-align: left;
+}
+
+/*para los span de mensajes de error*/
+span{
+    margin-left: 10px;
+}
+
+#bien{
+    color: #00cc33;
+}
+#error{
+    color: #ff3333;
+}
+
+#modulos{
+    position:absolute; 
+    top:320px; 
+    left: 500px;   
+/*    border: 2px solid;
+    border-radius:5px; */
+    text-align:left;         
+    padding: 5px;
+
+}

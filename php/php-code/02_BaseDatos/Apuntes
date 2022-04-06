@@ -1,0 +1,89 @@
+
+En PHP se puede trabajar de dos formas:
+    -Procedimientos
+    -POO
+
+Para trabajar con la base de datos, usamos la extension mysqli, pudiendo trabajar con ella de dos maneras:
+    -Procedimientos
+    -Objetos
+
+Las funciones que nos permite mysqli con la base de datos las podemos enfocar de 3 maneras:
+    -Consultas normales
+    -Consultas por transaciones
+    -Consultas preparadas
+
+En el acceso a datos se puede elegir entre usar:
+
+Mysql:Solo para base datos mysql
+PDO:Para cualquier base datos
+
+En las dos se pueden hacer las siguientes acciones
+
+1. Establecer conexiones.
+2. Ejecutar sentencias SQL.
+3. Obtener los registros afectados o devueltos por una sentencia SQL.
+4. Ejecutar procedimientos almacenados.
+5. Gestionar los errores que se produzcan durante la conexión o en el establecimiento de la misma.
+
+La diferencia entre mysqli y PDO es:
+ -mysqli es solo para base datos tipo mysql y PDO podemos usar cualquier base datos (oracle,sqlserver etc) si quisieramos migrar de base de datos
+ PDO al idenpendiente del motor de la base de datos (capa abstracion PHP -- PDO---BaseDatos) facilita la migracion a otra base de datos
+
+Para hacer el CRUD (Create<insert>, read<Select>, update, delete) tanto con Mysqli o PDO podemos usar varias formas:
+
+-De forma directa
+-Por transaciones
+-Por consultas preparadas
+
+Cuando usar consultas de un tipo u otro:
+
+a.FORMA DIRECTA
+
+Una consulta se debe pasar al manejador de base de datos de forma directa únicamente
+si en dicha consulta no interviene ningún dato desde el exterior,
+debido a que ese dato que introduce el usuario puede ser manipulado o modificado
+por un usuario mal intencionado para preparar un inyección de código malicioso.
+
+Un ejemplo de consulta que se puede pasar sin riesgo directamente, debido a que el parámetro 5 viene escrito en la consulta sería:
+
+SELECT id, nombre FROM tabla WHERE id=5;
+
+Sin embargo, si el 5 es pasado en una variable, no puedes pasar la consulta directamente:
+
+SELECT id, nombre FROM tabla WHERE id=$id;//riesgo grave de inyección
+
+Esa inyección se podría producir no solamente a nivel de SQL, sino a otros niveles del sistema.
+
+► b. CONSULTAS PREPARADAS
+Inversamente a lo afirmado en a, las consultas preparadas se deben usar siempre que en la consulta
+intervengan datos provenientes de fuentes externas. La API que estés usando como intermediario entre
+el programa y la base de datos (PDO o MySQLi) se encargará de eliminar el riesgo de inyección, si usas bien esta metodología.
+
+Por ejemplo, esta es una consulta segura:
+
+$strSQL="SELECT id, nombre FROM tabla WHERE id=?";
+$stmt=$pdo->prepare($strSQL);
+$arrParams=array($id);
+$stmt->execute($arrParams);
+En cambio esta consulta no es segura, ya podrás saber por qué:
+
+$strSQL="SELECT id, nombre FROM tabla WHERE id=? OR id=$id";
+$stmt=$pdo->prepare($strSQL);
+$arrParams=array($id);
+$stmt->execute($arrParams);
+
+Eso quiere decir que no basta usar consultas preparadas, también hay que usarlas de la manera adecuada.
+
+Además, en el caso de PDO, debes asegurarte que el atributo de emulación de consultas está apago (FALSE),
+porque de lo contrario te podrían colar una inyección emulando consultas preparadas.
+
+► c.TRANSACCIONES
+En pocas palabras, se usan cuando necesitas manejar lotes de datos en tu CRUD.
+Supongamos que vas a hacer una inserción o actualización de mil o un millón de registros.
+Empiezas el proceso y en algún punto hay un fallo. ¿Cómo vas a saber los registros que se insertaron/actualizaron?
+Podrías perder semanas/meses comparando datos para saber los que tienes que insertar/actualizar y los que no.
+Las transacciones te permiten manejar ese proceso de forma segura y limpia, ya que si algo falla, puedes revertir todo lo que se ha hecho hasta ahora.
+
+En la transacción tú le dices a la BD: hazme todo esto, o no me hagas nada.
+
+Lo de las transacciones, el Manual de PHP te lo explica muy bien aquí: Transacciones y autoconsigna ("auto-commit")

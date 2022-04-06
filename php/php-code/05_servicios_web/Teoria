@@ -1,0 +1,9 @@
+Un servicio web es un método que permite que dos equipos intercambien información a través de una red informática. 
+Al utilizar servicios web, el servidor puede ofrecer un punto de acceso a la información que quiere compartir.
+De esta forma controla y facilita el acceso a la misma por parte de otras aplicaciones.
+
+SOAP:es un protocolo que indica cómo deben ser los mensajes que se intercambien el servidor y el cliente,
+cómo deben procesarse éstos, y cómo se relacionan con el protocolo que se utiliza para transportarlos de un extremo a otro de la comunicación
+(en el caso de los servicios web, este protocolo será HTTP)
+
+WSDL: Lenguaje para describir servicios web (indica como se debe acceder a un servicio)

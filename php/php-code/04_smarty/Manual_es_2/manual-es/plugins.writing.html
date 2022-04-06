@@ -1,0 +1,78 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Escribiendo Plugins</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="plugins.html" title="Chapter 16. Extendiendo Smarty con plugins">
+<link rel="prev" href="plugins.naming.conventions.html" title="Nombres convencionales">
+<link rel="next" href="plugins.functions.html" title="Funciones de Template">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Escribiendo Plugins</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="plugins.naming.conventions.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 16. Extendiendo Smarty con plugins</th>
+<td width="20%" align="right"> <a accesskey="n" href="plugins.functions.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="Escribiendo Plugins">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="plugins.writing"></a>Escribiendo Plugins</h2></div></div></div>
+<p>
+     Los Plugins pueden ser leidos por el Smarty automáticamente del 
+     sistema de archivos o pueden ser registrados en tiempo de 
+     ejecución por medio de una de las funciones de API register_* .
+     Estos también pueden ser usados con la función API unregister_*.
+    </p>
+<p>
+     Para los plugins que son registrados en tiempo de ejecución, el
+     nombre de la(s) función(es) de plugin no tiene que seguir la
+     convención de apariencia.
+    </p>
+<p>
+     Si un plugin depende de alguna función alimentada por otro plugin
+     (como es el caso con algunos plugins incrustados con el Smarty), 
+     entonces la forma apropiada para leer el plugin necesario es esta:
+    </p>
+<pre class="programlisting">
+
+&lt;?php
+require_once $smarty-&gt;_get_plugin_filepath('function', 'html_options');
+?&gt;
+
+    </pre>
+<p>
+     Como regla general, el objeto Smarty siempre es pasado a los 
+     plugins como ultimo parámetro (con dos excepciones: los 
+     modificadores no pasan el objeto de Smarty del todo y los 
+     blocks obtenidos son pasados <em class="parameter"><code>&amp;$repeat</code></em> 
+     después el objeto de Smarty para manter compatibilidad con
+     antiguas versiones de Smarty).
+    </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="plugins.naming.conventions.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="plugins.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="plugins.functions.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">Nombres convencionales </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> Funciones de Template</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

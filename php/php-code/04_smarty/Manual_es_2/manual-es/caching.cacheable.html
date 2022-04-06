@@ -1,0 +1,164 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Controlando salida de Cacheabilidad de plugins</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="caching.html" title="Chapter 14. Cache">
+<link rel="prev" href="caching.groups.html" title="Cache Groups">
+<link rel="next" href="advanced.features.html" title="Chapter 15. Caracteristicas Avanzadas">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Controlando salida de Cacheabilidad de plugins</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="caching.groups.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 14. Cache</th>
+<td width="20%" align="right"> <a accesskey="n" href="advanced.features.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="Controlando salida de Cacheabilidad de plugins">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="caching.cacheable"></a>Controlando salida de Cacheabilidad de plugins</h2></div></div></div>
+<p>
+   Desde Smarty-2.6.0 los caches de plugins pueden ser declarados 
+   o registrados. 
+   El tercer parámetro para <a class="link" href="api.register.block.html" title="register_block()">register_block()</a>, 
+   <a class="link" href="api.register.compiler.function.html" title="register_compiler_function">register_compiler_function()</a> 
+   y <a class="link" href="api.register.block.html" title="register_block()">register_function()</a> es llamado 
+   <em class="parameter"><code>$cacheable</code></em> y el default es true que es 
+   también el comportamiento de plugins en la versiones anteriores 
+   a Smarty 2.6.0.
+  </p>
+<p>
+   Cuando registre un plugin con $cacheable=false el plugin es llamado 
+   todo el tiempo en la pagina que está siendo mostrada, aun si la 
+   pagina viene desde el cache.
+   La función de plugin tiene un comportamiento parecido al de 
+   la función <a class="link" href="plugins.inserts.html" title="Inserts">insert</a>.
+  </p>
+<p>
+   En contraste con <a class="link" href="language.function.insert.html" title="insert">{insert}</a> 
+   el atributo para el plugin no está en cache por default. Ellos pueden ser 
+   declarados para ser cacheados con el cuarto parámetro
+   <em class="parameter"><code>$cache_attrs</code></em>. <em class="parameter"><code>$cache_attrs</code></em>
+   es un arreglo de nombres de atributos que deben ser cacheados, entonces la 
+   función de plugin pega el valor como si fuera el tiempo en que la pagina 
+   fue escrita para el cache todo el tiempo este es traido desde el cache.
+  </p>
+<div class="example">
+<a name="id2770081"></a><p class="title"><b>Example 14.10. Previniendo que una saída de plugin de ser cacheada</b></p>
+<div class="example-contents">
+<pre class="programlisting">
+
+&lt;?php
+require('Smarty.class.php');
+$smarty = new Smarty;
+$smarty-&gt;caching = true;
+
+function remaining_seconds($params, &amp;$smarty) {
+    $remain = $params['endtime'] - time();
+    if ($remain &gt;=0)
+        return $remain . " second(s)";
+    else
+        return "done";
+}
+
+$smarty-&gt;register_function('remaining', 'remaining_seconds', false, array('endtime'));
+
+if (!$smarty-&gt;is_cached('index.tpl')) {
+    // fetch $obj from db and assign...
+    $smarty-&gt;assign_by_ref('obj', $obj);
+}
+
+$smarty-&gt;display('index.tpl');
+?&gt;
+
+   </pre>
+<p>
+    Donde index.tpl es:
+   </p>
+<pre class="programlisting">
+
+Time Remaining: {remaining endtime=$obj-&gt;endtime}
+
+   </pre>
+<p>
+    El número en segundos hasta el endtime del $obj este sufre cambios
+    en cada display de la pagina, aun si la pagina esta en cache. Desde 
+    que el atributo endtime sea cacheado el objeto solamente tiene que 
+    ser jalado de la base de datos cuando la pagina esta escrita en la 
+    cache mas no en requisiciones de la pagina.
+   </p>
+</div>
+</div>
+<br class="example-break"><div class="example">
+<a name="id2770141"></a><p class="title"><b>Example 14.11. Previniendo una pasada entera del template para el cache</b></p>
+<div class="example-contents">
+<pre class="programlisting">
+
+index.php:
+
+&lt;?php
+require('Smarty.class.php');
+$smarty = new Smarty;
+$smarty-&gt;caching = true;
+
+function smarty_block_dynamic($param, $content, &amp;$smarty) {
+    return $content;
+}
+$smarty-&gt;register_block('dynamic', 'smarty_block_dynamic', false);
+
+$smarty-&gt;display('index.tpl');
+?&gt;
+
+   </pre>
+<p>
+    Donde index.tpl es:
+   </p>
+<pre class="programlisting">
+
+Page created: {"0"|date_format:"%D %H:%M:%S"}
+
+{dynamic}
+
+Now is: {"0"|date_format:"%D %H:%M:%S"}
+
+... do other stuff ...
+
+{/dynamic}
+
+   </pre>
+</div>
+</div>
+<br class="example-break"><p>
+   Cuando recarga la pagina usted notara que ambas fechas son diferentes.
+   Una es "dinamica" y la otra es "estática". Usted puede hacer todo entre 
+   las etiquetas {dynamic}...{/dynamic} y tener la certeza de que no sera 
+   cacheado como el resto de la pagina.
+  </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="caching.groups.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="caching.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="advanced.features.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">Cache Groups </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> Chapter 15. Caracteristicas Avanzadas</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

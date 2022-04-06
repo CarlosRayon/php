@@ -1,0 +1,65 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>$compile_check</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="api.variables.html" title="Chapter 12. Clase Variables de Smarty">
+<link rel="prev" href="variable.autoload.filters.html" title="$autoload_filters">
+<link rel="next" href="variable.force.compile.html" title="$force_compile">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">$compile_check</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="variable.autoload.filters.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 12. Clase Variables de Smarty</th>
+<td width="20%" align="right"> <a accesskey="n" href="variable.force.compile.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="$compile_check">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="variable.compile.check"></a>$compile_check</h2></div></div></div>
+<p>
+    En cada llamada de la aplicación PHP, Smarty prueba para ver si el
+    template actual fue modificado (diferentes time stamp) desde la 
+    ultima compilación. Si este fue modificado, se recompilara el template. 
+    Si el template no fue compilado, este ira a compilar de cualquier 
+    manera esa configuración. Por default esta variable es determinada como 
+    true. Una vez que la aplicación esta en producción (los templates no 
+    seran modificados), el paso compile_check no es necesario. asegurese de 
+    determinar $compile_check a "false" para un mejor funcionamiento.  
+    Note que si usted modifica está para "false" y el archivo de template
+    está modificado, usted *no* vera los cambios desde el template hasta que 
+    no sea recompilado. Si el <a class="link" href="variable.caching.html" title="$caching">caching</a> 
+    esta habilitado y compile_check está habilitado, entonces los archivos de 
+    cache tienen que ser regenerados si el archivo de template es muy complejo 
+    o el archivo de configuración fue actualizado.
+    vea <a class="link" href="variable.force.compile.html" title="$force_compile">$force_compile</a>
+    o <a class="link" href="api.clear.compiled.tpl.html" title="clear_compiled_tpl()">clear_compiled_tpl()</a>.
+      </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="variable.autoload.filters.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="api.variables.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="variable.force.compile.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">$autoload_filters </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> $force_compile</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

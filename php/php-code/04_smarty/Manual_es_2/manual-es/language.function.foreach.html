@@ -1,0 +1,268 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{foreach},{foreachelse}</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="language.builtin.functions.html" title="Chapter 7. Funciones Integradas">
+<link rel="prev" href="language.function.config.load.html" title="config_load">
+<link rel="next" href="language.function.include.html" title="include">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">{foreach},{foreachelse}</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="language.function.config.load.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 7. Funciones Integradas</th>
+<td width="20%" align="right"> <a accesskey="n" href="language.function.include.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="sect1" title="{foreach},{foreachelse}">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="language.function.foreach"></a>{foreach},{foreachelse}</h2></div></div></div>
+<div class="informaltable"><table border="1">
+<colgroup>
+<col align="center">
+<col align="center">
+<col align="center">
+<col align="center">
+<col>
+</colgroup>
+<thead><tr>
+<th align="center">Nombre del Atributo</th>
+<th align="center">Tipo</th>
+<th align="center">Requerido</th>
+<th align="center">Default</th>
+<th>Descripción</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="center">from</td>
+<td align="center">array</td>
+<td align="center">Si</td>
+<td align="center"><span class="emphasis"><em>n/a</em></span></td>
+<td>El nombre de la matriz a la que usted estara pegando los elementos</td>
+</tr>
+<tr>
+<td align="center">item</td>
+<td align="center">string</td>
+<td align="center">Si</td>
+<td align="center"><span class="emphasis"><em>n/a</em></span></td>
+<td>El nombre de la variable que es el elemento
+                        actual</td>
+</tr>
+<tr>
+<td align="center">key</td>
+<td align="center">string</td>
+<td align="center">No</td>
+<td align="center"><span class="emphasis"><em>n/a</em></span></td>
+<td>El nombre de la variable que es la llave actual</td>
+</tr>
+<tr>
+<td align="center">name</td>
+<td align="center">string</td>
+<td align="center">No</td>
+<td align="center"><span class="emphasis"><em>n/a</em></span></td>
+<td>El nombre del ciclo foreach para acessar a las propiedades del foreach</td>
+</tr>
+</tbody>
+</table></div>
+<p>
+    Los ciclos(loop) <span class="emphasis"><em>foreach</em></span> son una alternativa para loop 
+    <a class="link" href="language.function.section.html" title="section,sectionelse"><span class="emphasis"><em>{section}</em></span></a>. 
+    <span class="emphasis"><em>foreach</em></span> es usado para pegar cada elemento de una  
+    <span class="bold"><strong>matriz asociativa simple</strong></span>.
+    La sintaxis para <span class="emphasis"><em>foreach</em></span> es mucho mas simple que 
+    <span class="emphasis"><em>section</em></span>, pero tiene una desventaja de que solo puede ser 
+    usada en una única matriz.
+    La etiqueta  <span class="emphasis"><em>foreach</em></span> debe tener su par 
+    <span class="emphasis"><em>/foreach</em></span>.
+    Los parámetros requeridos son <span class="emphasis"><em>from</em></span> e 
+    <span class="emphasis"><em>item</em></span>. El nombre del ciclo(loop) foreach puede ser 
+    cualquier cosa que usted quiera, hecho de letras, números y subrayados. 
+    Los ciclos(loop) <span class="emphasis"><em>foreach</em></span> pueden ser anidados, 
+    y el nombre de los ciclos(loop) anidados debe ser diferente uno de
+    otro. La variable <span class="emphasis"><em>from</em></span> (normalmente una matriz de valores) 
+    determina el número de veces del ciclo(loop) <span class="emphasis"><em>foreach</em></span>.
+    <span class="emphasis"><em>foreachelse</em></span> y ejecutando cuando no hubieren mas valores 
+    en la variable <span class="emphasis"><em>from</em></span>.
+			</p>
+<div class="example">
+<a name="id2706179"></a><p class="title"><b>Example 7.4. foreach</b></p>
+<div class="example-contents">
+<pre class="programlisting">
+   
+   &lt;?php
+   $arr = array( 1001,1002,1003);
+   $smarty-&gt;assign('custid', $arr);
+   ?&gt;
+   
+</pre>
+<pre class="programlisting">
+
+{* este ejemplo muestra todos los valores de la matriz $custid *}
+{foreach from=$custid item=curr_id}
+  id: {$curr_id}&lt;br /&gt;
+{/foreach}
+
+  </pre>
+<p>
+   Esta es la salida del ejemplo de arriba:
+  </p>
+<pre class="screen">
+
+id: 1000&lt;br /&gt;
+id: 1001&lt;br /&gt;
+id: 1002&lt;br /&gt;
+
+  </pre>
+</div>
+</div>
+<br class="example-break"><div class="example">
+<a name="id2706219"></a><p class="title"><b>Example 7.5. foreach key</b></p>
+<div class="example-contents">
+<pre class="programlisting">
+
+// La llave contiene la llave para cada valor del ciclo(loop)
+//asignacion fisica de esta manera:
+&lt;?php
+ $smarty-&gt;assign('contacts', array(
+                             array('phone' =&gt; '1',
+                                   'fax' =&gt; '2',
+                                   'cell' =&gt; '3'),
+                             array('phone' =&gt; '555-4444',
+                                   'fax' =&gt; '555-3333',
+                                   'cell' =&gt; '760-1234')
+                             ));
+?&gt;
+
+  </pre>
+<pre class="programlisting">
+
+{foreach name=outer item=contact from=$contacts}
+  &lt;hr /&gt;
+  {foreach key=key item=item from=$contact}
+    {$key}: {$item}&lt;br /&gt;
+  {/foreach}
+{/foreach}
+
+  </pre>
+<p>
+   Esta es la salida del ejemplo de arriba:
+  </p>
+<pre class="screen">
+
+&lt;hr /&gt;
+  phone: 1&lt;br /&gt;
+  fax: 2&lt;br /&gt;
+  cell: 3&lt;br /&gt;
+&lt;hr /&gt;
+  phone: 555-4444&lt;br /&gt;
+  fax: 555-3333&lt;br /&gt;
+  cell: 760-1234&lt;br /&gt;
+
+  </pre>
+</div>
+</div>
+<br class="example-break"><div class="example">
+<a name="id2706270"></a><p class="title"><b>Example 7.6. Ejemplo de {foreach} - con base de datos (eg PEAR o ADODB)</b></p>
+<div class="example-contents">
+<pre class="programlisting">
+
+&lt;?php
+  $sql = 'select contact_id, name, nick from contacts order by contact';
+  $smarty-&gt;assign("contacts", $db-&gt;getAssoc($sql));
+?&gt;
+
+  </pre>
+<pre class="programlisting">
+
+{foreach key=cid item=con from=$contacts}
+  &lt;a href="contact.php?contact_id={$cid}"&gt;{$con.name} - {$con.nick}&lt;/a&gt;&lt;br /&gt;
+{/foreach}
+
+  </pre>
+</div>
+</div>
+<br class="example-break"><p>
+   El ciclo(Loop) foreach también tiene sus propias variables para
+   manipular las propiedades del foreach.
+   Estas son indicadas así: 
+   <a class="link" href="language.variables.smarty.html#language.variables.smarty.loops" title="{$smarty.section}, {$smarty.foreach}">{$smarty.foreach.foreachname.varname}</a> 
+   con foreachname siendo el nombre especificado del atributo
+   <span class="emphasis"><em>name</em></span> del foreach.
+		</p>
+<p>Ver <a class="link" href="language.function.section.html#section.property.index" title="index">{section}</a>
+  para ejemplos ide las propiedades bajo las cuales son identicos.
+  </p>
+<div class="sect2" title="iteration">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="foreach.property.iteration"></a>iteration</h3></div></div></div>
+<p>
+    iteration es usado para mostrar la interación actual del ciclo(loop).
+    iteration siempre comienza en 1 incrementado en uno cada interación.
+			</p>
+</div>
+<div class="sect2" title="first">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="foreach.property.first"></a>first</h3></div></div></div>
+<p>
+    <span class="emphasis"><em>first</em></span> Toma el valor true si la interación actual del 
+     foreach es la primera.
+			</p>
+</div>
+<div class="sect2" title="last">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="foreach.property.last"></a>last</h3></div></div></div>
+<p>
+      <span class="emphasis"><em>last</em></span> Toma el valor de true si la interación actual 
+       del foreach es la ultima.
+			</p>
+</div>
+<div class="sect2" title="show">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="foreach.property.show"></a>show</h3></div></div></div>
+<p>
+         <span class="emphasis"><em>show</em></span> Es usado como parámetro para el foreach.
+         <span class="emphasis"><em>show</em></span> Es un valor booleano, true o false.
+         Si es false, el foreach no será mostrado.  Si tuviera un
+         foreachelse presente, este será alternativamente mostrado.
+			</p>
+</div>
+<div class="sect2" title="total">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="foreach.property.total"></a>total</h3></div></div></div>
+<p>
+      <span class="emphasis"><em>total</em></span> Es usado para mostrar el número de interaciones 
+      del foreach. Este puede ser usado dentro o después de el.
+			</p>
+<p>
+   Ver tambien <a class="link" href="language.function.section.html" title="section,sectionelse">{section}</a> y
+   <a class="link" href="language.variables.smarty.html#language.variables.smarty.loops" title="{$smarty.section}, {$smarty.foreach}">$smarty.foreach</a>.
+  </p>
+</div>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="language.function.config.load.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="language.builtin.functions.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="language.function.include.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">config_load </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> include</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

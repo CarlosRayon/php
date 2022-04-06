@@ -1,0 +1,92 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Chapter 10. Debugging Console</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<link rel="home" href="index.html" title="Smarty Manual">
+<link rel="up" href="smarty.for.designers.html" title="Part II. Smarty For Template Designers">
+<link rel="prev" href="config.files.html" title="Chapter 9. Config Files">
+<link rel="next" href="smarty.for.programmers.html" title="Part III. Smarty For Programmers">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Chapter 10. Debugging Console</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="config.files.html">Prev</a> </td>
+<th width="60%" align="center">Part II. Smarty For Template Designers</th>
+<td width="20%" align="right"> <a accesskey="n" href="smarty.for.programmers.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="chapter" title="Chapter 10. Debugging Console">
+<div class="titlepage"><div><div><h2 class="title">
+<a name="chapter.debugging.console"></a>Chapter 10. Debugging Console</h2></div></div></div>
+<p>
+  Incluso en Smarty existe una consola para debug. La consola informa 
+  a usted de todos los templates incluidos, las variables definidas y 
+  las variables de archivos de configuración de la llamada actual del 
+  template. Incluso un template llamado "debug.tpl" viene con la 
+  distribución de Smarty el cual controla el formateo de la consola.
+  Defina <a class="link" href="variable.debugging.html" title="$debugging">$debugging</a> en true en 
+  el Smarty, y si es necesario defina 
+  <a class="link" href="variable.debug.tpl.html" title="$debug_tpl">$debug_tpl</a> para la ruta 
+  del recurso debug.tpl (Esto es SMARTY_DIR por
+  default). Cuando usted carga una pagina, una consola en javascript 
+  abrira una ventana popup y dara a usted el nombre de todos los templates 
+  incluidos y las variables definidas en la pagina actual. Para ver las 
+  variables disponibles para un template en particular, vea la función
+  <a class="link" href="language.function.debug.html" title="{debug}">{debug}</a>. Para desabilitar 
+  la consola del debug, defina $debugging en false. Usted puede activar
+  temporalmente la consola del debug colocando SMARTY_DEBUG en la URL si
+  usted activo esta opción con 
+  <a class="link" href="variable.debugging.ctrl.html" title="$debugging_ctrl">$debugging_ctrl</a>.
+ </p>
+<div class="note" title="Nota Técnica" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Nota Técnica</h3>
+<p>
+   La consola de debug no funciona cuando usted usa la API <a class="link" href="api.fetch.html" title="fetch()">fetch()</a>, solo cuando estuviera usando  
+   <a class="link" href="api.display.html" title="display()">display()</a>. 
+   Es un conjunto de comandos javascript 
+   adicionados al final del template generado. Si a usted no le gusta el 
+   javascript, usted puede editar el template debug.tpl para formatear la 
+   salida como usted quiera. Los datos del debug no son guardados en cache 
+   y los datos del debug.tpl no son incluidos en la consola debug.
+  </p>
+</div>
+<div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>
+   Los tiempos de carga de cada template y de archivos de configuración
+   son en segundos, o en fracciones de segundo.
+  </p>
+</div>
+<p>
+    Vea también 
+    <a class="link" href="troubleshooting.html" title="Chapter 17. Localización de Errores">troubleshooting</a>,
+    <a class="link" href="variable.error.reporting.html" title="$error_reporting">$error_reporting</a>
+    y <a class="link" href="api.trigger.error.html" title="trigger_error">trigger_error()</a>.
+   </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="config.files.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="smarty.for.designers.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="smarty.for.programmers.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">Chapter 9. Config Files </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> Part III. Smarty For Programmers</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

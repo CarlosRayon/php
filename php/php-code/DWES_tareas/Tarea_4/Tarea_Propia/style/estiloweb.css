@@ -1,0 +1,61 @@
+
+/* 
+    Created on : 22-nov-2017, 4:26:08
+    Author     : karlo
+*/
+
+h1{
+    text-align: center;
+    background-color: #ff33ff
+}
+
+/*Paso1*/
+#contenido{  
+    margin: 10px 200px;  
+}
+
+#formulario{
+    padding:10px ;
+
+}
+
+table th, td{
+    border: solid 1px;
+    padding: 10px;
+}
+th{
+    colspan:"2";  
+}
+
+
+/*Paso 2*/
+#checkbox{
+    float: left;
+    border: 1px solid;
+    width: 35%;
+    margin: 0px 100px;
+}
+
+#mostrarmodulos{
+    float: left;
+    border:  1px solid;  
+    width: 35%;
+}
+
+#error{
+    font-size: 20px;
+    color: red;
+    border: 10px solid #ff3333;
+
+}
+
+#errorArchivo{
+    font-size: 10px;
+    color: red;
+    border: 1px solid red;
+}
+
+#formu{
+    border: 10px solid #ffcccc;
+    padding: 0px 10px;
+}
