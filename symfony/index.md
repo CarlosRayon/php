@@ -1,6 +1,7 @@
 # Index
 
 - [PDF Cheet Sheet](/symfony/cheat-sheet/index.md)
+- [Bundles](/symfony/bundles/index.md)
 - [Command](/symfony/command/index.md)
 - [Database and Doctrine](/symfony/database-doctrine/index.md)
 - [Front-End](/symfony/front/index.md)
