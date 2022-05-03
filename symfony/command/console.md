@@ -7,6 +7,9 @@ Command for console
 ```cli
 # Search for something specific
 bin/console <intruccion> | grep <parametro busqueda>
+
+# Show info (variables, version, etc)
+bin/console about
 ```
 
 ## php bin/console config
