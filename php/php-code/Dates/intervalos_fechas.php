@@ -21,6 +21,15 @@ echo $newDate->format('Y-m-d');
 
 /* Mas opciones de intervalos en https://www.php.net/manual/es/dateinterval.createfromdatestring.php */
 
+/* Añadir horas */
+new DateInterval('PT24H');
+
+/* Añadir minutos */
+new DateInterval('PT24M');
+
+/* Dia y horas */
+new DateInterval('P4DT24H24M')
+
 
 
 
