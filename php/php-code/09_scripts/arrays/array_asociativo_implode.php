@@ -10,7 +10,9 @@ $attributes = array(
 $dataAttributes = array_map(
     function ($key, $value) {
         return "$key => $value";
-    },  array_keys($attributes), array_values($attributes)
+    },
+    array_keys($attributes),
+    array_values($attributes)
 );
 
 $dataAttributes = implode(' | ', $dataAttributes);

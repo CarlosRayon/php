@@ -22,19 +22,18 @@ inversedBy and mappedBy are used by the INTERNAL DOCTRINE engine to reduce the n
 
 ```php
 
-class Collectives
-
+class Collectives{
 //. . .
 
-    / **
-     * @ORM \ ManyToMany (targetEntity = Portal :: class, inversedBy = "collectives")
-     * @ORM \ JoinTable (name = "colectivosPortales",
-     * joinColumns = {@ ORM \ JoinColumn (name = "CollectiveID", referencedColumnName = "id")},
-     * inverseJoinColumns = {@ ORM \ JoinColumn (name = "idPortal", referencedColumnName = "id")}
+    /**
+     * @ORM\ManyToMany(targetEntity=Portal::class, inversedBy="collectives")
+     * @ORM\JoinTable(name="colectivosPortales",
+     * joinColumns={@ORM\JoinColumn(name="CollectiveID", referencedColumnName="id")},
+     * inverseJoinColumns={@ORM\JoinColumn(name="idPortal", referencedColumnName="id")}
      *)
-     * /
+     */
 
-    private $ portals;
+    private $portals;
 
 //. . .
 }
@@ -43,11 +42,11 @@ class Portals {
 
 //. . .
 
-    / **
+    /**
      * @var Collective []
-     * @ORM \ ManyToMany (targetEntity = Collective :: class, mappedBy = "portals")
-     * /
-    private $ collectives;
+     * @ORM\ManyToMany(targetEntity=Collective::class, mappedBy="portals")
+     */
+    private $collectives;
 
 //. . .
 }
@@ -75,17 +74,17 @@ A relationship of *beneficiaries* with *portals* many to many would look like th
 class BeneficiaryPortal {
 //. . .
 
-     / **
-     * @ORM\ManyToOne (targetEntity = Beneficiary::class, inversedBy = "beneficiaryPortals")
-     * @ORM\JoinColumn (name = "beneficiaryid", referencedColumnName = "id")
-     * /
-    private $ beneficiary;
+     /**
+     * @ORM\ManyToOne(targetEntity=Beneficiary::class, inversedBy="beneficiaryPortals")
+     * @ORM\JoinColumn(name="beneficiaryid", referencedColumnName="id")
+     */
+    private $beneficiary;
 
-    / **
-     * @ORM\ManyToOne (targetEntity = Portal::class, inversedBy = "beneficiaryPortals")
-     * @ORM\JoinColumn (name = "idPortal", referencedColumnName = "id")
-     * /
-    private $ portal;
+    /**
+     * @ORM\ManyToOne(targetEntity=Portal::class, inversedBy="beneficiaryPortals")
+     * @ORM\JoinColumn(name="idPortal", referencedColumnName="id")
+     */
+    private $portal;
 
 //. . .
 }
@@ -93,11 +92,11 @@ class BeneficiaryPortal {
 class Beneficiary {
 //. . .
 
-     / **
-     * @ORM\OneToMany (targetEntity = BeneficiaryPortal::class, mappedBy = "beneficiary")
-     * @ORM\JoinColumn (name = "recipientsPortales", referencedColumnName = "id")
-     * /
-    private $ beneficiaryPortals;
+     /**
+     * @ORM\OneToMany(targetEntity=BeneficiaryPortal::class, mappedBy="beneficiary", orphanRemoval=true)
+     * @ORM\JoinColumn(name="recipientsPortales", referencedColumnName="id")
+     */
+    private $beneficiaryPortals;
 
 //. . .
 
@@ -106,11 +105,11 @@ class Beneficiary {
 class Portal {
 //. . .
 
-      / **
-     * @ORM\OneToMany (targetEntity = BeneficiaryPortal::class, mappedBy = "portal")
-     * @ORM\JoinColumn (name = "recipientsPortales", referencedColumnName = "id")
-     * /
-    private $ beneficiaryPortals;
+      /**
+     * @ORM\OneToMany(targetEntity=BeneficiaryPortal::class, mappedBy="portal", orphanRemoval=true)
+     * @ORM\JoinColumn(name="recipientsPortales", referencedColumnName="id")
+     */
+    private $beneficiaryPortals;
 
 //. . .
 
@@ -121,6 +120,8 @@ class Portal {
 From the BeneficiaryPortal class, the **JoinTable** part of the call is optional. When using it, we can define the name of the relationship attributes
 
 Of the Portal and Beneficiary classes the **JoinColumn** part is also optional. Give a name to the property and indicate the doctrine that refers to the id of the table itself (which is the one that relates to BeneficiaryPortal)
+
+[orphanRemoval](https://www.doctrine-project.org/projects/doctrine-orm/en/2.11/reference/working-with-associations.html#orphan-removal) makes that when removing the reference to BeneficiaryPortal from the portal the row of BeneficiaryPortal is also eliminated
 
 ---
 
