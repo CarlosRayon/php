@@ -37,6 +37,19 @@ With this initial migration we create a db: start command, which is that we will
  ]
 ```
 
+### Mix of schema:update and migrations
+
+If not has a initial migrations, we can combined options. With *doctrine:migrations:sync-metadata-storage* create the table of migrations and with *bin/console doctrine:migrations:version --add --all --no-interaction* load migrations in the table but no execute him.
+
+```json
+"db:reload": [
+    "bin/console doctrine:schema:drop --force",
+    "bin/console doctrine:schema:update --force",
+    "bin/console doctrine:migrations:sync-metadata-storage",
+    "bin/console doctrine:migrations:version --add --all --no-interaction"
+],
+```
+
 ## Workflow after the initial migration
 
 After the changes that we make, we make them generating migrations every time we create or modify any entity:
