@@ -1,55 +1,42 @@
 <?php
 
-function getCifSum($cif)
+/* https://github.com/amnesty/drupal-nif-nie-cif-validator/blob/master/includes/nif-nie-cif.php */
+
+function isValidCIFFormat($docNumber)
 {
-    $sum = $cif[2] + $cif[4] + $cif[6];
-
-    for ($i = 1; $i < 8; $i += 2) {
-        $tmp = (string) (2 * $cif[$i]);
-
-        $tmp = $tmp[0] + ((strlen($tmp) == 2) ? $tmp[1] : 0);
-
-        $sum += $tmp;
-    }
-
-    return $sum;
+    return
+        respectsDocPattern(
+            $docNumber,
+            '/^[PQSNWR][0-9][0-9][0-9][0-9][0-9][0-9][0-9][A-Z0-9]/'
+        ) or
+        respectsDocPattern(
+            $docNumber,
+            '/^[ABCDEFGHJUV][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/'
+        );
 }
 
-
-function validateCif($cif)
+function respectsDocPattern($givenString, $pattern)
 {
-    $cif_codes = 'JABCDEFGHI';
+    $isValid = false;
 
-    $sum = (string) getCifSum($cif);
-    $n = (10 - substr($sum, -1)) % 10;
+    $fixedString = strtoupper($givenString);
 
-    if (preg_match('/^[ABCDEFGHJNPQRSUVW]{1}/', $cif)) {
-        if (in_array($cif[0], array('A', 'B', 'E', 'H'))) {
-            // Numerico
-            return ($cif[8] == $n);
-        } elseif (in_array($cif[0], array('K', 'P', 'Q', 'S'))) {
-            // Letras
-            return ($cif[8] == $cif_codes[$n]);
-        } else {
-            // Alfanumérico
-            if (is_numeric($cif[8])) {
-                return ($cif[8] == $n);
-            } else {
-                return ($cif[8] == $cif_codes[$n]);
-            }
-        }
+    if (is_int(substr($fixedString, 0, 1))) {
+        $fixedString = substr("000000000" . $givenString, -9);
     }
 
-    return false;
-}
+    if (preg_match($pattern, $fixedString)) {
+        $isValid = true;
+    }
 
+    return $isValid;
+}
 
 $cifs = [
-    'C45808599',
+    'W51d21001As',
     'G41315458',
-    'P1621295C',
-    'F81851107',
-    'S0759363E',
+    '21295C',
+    'J81851107',
     'N0185434H',
     'U52991890',
     'A27446533',
@@ -99,5 +86,5 @@ $cifs = [
 
 
 foreach ($cifs as $cif) {
-    var_dump(validateCif($cif));
+    var_dump(isValidCIFFormat($cif));
 }
