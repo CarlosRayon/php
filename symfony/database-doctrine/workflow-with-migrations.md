@@ -31,8 +31,8 @@ With this initial migration we create a db: start command, which is that we will
 
 ```json
 "db:start": [
-    "bin/console doctrine:schema:drop --force",
-    "bin/console doctrine:migrations:migrate",
+    "bin/console doctrine:schema:drop --force --full-database",
+    "bin/console doctrine:migrations:migrate --no-interaction",
     "bin/console doctrine:fixtures:load --no-interaction"
  ]
 ```
