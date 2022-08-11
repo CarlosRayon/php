@@ -14,8 +14,15 @@ $client = static::createClient([], [
 $crawler = $client->request('GET', 'path/download/pdf/1');
 
 $this->assertResponseIsSuccessful();
+
+/* The $client has header that we can validate */
 $this->assertResponseHeaderSame('content-type', 'application/pdf');
-$this->assertResponseHeaderSame('content-disposition', "attachment; filename=innvoice-name.pdf");
+$this->assertResponseHeaderSame('content-disposition', "attachment; filename=innvoice-name.pdf");u
+
+/* If want other header info for example if the downloaded file has a dynamic name */
+$headerContentDisposition = $client->getResponse()->headers->get('content-disposition');
+$this->assertStringContainsString('filename=invoice-name-', $headerContentDisposition); /* The name has date */
+$this->assertStringContainsString('.pdf', $headerContentDisposition);
 
 ```
 
