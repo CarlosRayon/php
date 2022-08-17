@@ -76,7 +76,12 @@ $client->submit($form);
 
 ```
 
+## Resources
+
+[doc](https://symfony.com/doc/current/components/dom_crawler.html#forms)
+
 ---
+
 
 [<-- index-section](/testing/index.md)
 

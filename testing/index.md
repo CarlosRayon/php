@@ -20,6 +20,7 @@
 - [Links](/testing/links.md)
 - [Emails](/testing/emails.md)
 - [Download Files](/testing/download-files.md)
+- [Upload Files](/testing/upload-files.md)
 - [Redsys](/testing/redsys.md)
 
 ---

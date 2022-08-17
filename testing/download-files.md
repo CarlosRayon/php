@@ -24,7 +24,19 @@ $headerContentDisposition = $client->getResponse()->headers->get('content-dispos
 $this->assertStringContainsString('filename=invoice-name-', $headerContentDisposition); /* The name has date */
 $this->assertStringContainsString('.pdf', $headerContentDisposition);
 
+/* If save file before download, validate that the process is correct */
+$pathFile = $client->getResponse()->getFile()->getPathname();
+
+$filesystem = new Filesystem();
+$this->assertTrue($filesystem->exists($pathFile));
+
 ```
+
+## Resources
+
+[doc](https://symfony.com/doc/current/components/dom_crawler.html#forms)
+
+---
 
 [<-- index-section](/testing/index.md)
 

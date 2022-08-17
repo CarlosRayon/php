@@ -44,6 +44,12 @@ class FooTest extends WebTestCase
 
     /* Profiler service */
     $profiler= $client->getContainer()->get('profiler');
+
+    /* Get parameter bag */
+    $params = $client->getContainer()->get('parameter_bag')
+    $projectDir  $params->get('kernel.project_dir');
+
+    $projectDir = $this->getContainer()->getParameter('kernel.project_dir');
 }
 
 ```
