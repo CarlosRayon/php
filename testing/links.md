@@ -34,8 +34,13 @@ $crawler = $client->request('GET', '/post/hello-world');
 $link = $crawler->selectLink('Click here')->link();
 
 /* Check uri and method */
-$this->assertContains('/foo/foo', $link->getUri());
+$this->stringContains('/foo/foo', $link->getUri());
 $this->assertSame('GET', $link->getMethod());
+
+/* click and validate route link */
+$client->click($link);
+/* route name of /foo/foo */
+$this->assertRouteSame('route_name');
 
 ```
 
