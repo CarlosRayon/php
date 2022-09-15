@@ -7,7 +7,7 @@
 $client = static::createClient();
 $crawler = $client->request('GET', '/post/hello-world');
 
-/* Seleccionar un form */
+/* Select form */
 $form = $crawler->filter('<css selector>')->form();
 
 /* Set Values (for select type is equals)*/
@@ -23,7 +23,15 @@ $client->submit($form);
 $this->assertResponseRedirects('<path>');
 
 $crawler = $client->followRedirect();
+```
 
+## [Submit form directly](https://symfony.com/doc/5.4/testing.html#submitting-forms)
+
+```php
+$client->submitForm('Submit button value', [
+    'user' => 'user',
+    'password' => 'password,
+]);
 ```
 
 ## Check redirection
@@ -43,7 +51,7 @@ $this->assertContains('/es/redsys/pay', $client->getResponse()->getTargetUrl());
 
 ## Simulate submit request
 
-It is important to send the **_token** and **follow the data structure of the form ( form[fields][fields] )**.
+It is important to send the **\_token** and **follow the data structure of the form ( form[fields][fields] )**.
 Symfony validates this in the $form->handleRequest($request);
 
 ```php
@@ -76,12 +84,20 @@ $client->submit($form);
 
 ```
 
+### Validate form info
+
+```php
+$form = $crawler->selectButton('Submit button value')->form();
+$this->assertArrayHasKey('user_name[foo]', $form->getValues());
+$this->assertArrayHasKey('user_password[foo]', $form->getValues());
+$this->assertSame('POST', $form->getMethod());
+```
+
 ## Resources
 
 [doc](https://symfony.com/doc/current/components/dom_crawler.html#forms)
 
 ---
-
 
 [<-- index-section](/testing/index.md)
 

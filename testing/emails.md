@@ -2,6 +2,17 @@
 
 [Active profiler](https://symfony.com/doc/current/testing/profiling.html)
 
+## Avoid sending emails from the tests
+
+To avoid sending emails from the tests we add to the configuration of the test environment some invalid DNS:
+
+```yaml
+# config/packages/test/mailer.yaml
+framework:
+    mailer:
+        dsn: 'null://null'
+```
+
 ## Get emails in functional test
 
 ```php
