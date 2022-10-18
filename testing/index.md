@@ -6,7 +6,8 @@
 - [Use service in test](/testing/service-in-test.md)
 - [Provider](/testing/provider.md)
 - [PhpUnit Config](/testing/phpunit-config.md)
-- [Command and testing](/testing/command-testing)
+- [Command and testing](/testing/command-testing.md)
+- [variables between functions](/testing/variables-between-functions.md)
 
 ## Unit Test
 

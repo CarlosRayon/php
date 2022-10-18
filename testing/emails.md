@@ -26,16 +26,6 @@ $email = $emails[0];
 $email = $this->getMailerMessage(0);
 
 ```
-
-## Get emails in command test
-
-```php
-
-/*  Symfony 4.4^ */
-$email = $this->getMailerMessage(0);
-
-```
-
 ## Account emails sent
 
 ```php
