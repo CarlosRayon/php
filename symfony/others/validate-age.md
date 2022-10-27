@@ -134,8 +134,6 @@ use App\Validator\Constraints as AppAsserts;
 
 ---
 
-[<-- index](/symfony/front/index.md)
-
 [<-- index/symfony](/symfony/index.md)
 
 [<-- index](/README.md)
