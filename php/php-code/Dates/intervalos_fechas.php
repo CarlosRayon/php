@@ -1,5 +1,7 @@
 <?php
 
+/* Fecha con datos actuales */
+ $nowTime = new DateTime(date('Y-m-d H:i'));
 
 /* Añadimos con add() https://www.php.net/manual/es/datetime.add.php */
 $currentDate = new DateTime();
