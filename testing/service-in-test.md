@@ -22,8 +22,11 @@ class FooTest extends KernelTestCase
     $entityManager = $kernel->getContainer()->get('doctrine.orm.entity_manager');
 
     /* Profiler service */
-
     $profiler = $kernel->getContainer()->get('profiler');
+
+    /* Parameter Bag */
+     $container = $kernel->getContainer();
+     $foo = $container->getParameter('foo_foo');
 
 }
 
@@ -45,11 +48,12 @@ class FooTest extends WebTestCase
     /* Profiler service */
     $profiler= $client->getContainer()->get('profiler');
 
-    /* Get parameter bag */
+    /* Get parameter bag . . . */
     $params = $client->getContainer()->get('parameter_bag')
-    $projectDir  $params->get('kernel.project_dir');
+    $foo  $params->get('foo_foo');
 
-    $projectDir = $this->getContainer()->getParameter('kernel.project_dir');
+    /* . . . or */
+    $foo = $this->getContainer()->getParameter('foo_foo');
 }
 
 ```
