@@ -43,7 +43,7 @@ If not has a initial migrations, we can combined options. With *doctrine:migrati
 
 ```json
 "db:reload": [
-    "bin/console doctrine:schema:drop --force",
+    "bin/console doctrine:schema:drop --force --full-database",
     "bin/console doctrine:schema:update --force",
     "bin/console doctrine:migrations:sync-metadata-storage",
     "bin/console doctrine:migrations:version --add --all --no-interaction"
