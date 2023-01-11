@@ -41,6 +41,7 @@ class UserValidatorTest extends ConstraintValidatorTestCase
 ## Resources
 
 [doc](https://symfony.com/doc/current/validation/custom_constraint.html#testing-custom-constraints)
+[Examples](https://github.com/symfony/validator/blob/6.2/Tests/Constraints/EmailValidatorTest.php)
 
 ---
 
