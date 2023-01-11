@@ -31,7 +31,7 @@ class UserValidatorTest extends ConstraintValidatorTestCase
         /* Create a violation equals that FooValidator */
         $this->buildViolation('{{ value }}')
             ->setParameter('{{ value }}', 'Test of violation')
-            ->atPath('property.path.userGroup') /* 🧐 Is FooValidator has atPath() */
+            ->atPath('property.path.fooFormField') /* 🧐 Is FooValidator has atPath() */
             ->assertRaised();
     }
 }
