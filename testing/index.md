@@ -12,6 +12,7 @@
 ## Unit Test
 
 - [Entity](/testing/entity.md)
+- [Custom Validation Constraint](/testing/custom-validation-constraint.md)
 
 ## Funcional Test
 
