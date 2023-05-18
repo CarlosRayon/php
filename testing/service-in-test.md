@@ -14,20 +14,28 @@ I can create it in the SetUp() function or in the function itself that the test 
 
 class FooTest extends KernelTestCase
 {
-    $kernel = self::bootKernel();
+    private $fooService;
 
-    /* Entity manager service */
+    public function setUp(): void
+    {
+        /* Private service */
+        self::bootKernel();
+        $container = static::getContainer();
+        $this->fooService = $container->get(FooService::class);
+    }
 
-    // $this->entityManager = $kernel->getContainer()->get('doctrine')->getManager();
-    $entityManager = $kernel->getContainer()->get('doctrine.orm.entity_manager');
+    public function testFoo(){
+        $kernel = self::bootKernel();
+        $entityManager = $kernel->getContainer()->get('doctrine.orm.entity_manager');
+        // $this->entityManager = $kernel->getContainer()->get('doctrine')->getManager();
 
-    /* Profiler service */
-    $profiler = $kernel->getContainer()->get('profiler');
+        /* other service */
+        $profiler = $kernel->getContainer()->get('profiler');
 
-    /* Parameter Bag */
-     $container = $kernel->getContainer();
-     $foo = $container->getParameter('foo_foo');
-
+        /* more service */
+        $container = $kernel->getContainer();
+        $foo = $container->getParameter('foo_foo');
+    }
 }
 
 ```
@@ -41,19 +49,7 @@ We can use the previous method or the client.
 class FooTest extends WebTestCase
 {
     $client = static::createClient();
-
-    /* Entity manager service */
     $entityManager = $client->getContainer()->get('doctrine.orm.entity_manager');
-
-    /* Profiler service */
-    $profiler= $client->getContainer()->get('profiler');
-
-    /* Get parameter bag . . . */
-    $params = $client->getContainer()->get('parameter_bag')
-    $foo  $params->get('foo_foo');
-
-    /* . . . or */
-    $foo = $this->getContainer()->getParameter('foo_foo');
 }
 
 ```
@@ -78,7 +74,6 @@ class FooTest extends KernelTestCase
     public function testEntityCreate()
     {
         // . . .
-
         $entityManager = $this->getService('doctrine.orm.entity_manager');
 
     }
@@ -91,4 +86,3 @@ class FooTest extends KernelTestCase
 [<-- index-section](/testing/index.md)
 
 [<-- index](/README.md)
-

@@ -49,6 +49,40 @@ $this->assertResponseRedirects('<path>');
 $this->assertContains('/es/redsys/pay', $client->getResponse()->getTargetUrl());
 ```
 
+## Add data to collection input form
+
+```php
+
+    /*  > Go to section */
+    $crawler = $client->request('GET', 'http://localhost/service/1/edit');
+    $this->assertResponseIsSuccessful();
+
+    /*  > Get form */
+    $form = $crawler->filter('form[name=form-name]')->form();
+
+    /*  > Add new data to form */
+    $values = array_merge_recursive(
+        $form->getPhpValues(),
+        [
+            'service' => [
+                'collection-name' => [
+                    [
+                        'field-1' => 'lorem ipsum',
+                        'field-2' => '1',
+                    ],
+                    [
+                        'field-1' => 'lorem ipsum ',
+                        'field-2' => '1',
+                    ]
+                ]
+            ]
+        ]
+    );
+
+    /*  > Send data */
+    $crawler = $client->request($form->getMethod(), $form->getUri(), $values);
+```
+
 ## Simulate submit request
 
 It is important to send the **\_token** and **follow the data structure of the form ( form[fields][fields] )**.
