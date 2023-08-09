@@ -7,7 +7,6 @@ use PHPUnit\Framework\TestCase;
 
 class OperationsTest extends TestCase
 {
-
     private $_expected = [
         2 => 2,
         3 => 6,

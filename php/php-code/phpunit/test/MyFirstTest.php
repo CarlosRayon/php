@@ -8,8 +8,6 @@ use PHPUnit\Framework\TestCase;
 
 class MyFirstTest extends TestCase
 {
-
-
     public function testAssertTrueOK(): void
     {
         $this->assertTrue(true, "SI paso la validación la función de test testAssertTrueOK");
